@@ -1,5 +1,5 @@
-const Pizza = ({ pizzaObject }) => {
-	const { photoName, name, ingredients, soldOut, price } = pizzaObject;
+const Pizza = ({ pizzaObj }) => {
+	const { photoName, name, ingredients, soldOut, price } = pizzaObj;
 	
 	return (
 		<li className={`pizza ${soldOut ? "sold-out" : ""}`}>
