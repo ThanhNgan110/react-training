@@ -13,7 +13,7 @@ const Menu = () => {
 			</p>
 			<ul className={styles.pizzas}>
 			{pizzaData.map((pizza)=> (
-				<Pizza pizzaObj = {pizza}/>
+				<Pizza pizzaObj = {pizza} key={pizza.name}/>
 			))}
 			</ul>
 		</main>
