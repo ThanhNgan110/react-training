@@ -12,12 +12,12 @@ const App = () => {
 
 	const handlePrevious = () => {
 		if (step > 1) {
-			setStep(step - 1);
+			setStep((currentStep) => currentStep - 1);
 		}
 	};
 
 	const handleNext = () => {
-		if (step < 3) setStep(step + 1);
+		if (step < 3) setStep((currentStep) =>  currentStep + 1);
 	};
 
 	return (
@@ -25,7 +25,7 @@ const App = () => {
 			<button
 				className="close"
 				onClick={() => {
-					setIsOpen(!isOpen);
+					setIsOpen((is) =>  !is);
 				}}
 			>
 				&times;
