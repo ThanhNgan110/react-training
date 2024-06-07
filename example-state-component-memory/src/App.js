@@ -17,7 +17,7 @@ const App = () => {
 	};
 
 	const handleNext = () => {
-		if (step < 3) setStep((currentStep) =>  currentStep + 1);
+		if (step < 3) setStep((currentStep) => currentStep + 1);
 	};
 
 	return (
@@ -25,7 +25,7 @@ const App = () => {
 			<button
 				className="close"
 				onClick={() => {
-					setIsOpen((is) =>  !is);
+					setIsOpen((is) => !is);
 				}}
 			>
 				&times;
@@ -42,22 +42,47 @@ const App = () => {
 						Step {step}: {messages[step - 1]}
 					</p>
 					<div className="buttons">
-						<button
+						{/* <button
 							styles={{ backgroundColor: "#7950f2", color: "#fff" }}
 							onClick={handlePrevious}
 						>
 							Previous
-						</button>
-						<button
+						</button> */}
+						<Button
+							bgColor="#7950f2"
+							textColor="#fff"
+							onClick={handlePrevious}
+						>
+							<span>👈</span> Previous
+						</Button>
+						{/* <button
 							styles={{ backgroundColor: "#7950f2", color: "#fff" }}
 							onClick={handleNext}
 						>
 							Next
-						</button>
+						</button> */}
+						<Button
+							bgColor="#7950f2"
+							textColor="#fff"
+							onClick={handleNext}
+						>
+							Next <span>👉</span>
+						</Button>
 					</div>
 				</div>
 			)}
 		</>
+	);
+};
+
+const Button = ({ textColor, bgColor, onClick, children }) => {
+	return (
+		<button
+			style={{ backgroundColor: bgColor, color: textColor }}
+			onClick={onClick}
+		>
+			{children}
+		</button>
 	);
 };
 
