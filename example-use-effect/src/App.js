@@ -210,11 +210,25 @@ export default function App() {
 	const [watched, setWatched] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
-			.then((res) => res.json())
-			.then((data) => setMovies(data.Search));
-			console.log("Component mount");
-	}, 	[]);
+        const fetchMovies = async () => {
+            try {
+                const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=interstellar`);
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await res.json();
+                if (data.Search) {
+                    setMovies(data.Search);
+                } else {
+                    console.log('No movies found.');
+                }
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            }
+        };
+
+        fetchMovies(); // Gọi hàm fetchMovies để lấy dữ liệu
+    },[]); 
 
 	return (
 		<>
