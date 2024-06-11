@@ -50,6 +50,18 @@ const tempWatchedData = [
 const average = (arr) =>
 	arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
+const Loader = () => {
+	return <p className="loader">Loading...</p>;
+};
+
+const ErrorMessage = ({ message }) => {
+	return (
+		<p className="error">
+			<span>💥</span> {message}
+		</p>
+	);
+};
+
 const NavBar = ({ children }) => {
 	return (
 		<>
@@ -58,8 +70,7 @@ const NavBar = ({ children }) => {
 	);
 };
 
-const Search = () => {
-	const [query, setQuery] = useState("");
+const Search = ({ query, setQuery }) => {
 	return (
 		<>
 			<input
@@ -206,40 +217,82 @@ const WatchedMovie = ({ movie }) => {
 const KEY = "bbf6f65b";
 
 export default function App() {
+	const [query, setQuery] = useState("inception");
 	const [movies, setMovies] = useState([]);
 	const [watched, setWatched] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [isError, setIsError] = useState("");
+
+	// const tempQuery = "interstellar";
+
+	/* useEffect(() => {
+		console.log("After initial render");
+	}, []);
 
 	useEffect(() => {
-        const fetchMovies = async () => {
-            try {
-                const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=interstellar`);
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await res.json();
-                if (data.Search) {
-                    setMovies(data.Search);
-                } else {
-                    console.log('No movies found.');
-                }
-            } catch (error) {
-                console.error('Error fetching movies:', error);
-            }
-        };
+		console.log("After very render");
+	});
 
-        fetchMovies(); // Gọi hàm fetchMovies để lấy dữ liệu
-    },[]); 
+	useEffect(()=> {
+		 console.log("D");
+	}, [query]);
+
+	console.log("E");
+	*/
+
+	useEffect(() => {
+		const controller = new AbortController();
+		const fetchMovies = async () => {
+			try {
+				setIsLoading(true);
+				const res = await fetch(
+					`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {signal: controller.signal}
+				);
+				if (!res.ok) {
+					throw new Error("Something went wrong with fetching movies");
+				}
+				const data = await res.json();
+				if (data.Search) {
+					setMovies(data.Search);
+					setIsLoading(false);
+				} else {
+					console.log("No movies found.");
+				}
+			} catch (error) {
+				console.error("Error fetching movies:", error.message);
+				if(error.name !== 'AbortError') {
+					setIsError(error.message);
+				}
+			}
+		};
+
+		if(query.length <3) {
+			setMovies([]);
+			setIsError('');
+			return;
+		}
+
+		fetchMovies();
+ 
+		// clean up function
+		return  () => {
+			 // Abort the request when the component unmounts or when a dependency changes
+			 controller.abort();
+		}
+	}, [query]);
 
 	return (
 		<>
 			<NavBar>
 				<Logo />
-				<Search />
+				<Search query={query} setQuery={setQuery} />
 				<NumResult movies={movies} />
 			</NavBar>
 			<Main>
 				<Box>
-					<MovieList movies={movies} />
+					{isLoading && <Loader />}
+					{!isLoading && !isError && <MovieList movies={movies} />}
+					{isError && <ErrorMessage message={isError} />}
 				</Box>
 				<Box>
 					<WatchedSummary watched={watched} />
