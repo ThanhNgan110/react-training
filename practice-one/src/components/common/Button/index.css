@@ -1,0 +1,28 @@
+/* Base button styles */
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.btn-toggle {
+  background-color: var(--color-white);
+}
+
+.btn-add {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.btn-cancel {
+  background-color: var(--color-primary);
+  color: var(--color-cod-gray);
+}
