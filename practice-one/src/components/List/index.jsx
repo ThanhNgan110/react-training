@@ -1,8 +1,9 @@
-const ListItem = () => {
-  return <ul>
-    
-  </ul>
-
+const List = ({ children }) => {
+  return (
+    <ul>
+      {children}
+    </ul>
+  );
 };
 
-export default ListItem;
+export default List;
