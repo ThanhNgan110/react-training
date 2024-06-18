@@ -1,5 +1,5 @@
 import './index.css';
-import '../../../styles/base/flex.css';
+import '../../../styles/flex.css';
 
 const Button = ({ className, text, isDisabled, icon, onClick }) => {
   return (

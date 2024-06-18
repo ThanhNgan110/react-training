@@ -1,10 +1,11 @@
-/* Base button styles */
 .btn {
   cursor: pointer;
   border: none;
-  padding: 5px 12px;
-  font-size: 13px;
-  font-weight: 600;
+  padding: 10px 15px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semi-bold);
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
 .btn-group {
@@ -17,12 +18,16 @@
   background-color: var(--color-white);
 }
 
-.btn-add {
+.btn-secondary {
   background-color: var(--color-secondary);
   color: var(--color-white);
 }
 
-.btn-cancel {
+.btn-primary {
   background-color: var(--color-primary);
   color: var(--color-cod-gray);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-mercury);
 }
