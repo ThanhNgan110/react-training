@@ -1,9 +1,9 @@
-import HomePage from './views/HomePage';
+import Todo from './views/Todo';
 
 const App = () => {
   return (
     <>
-      <HomePage />
+      <Todo/>
     </>
   );
 };
