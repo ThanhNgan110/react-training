@@ -23,6 +23,10 @@
   color: var(--color-white);
 }
 
+.btn-secondary:hover {
+  background-color: var(--color-hover-btn-secondary);
+}
+
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-cod-gray);
