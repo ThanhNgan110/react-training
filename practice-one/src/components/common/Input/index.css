@@ -1,14 +1,6 @@
-.input {
+.input-text {
   border: none;
   outline: none;
-  font-size: 14px;
+  font-size: var(--fs-small);
   padding: 5px 0;
-}
-
-.input-task {
-  font-weight: 600;
-}
-
-.input-desc {
-  font-size: 13px;
 }

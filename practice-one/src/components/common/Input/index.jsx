@@ -1,12 +1,12 @@
 import "./index.css";
-const Input = ({ className, type, placeHolder }) => {
+const Input = ({ className, type, placeHolder, value, onChange }) => {
 
   return (
     <input
-      className={`input ${className}`}
+      className={`input-text ${className}`}
       type={type}
-      // value={value}
-      // onChange={onChange}
+      value={value}
+      onChange={onChange}
       placeholder={placeHolder}></input>
   );
 };
