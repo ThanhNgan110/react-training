@@ -3,7 +3,7 @@ import Input from '../common/Input';
 import Button from '../common/Button';
 import './index.css';
 
-const Form = ({ onAddTask, children }) => {
+const Form = ({ onAddTask, onCancel }) => {
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -17,9 +17,8 @@ const Form = ({ onAddTask, children }) => {
     setTaskName('');
     setDescription('');
     onAddTask(task);
-    // localStorage.setItem('tasks', JSON.stringify(task));
   };
-  
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <Input
@@ -37,7 +36,7 @@ const Form = ({ onAddTask, children }) => {
         onChange={(e) => setDescription(e.target.value)}
       />
       <div className="btn-group">
-        {children}
+        <Button text="Cancel" className="btn-primary" onClick={onCancel} />
         <Button text="Add Task" className="btn-secondary" />
       </div>
     </form>
