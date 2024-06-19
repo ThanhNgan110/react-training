@@ -26,14 +26,20 @@ const Todo = () => {
     setIsOpen(true);
   };
 
+  const handleCompleteTask = (taskId) => {
+    const updateTask = tasks.filter((task) => task.id !== taskId );
+    setTasks(updateTask);
+    localStorage.setItem('tasks', JSON.stringify(updateTask));
+  };
+
   const taskWord = tasks.length > 1 ? 'tasks' : 'task';
 
   return (
     <>
       <h1 className="title">Today</h1>
       {tasks.length >= 1 && (
-        <div className='align-center'>
-          <Img urlIcon={iconCheck} alt="check"/>
+        <div className="align-center">
+          <Img urlIcon={iconCheck} alt="check" />
           <p className="number-task">
             {tasks.length} {taskWord}
           </p>
@@ -41,14 +47,13 @@ const Todo = () => {
       )}
       <List>
         {tasks?.map((task) => (
-          <ListItem key={task.id}>
+          <ListItem key={task.id} task={task} onRemove={handleCompleteTask}>
             <TaskContent taskObject={task} />
           </ListItem>
         ))}
       </List>
       {isOpen ? (
-        <Form onAddTask={handleAddTask} onCancel={handleToggleForm}>
-        </Form>
+        <Form onAddTask={handleAddTask} onCancel={handleToggleForm}></Form>
       ) : (
         <Button
           className="btn-toggle"
