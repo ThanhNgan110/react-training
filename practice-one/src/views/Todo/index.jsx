@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
-import iconAdd from '../../assets/images/iconButton/iconAdd.png';
+import iconAdd from '../../assets/images/icons/icon-plus.png';
+import iconCheck from '../../assets/images/icons/icon-complete.png';
 import './index.css';
 
 import Button from '../../components/common/Button';
+import Img from '../../components/common/Img';
 import Form from '../../components/Form';
 import List from '../../components/List';
 import ListItem from '../../components/ListItem';
@@ -30,9 +32,12 @@ const Todo = () => {
     <>
       <h1 className="title">Today</h1>
       {tasks.length >= 1 && (
-        <p className="number-task">
-          {tasks.length} {taskWord}
-        </p>
+        <div className='align-center'>
+          <Img urlIcon={iconCheck} alt="check"/>
+          <p className="number-task">
+            {tasks.length} {taskWord}
+          </p>
+        </div>
       )}
       <List>
         {tasks?.map((task) => (
@@ -42,12 +47,7 @@ const Todo = () => {
         ))}
       </List>
       {isOpen ? (
-        <Form onAddTask={handleAddTask}>
-          <Button
-            text="Cancel"
-            className="btn-primary"
-            onClick={handleToggleForm}
-          />
+        <Form onAddTask={handleAddTask} onCancel={handleToggleForm}>
         </Form>
       ) : (
         <Button
