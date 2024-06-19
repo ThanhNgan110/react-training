@@ -37,7 +37,7 @@ const Form = ({ onAddTask, onCancel }) => {
       />
       <div className="btn-group">
         <Button text="Cancel" className="btn-primary" onClick={onCancel} />
-        <Button text="Add Task" className="btn-secondary" />
+        <Button text="Add Task" className="btn-secondary" type="submit" />
       </div>
     </form>
   );
