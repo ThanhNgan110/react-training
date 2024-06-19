@@ -1,13 +1,16 @@
 import Button from '../common/Button';
 import iconEdit from '../../assets/images/icons/icon-edit.png';
+import iconRemove from '../../assets/images/icons/icon-remove.png';
 import './index.css';
 
-const ListItem = ({ children }) => {
-
+const ListItem = ({ children, task, onRemove }) => {
   return (
     <li className="list-item">
-      {children}
-     <Button icon={iconEdit} className='btn-edit' alt='edit'/>
+      <div className='flex-row'>
+        <Button icon={iconRemove} className="btn-remove" alt="remove" onClick={()=> onRemove(task.id)} />
+        {children}
+      </div>
+      <Button icon={iconEdit} className="btn-edit" alt="edit" />
     </li>
   );
 };
