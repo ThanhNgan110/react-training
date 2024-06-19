@@ -1,3 +1,4 @@
+import Img from '../Img';
 import './index.css';
 import '../../../styles/flex.css';
 
@@ -7,7 +8,7 @@ const Button = ({ className, text, isDisabled, icon, onClick }) => {
       className={`align-center btn ${className} `}
       onClick={onClick}
       disabled={isDisabled}>
-      {icon && <img src={icon} alt="icon" className="button-icon" />}
+      {icon &&  <Img urlIcon={icon} alt={text}/>}
       {text && <span>{text}</span>}
     </button>
   );

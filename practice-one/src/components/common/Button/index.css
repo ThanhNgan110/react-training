@@ -1,7 +1,6 @@
 .btn {
   cursor: pointer;
   border: none;
-  padding: 10px 15px;
   font-size: var(--fs-small);
   font-weight: var(--fw-semi-bold);
   border-radius: 5px;
@@ -16,9 +15,11 @@
 
 .btn-toggle {
   background-color: var(--color-white);
+  padding: 0;
 }
 
 .btn-secondary {
+  padding: 10px 15px;
   background-color: var(--color-secondary);
   color: var(--color-white);
 }
@@ -28,6 +29,7 @@
 }
 
 .btn-primary {
+  padding: 10px 15px;
   background-color: var(--color-primary);
   color: var(--color-cod-gray);
 }
