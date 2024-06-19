@@ -1,13 +1,13 @@
 .task-content {
     padding: 8px 0;
-    border-bottom: 1px solid var(--color-nobel);
 }
 
 .task-name {
-    font-size: var(--fs-small);
+    font-size: var(--fs-x-small);
     font-weight: var(--fw-normal);
     color: var(--color-text-primary);
     padding: 5px 0;
+    line-height: 21px;
 }
 
 .description {
