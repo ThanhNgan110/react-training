@@ -3,9 +3,10 @@ import Input from '../common/Input';
 import Button from '../common/Button';
 import './index.css';
 
-const Form = ({ onAddTask, onCancel }) => {
+const Form = ({ onAddTask, onCancel, task }) => {
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ const Form = ({ onAddTask, onCancel }) => {
         type="text"
         placeHolder="Task Name"
         className="input-task"
-        value={taskName}
+        value={taskName} 
         onChange={(e) => setTaskName(e.target.value)}
       />
       <Input
