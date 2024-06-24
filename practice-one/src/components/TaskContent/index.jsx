@@ -1,8 +1,14 @@
+import Form from '../Form';
+
 import './index.css';
 
-const TaskContent = ({ taskObject }) => {
-  const { taskName, description } = taskObject;
-  
+const TaskContent = ({ task }) => {
+  const { taskName, description, active } = task;
+
+  if (active) {
+    return ''
+  }
+
   return (
     <div className="task-content">
       <h3 className="task-name">{taskName}</h3>
