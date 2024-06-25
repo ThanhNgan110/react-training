@@ -36,8 +36,8 @@ const Form = ({ onAddTask, onCancel }) => {
         onChange={(e) => setDescription(e.target.value)}
       />
       <div className="btn-group">
-        <Button text="Cancel" className="btn-primary" onClick={onCancel} />
-        <Button text="Add Task" className="btn-secondary" type="submit" />
+        <Button text="Cancel" classNameBtn="btn-primary" onClick={onCancel} />
+        <Button text="Add Task" classNameBtn="btn-secondary" type="submit" />
       </div>
     </form>
   );
