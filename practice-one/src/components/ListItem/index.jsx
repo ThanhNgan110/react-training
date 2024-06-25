@@ -5,24 +5,27 @@ const ListItem = ({
   children,
   primaryBtnClassName,
   primaryIconClassName,
-  secondaryClassName,
+  secondaryBtnClassName,
   secondaryIconClassName,
+  primaryBtnText,
+  secondaryBtnText,
+  primaryBtnOnClick,
+  secondaryBtnOnClick,
 }) => {
-
   return (
     <li className="list-item">
-      <div className="flex-row">
-        <Button
-          iconClassName={primaryIconClassName}
-          // className="btn-remove"
-          onClick={primaryBtnClassName}
-        />
-        {children}
-      </div>
+      <Button
+        iconClassName={primaryIconClassName}
+        className={primaryBtnClassName}
+        onClick={primaryBtnOnClick}
+        text={primaryBtnText}
+      />
+      {children}
       <Button
         iconClassName={secondaryIconClassName}
-        // className="btn-edit"
-        onClick={secondaryClassName}
+        className={secondaryBtnClassName}
+        onClick={secondaryBtnOnClick}
+        text={secondaryBtnText}
       />
     </li>
   );
