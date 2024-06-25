@@ -5,9 +5,8 @@ import './index.css';
 import Button from '../../components/common/Button';
 
 import Form from '../../components/Form';
-import List from '../../components/List';
-import ListItem from '../../components/ListItem';
-import TaskContent from '../../components/TaskContent';
+import TaskList from '../../components/TaskList';
+
 
 import { getLocalStorage } from '../../helper/localStorage';
 
@@ -60,7 +59,7 @@ const Todo = () => {
           </p>
         </div>
       )}
-      <List>
+      {/* <List>
         {tasks.map((task) => (
           <ListItem key={task.id} task={task}>
             <TaskContent
@@ -71,7 +70,8 @@ const Todo = () => {
           </ListItem>
         ))}
 
-      </List>
+      </List> */}
+      <TaskList tasks={tasks} onRemoveTask={handleCompleteTask} onEditTask={handleEdit} />
 
       {isOpen && (
           <Form onAddTask={handleAddTask} onCancel={handleToggleForm} />
@@ -80,7 +80,7 @@ const Todo = () => {
           <Button
             className="btn-toggle"
             text="Add Task"
-            icon="icon-plus"
+            iconClassName="icon-plus"
             onClick={handleToggleForm}
           />
         )}
