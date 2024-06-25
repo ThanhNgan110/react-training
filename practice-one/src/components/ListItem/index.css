@@ -6,12 +6,3 @@
   border-bottom: 1px solid var(--color-cod-gray);
 }
 
-.btn-edit {
-  display: none;
-  cursor: pointer;
-  background: none;
-}
-
-.btn-remove {
-  padding: 0;
-}
