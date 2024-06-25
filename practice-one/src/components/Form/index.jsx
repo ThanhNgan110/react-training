@@ -3,9 +3,9 @@ import Input from '../common/Input';
 import Button from '../common/Button';
 import './index.css';
 
-const Form = ({ onAddTask, onCancel }) => {
-  const [taskName, setTaskName] = useState('');
-  const [description, setDescription] = useState('');
+const Form = ({ task, onAddTask, onCancel, onSave }) => {
+  const [taskName, setTaskName] = useState(task?.taskName || '');
+  const [description, setDescription] = useState(task?.description || '');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +37,8 @@ const Form = ({ onAddTask, onCancel }) => {
       />
       <div className="btn-group">
         <Button text="Cancel" classNameBtn="btn-primary" onClick={onCancel} />
-        <Button text="Add Task" classNameBtn="btn-secondary" type="submit" />
+        {task?.active  ? (<Button text="Save" classNameBtn="btn-secondary"/>) :
+           (<Button text="Add Task" classNameBtn="btn-secondary" type="submit" />)}
       </div>
     </form>
   );
