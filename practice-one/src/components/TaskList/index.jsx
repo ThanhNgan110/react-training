@@ -7,11 +7,9 @@ const TaskList = ({ tasks, onRemoveTask, onEditTask }) => {
     <>
       <List tasks={tasks}>
         {tasks.map((task) => (
-          <ListItem key={task.id}>
+          <ListItem key={task.id} primaryBtnOnClick={onRemoveTask} secondaryBtnOnClick={onEditTask}>
             <TaskContent
               task={task}
-              onRemove={onRemoveTask}
-              onEdit={onEditTask}
             />
           </ListItem>
         ))}
