@@ -9,7 +9,7 @@ const Button = ({ classNameBtn, text, isDisabled, iconClassName, onClick }) => {
       onClick={onClick}
       disabled={isDisabled}>
       {iconClassName && <span className={`icon icon-small ${iconClassName}`}></span>}
-      {text}
+      {text && text}
     </button>
   );
 };
