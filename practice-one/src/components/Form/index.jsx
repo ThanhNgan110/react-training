@@ -19,6 +19,14 @@ const Form = ({ task, onAddTask, onCancel, onSave }) => {
     onAddTask(task);
   };
 
+  const handleChangeName = (e) => {
+    setTaskName(e.target.value);
+  };
+
+  const handleChangeDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <Input
@@ -26,14 +34,14 @@ const Form = ({ task, onAddTask, onCancel, onSave }) => {
         placeHolder="Task Name"
         className="input-task"
         value={taskName}
-        onChange={(e) => setTaskName(e.target.value)}
+        onChange={handleChangeName}
       />
       <Input
         type="text"
         placeHolder="Description"
         className="input-desc"
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={handleChangeDescription}
       />
       <div className="btn-group">
         <Button text="Cancel" classNameBtn="btn-primary" onClick={onCancel} />
