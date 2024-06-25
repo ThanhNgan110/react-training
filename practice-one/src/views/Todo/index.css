@@ -18,3 +18,13 @@
 .input-desc {
     font-size: var(--fs-x-small);
 }
+
+.btn-edit {
+    display: none;
+    cursor: pointer;
+    background: none;
+}
+
+.btn-remove {
+    padding: 0;
+}
