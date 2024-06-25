@@ -15,12 +15,3 @@
 .btn-remove {
   padding: 0;
 }
-
-/* .list-item:hover+.btn-edit {
-  display: block;
-}
-
-.list-item:hover .btn-edit {
-  display: inline-block;
-  background: var(--color-primary);
-} */
