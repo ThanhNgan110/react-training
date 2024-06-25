@@ -1,13 +1,14 @@
 import './index.css';
 import '../../../styles/flex.css';
 
-const Button = ({ className, text, isDisabled, icon, onClick }) => {
+const Button = ({ classNameBtn, text, isDisabled, iconClassName, onClick }) => {
+  
   return (
     <button
-      className={`align-center btn ${className} `}
+      className={`align-center btn ${classNameBtn} `}
       onClick={onClick}
       disabled={isDisabled}>
-      {icon && <span className={`icon icon-small ${icon}`}></span>}
+      {iconClassName && <span className={`icon icon-small ${iconClassName}`}></span>}
       {text}
     </button>
   );
