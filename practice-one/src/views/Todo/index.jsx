@@ -12,6 +12,7 @@ import { getLocalStorage } from '../../helper/localStorage';
 const Todo = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [selectedTaskId, setSelectedTaskId] = useState('');
 
   useEffect(() => {
     const storedTasks = getLocalStorage('tasks');
@@ -36,17 +37,15 @@ const Todo = () => {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
-  const handleEdit = (taskId) => {
-    console.log(taskId);
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, active: true } : task
-      )
-    );
+  const handleOpenEditTaskForm = (taskId) => {
+    setSelectedTaskId(taskId);
   };
 
-  const handleSaveTask = (taskCurrent) => {
-  }
+  const handleCloseEditTaskForm = () => {
+    setSelectedTaskId('');
+  };
+
+  const handleSaveTask = (taskCurrent) => {};
 
   const taskWord = tasks.length > 1 ? 'tasks' : 'task';
 
@@ -64,9 +63,10 @@ const Todo = () => {
       <TaskList
         tasks={tasks}
         onRemoveTask={handleRemoveTask}
-        onEditTask={handleEdit}
-        onCancel={handleToggleForm}
+        onEditTask={handleOpenEditTaskForm}
+        onCancel={handleCloseEditTaskForm}
         onSave={handleSaveTask}
+        selectedTaskId={selectedTaskId}
       />
 
       {isOpen ? (
