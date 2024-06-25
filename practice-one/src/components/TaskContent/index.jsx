@@ -4,7 +4,7 @@ import './index.css';
 const TaskContent = ({ task }) => {
   const { taskName, description, active } = task;
 
-  if(active) return <Form/>
+  if (active) return <Form task={task} />;
 
   return (
     <div className="task-content">
