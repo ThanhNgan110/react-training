@@ -1,13 +1,27 @@
 import './index.css';
+import Button from '../common/Button';
 
-const TaskContent = ({ task }) => {
-  const { taskName, description} = task;
+const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
+  const { taskName, description } = task;
 
   return (
-    <div className="task-content">
-      <h3 className="task-name">{taskName}</h3>
-      <p className="description">{description}</p>
-    </div>
+    <>
+      <div className="flex-row">
+        <Button
+          classNameBtn="btn-remove"
+          iconClassName="icon-remove"
+          onClick={() => onRemoveTask(task.id)}></Button>
+        <div className="task-content">
+          <h3 className="task-name">{taskName}</h3>
+          <p className="description">{description}</p>
+        </div>
+      </div>
+
+      <Button
+        classNameBtn="btn-edit"
+        iconClassName="icon-edit"
+        onClick={() => onEditTask(task.id)}></Button>
+    </>
   );
 };
 
