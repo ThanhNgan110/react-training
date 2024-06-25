@@ -7,7 +7,6 @@ import Button from '../../components/common/Button';
 import Form from '../../components/Form';
 import TaskList from '../../components/TaskList';
 
-
 import { getLocalStorage } from '../../helper/localStorage';
 
 const Todo = () => {
@@ -31,20 +30,23 @@ const Todo = () => {
     setIsOpen(false);
   };
 
-  const handleCompleteTask = (taskId) => {
+  const handleRemoveTask = (taskId) => {
     const updatedTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   const handleEdit = (taskId) => {
+    console.log(taskId);
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
-        task.id === taskId ? { ...task, isEditing: true } : task
+        task.id === taskId ? { ...task, active: true } : task
       )
     );
-    setIsOpen(true);
   };
+
+  const handleSaveTask = (taskCurrent) => {
+  }
 
   const taskWord = tasks.length > 1 ? 'tasks' : 'task';
 
@@ -59,31 +61,24 @@ const Todo = () => {
           </p>
         </div>
       )}
-      {/* <List>
-        {tasks.map((task) => (
-          <ListItem key={task.id} task={task}>
-            <TaskContent
-              task={task}
-              onRemove={handleCompleteTask}
-              onEdit={handleEdit}
-            />
-          </ListItem>
-        ))}
+      <TaskList
+        tasks={tasks}
+        onRemoveTask={handleRemoveTask}
+        onEditTask={handleEdit}
+        onCancel={handleToggleForm}
+        onSave={handleSaveTask}
+      />
 
-      </List> */}
-      <TaskList tasks={tasks} onRemoveTask={handleCompleteTask} onEditTask={handleEdit} />
-
-      {isOpen && (
-          <Form onAddTask={handleAddTask} onCancel={handleToggleForm} />
-        )}
-        {!isOpen && (
-          <Button
-            className="btn-toggle"
-            text="Add Task"
-            iconClassName="icon-plus"
-            onClick={handleToggleForm}
-          />
-        )}
+      {isOpen ? (
+        <Form onAddTask={handleAddTask} onCancel={handleToggleForm} />
+      ) : (
+        <Button
+          className="btn-toggle"
+          text="Add Task"
+          iconClassName="icon-plus"
+          onClick={handleToggleForm}
+        />
+      )}
     </>
   );
 };
