@@ -18,7 +18,7 @@ const Button = ({
       {iconClassName && (
         <span className={`icon icon-small ${iconClassName}`}></span>
       )}
-      {text && text}
+      {text}
     </button>
   );
 };
