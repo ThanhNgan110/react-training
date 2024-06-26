@@ -11,7 +11,7 @@ const Button = ({
 }) => {
   return (
     <button
-      className={`align-center btn ${classNameBtn} `}
+      className={`flex flex-row align-center btn ${classNameBtn} `}
       onClick={onClick}
       disabled={isDisabled}
       type={type}>

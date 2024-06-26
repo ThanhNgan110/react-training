@@ -6,7 +6,7 @@ const NumberTask = ({ tasks }) => {
   const taskWord = tasks.length > 1 ? 'tasks' : 'task';
 
   return (
-    <div className="align-center">
+    <div className="flex flex-row align-center">
       <span className="icon icon-small icon-complete" />
       <p className="number-task">
         {tasks.length} {taskWord}
