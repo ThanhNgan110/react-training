@@ -1,5 +1,6 @@
 .task-content {
   padding: 8px 10px;
+  width: 100%;
 }
 
 .task-name {
@@ -10,7 +11,7 @@
   line-height: 21px;
 }
 
-.description {
+.task-description {
   font-size: var(--fs-small);
   color: var(--color-dove-gray);
 }

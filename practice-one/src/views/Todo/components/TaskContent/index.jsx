@@ -12,7 +12,7 @@ const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
           onClick={() => onRemoveTask(task.id)}></Button>
         <div className="task-content">
           <h3 className="task-name">{name}</h3>
-          <p className="description">{description}</p>
+          <p className="task-description">{description}</p>
         </div>
       <Button
         classNameBtn="btn-edit"
