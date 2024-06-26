@@ -39,7 +39,9 @@ const Todo = () => {
   };
 
   const handleSaveTask = (updatedTask) => {
-    const taskNew = tasks.map((task) => task.id === updatedTask.id ? updatedTask : task);
+    const taskNew = tasks.map((task) =>
+      task.id === updatedTask.id ? updatedTask : task
+    );
     setTasks(taskNew);
     localStorage.setItem('tasks', JSON.stringify(taskNew));
     setSelectedTaskId('');
@@ -56,7 +58,7 @@ const Todo = () => {
   return (
     <>
       <h1 className="title">Today</h1>
-     <NumberTask tasks={tasks}/>
+      <NumberTask tasks={tasks} />
       <TaskList
         tasks={tasks}
         onRemoveTask={handleRemoveTask}
@@ -65,7 +67,6 @@ const Todo = () => {
         onSubmit={handleSaveTask}
         selectedTaskId={selectedTaskId}
       />
-
       {isOpen ? (
         <TaskForm
           onSubmit={handleAddTask}
