@@ -12,7 +12,6 @@ const TaskList = ({
   selectedTaskId,
 }) => {
   return (
-    <>
       <List>
         {tasks.map((task) => (
           <ListItem key={task.id}>
@@ -34,7 +33,6 @@ const TaskList = ({
           </ListItem>
         ))}
       </List>
-    </>
   );
 };
 

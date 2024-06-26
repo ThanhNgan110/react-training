@@ -6,14 +6,12 @@ const NumberTask = ({ tasks }) => {
   const taskWord = tasks.length > 1 ? 'tasks' : 'task';
 
   return (
-    <>
-      <div className="align-center">
-        <span className="icon icon-small icon-complete" />
-        <p className="number-task">
-          {tasks.length} {taskWord}
-        </p>
-      </div>
-    </>
+    <div className="align-center">
+      <span className="icon icon-small icon-complete" />
+      <p className="number-task">
+        {tasks.length} {taskWord}
+      </p>
+    </div>
   );
 };
 
