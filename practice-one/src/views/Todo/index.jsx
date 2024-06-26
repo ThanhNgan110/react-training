@@ -4,7 +4,7 @@ import './index.css';
 
 import Button from '../../components/common/Button';
 
-import Form from '../../components/Form';
+import TaskForm from '../../components/TaskForm';
 import TaskList from '../../components/TaskList';
 
 import { getLocalStorage } from '../../helper/localStorage';
@@ -26,6 +26,7 @@ const Todo = () => {
   };
 
   const handleAddTask = (newTask) => {
+    console.log(newTask);
     setTasks((prevTasks) => [...prevTasks, newTask]);
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
     setIsOpen(false);
@@ -37,6 +38,14 @@ const Todo = () => {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
+  const handleSaveTask = (updatedTask) => {
+    console.log(updatedTask);
+    const taskNew = tasks.map((task) => task.id === updatedTask.id ? updatedTask : task);
+    setTasks(taskNew);
+    localStorage.setItem('tasks', JSON.stringify(taskNew));
+    setSelectedTaskId('');
+  };
+
   const handleOpenEditTaskForm = (taskId) => {
     setSelectedTaskId(taskId);
   };
@@ -44,8 +53,6 @@ const Todo = () => {
   const handleCloseEditTaskForm = () => {
     setSelectedTaskId('');
   };
-
-  const handleSaveTask = (taskCurrent) => {};
 
   const taskWord = tasks.length > 1 ? 'tasks' : 'task';
 
@@ -65,12 +72,17 @@ const Todo = () => {
         onRemoveTask={handleRemoveTask}
         onEditTask={handleOpenEditTaskForm}
         onCancel={handleCloseEditTaskForm}
-        onSave={handleSaveTask}
+        onSubmit={handleSaveTask}
         selectedTaskId={selectedTaskId}
       />
 
       {isOpen ? (
-        <Form onAddTask={handleAddTask} onCancel={handleToggleForm} />
+        <TaskForm
+          onSubmit={handleAddTask}
+          onCancel={handleToggleForm}
+          textBtnPrimary="Cancel"
+          textBtnSecondary="Add Task"
+        />
       ) : (
         <Button
           className="btn-toggle"
