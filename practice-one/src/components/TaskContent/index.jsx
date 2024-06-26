@@ -2,7 +2,7 @@ import './index.css';
 import Button from '../common/Button';
 
 const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
-  const { taskName, description } = task;
+  const { name, description } = task;
 
   return (
     <>
@@ -12,11 +12,10 @@ const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
           iconClassName="icon-remove"
           onClick={() => onRemoveTask(task.id)}></Button>
         <div className="task-content">
-          <h3 className="task-name">{taskName}</h3>
+          <h3 className="task-name">{name}</h3>
           <p className="description">{description}</p>
         </div>
       </div>
-
       <Button
         classNameBtn="btn-edit"
         iconClassName="icon-edit"
