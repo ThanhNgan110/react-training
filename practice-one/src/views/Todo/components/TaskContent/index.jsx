@@ -6,7 +6,6 @@ const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
 
   return (
     <>
-      <div className="flex-row">
         <Button
           classNameBtn="btn-remove"
           iconClassName="icon-remove"
@@ -15,7 +14,6 @@ const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
           <h3 className="task-name">{name}</h3>
           <p className="description">{description}</p>
         </div>
-      </div>
       <Button
         classNameBtn="btn-edit"
         iconClassName="icon-edit"
