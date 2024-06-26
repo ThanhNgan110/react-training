@@ -72,6 +72,7 @@ const TaskForm = ({
             text={textBtnSecondary}
             classNameBtn="btn-secondary"
             type="submit"
+            isDisabled={!name}
           />
         </div>
       }
