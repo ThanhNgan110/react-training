@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 
 import './index.css';
 
-import Button from '../../components/common/Button';
+import Button from '../../components/Button';
 
-import TaskForm from '../../components/TaskForm';
-import TaskList from '../../components/TaskList';
-import NumberTask from '../../components/NumberTask';
+import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
+import NumberTask from './components/NumberTask';
 
 import { getLocalStorage } from '../../helper/localStorage';
 
