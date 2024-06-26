@@ -1,26 +1,26 @@
 .icon {
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-position: center;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .icon-small {
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 }
 
 .icon-plus {
-    background-image: url('../assets/images/icons/icon-plus.png');
+  background-image: url('../assets/images/icons/icon-plus.png');
 }
 
 .icon-edit {
-    background-image: url('../assets/images/icons/icon-edit.png');
+  background-image: url('../assets/images/icons/icon-edit.png');
 }
 
 .icon-remove {
-    background-image: url('../assets/images/icons/icon-remove.png');
+  background-image: url('../assets/images/icons/icon-remove.png');
 }
 
 .icon-complete {
-    background-image: url('../assets/images/icons/icon-complete.png');
+  background-image: url('../assets/images/icons/icon-complete.png');
 }
