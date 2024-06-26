@@ -8,7 +8,7 @@ const NumberTask = ({ tasks }) => {
   return (
     <>
       <div className="align-center">
-        <span className="icon icon-small icon-complete"></span>
+        <span className="icon icon-small icon-complete" />
         <p className="number-task">
           {tasks.length} {taskWord}
         </p>
