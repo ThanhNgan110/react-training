@@ -6,6 +6,7 @@ import Button from '../../components/common/Button';
 
 import TaskForm from '../../components/TaskForm';
 import TaskList from '../../components/TaskList';
+import NumberTask from '../../components/NumberTask';
 
 import { getLocalStorage } from '../../helper/localStorage';
 
@@ -26,7 +27,6 @@ const Todo = () => {
   };
 
   const handleAddTask = (newTask) => {
-    console.log(newTask);
     setTasks((prevTasks) => [...prevTasks, newTask]);
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
     setIsOpen(false);
@@ -39,7 +39,6 @@ const Todo = () => {
   };
 
   const handleSaveTask = (updatedTask) => {
-    console.log(updatedTask);
     const taskNew = tasks.map((task) => task.id === updatedTask.id ? updatedTask : task);
     setTasks(taskNew);
     localStorage.setItem('tasks', JSON.stringify(taskNew));
@@ -54,19 +53,10 @@ const Todo = () => {
     setSelectedTaskId('');
   };
 
-  const taskWord = tasks.length > 1 ? 'tasks' : 'task';
-
   return (
     <>
       <h1 className="title">Today</h1>
-      {tasks.length >= 1 && (
-        <div className="align-center">
-          <span className="icon icon-small icon-complete"></span>
-          <p className="number-task">
-            {tasks.length} {taskWord}
-          </p>
-        </div>
-      )}
+     <NumberTask tasks={tasks}/>
       <TaskList
         tasks={tasks}
         onRemoveTask={handleRemoveTask}
