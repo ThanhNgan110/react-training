@@ -9,11 +9,11 @@ const TaskList = ({
   onEditTask,
   onCancel,
   onSubmit,
-  selectedTaskId,
+  selectedTaskId
 }) => {
   return (
     <List>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <ListItem key={task.id}>
           {selectedTaskId === task.id ? (
             <TaskForm

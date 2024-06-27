@@ -1,4 +1,4 @@
-const getLocalStorage = (item) => {
+const getLocalStorage = item => {
   return localStorage.getItem(item);
 };
 

@@ -8,7 +8,7 @@ const TaskForm = ({
   onSubmit,
   onCancel,
   textBtnPrimary,
-  textBtnSecondary,
+  textBtnSecondary
 }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -19,23 +19,23 @@ const TaskForm = ({
     setDescription(description);
   }, [data]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const task = {
       id: data?.id || self.crypto.randomUUID(),
       name: name,
-      description: description,
+      description: description
     };
     setName('');
     setDescription('');
     onSubmit(task);
   };
 
-  const handleChangeName = (e) => {
+  const handleChangeName = e => {
     setName(e.target.value);
   };
 
-  const handleChangeDescription = (e) => {
+  const handleChangeDescription = e => {
     setDescription(e.target.value);
   };
 
@@ -62,10 +62,18 @@ const TaskForm = ({
       }
       footer={
         <div className="btn-group">
-          <Button classNameBtn="btn-primary" type="button" onClick={onCancel}>
+          <Button
+            classNameBtn="btn-primary"
+            type="button"
+            onClick={onCancel}
+          >
             {textBtnPrimary}
           </Button>
-          <Button classNameBtn="btn-secondary" type="submit" isDisabled={!name}>
+          <Button
+            classNameBtn="btn-secondary"
+            type="submit"
+            isDisabled={!name}
+          >
             {textBtnSecondary}
           </Button>
         </div>

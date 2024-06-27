@@ -23,23 +23,26 @@ const Todo = () => {
   }, []);
 
   const handleToggleForm = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen(prev => !prev);
   };
 
-  const handleAddTask = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-    localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
+  const handleAddTask = newTask => {
+    setTasks(prevTasks => [...prevTasks, newTask]);
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify([...tasks, newTask])
+    );
     setIsOpen(false);
   };
 
-  const handleRemoveTask = (taskId) => {
-    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+  const handleRemoveTask = taskId => {
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
-  const handleSaveTask = (updatedTask) => {
-    const taskNew = tasks.map((task) =>
+  const handleSaveTask = updatedTask => {
+    const taskNew = tasks.map(task =>
       task.id === updatedTask.id ? updatedTask : task
     );
     setTasks(taskNew);
@@ -47,7 +50,7 @@ const Todo = () => {
     setSelectedTaskId('');
   };
 
-  const handleOpenEditTaskForm = (taskId) => {
+  const handleOpenEditTaskForm = taskId => {
     setSelectedTaskId(taskId);
   };
 
@@ -78,7 +81,8 @@ const Todo = () => {
         <Button
           classNameBtn="btn-toggle"
           iconClassName="icon-plus"
-          onClick={handleToggleForm}>
+          onClick={handleToggleForm}
+        >
           Add Task
         </Button>
       )}

@@ -7,14 +7,15 @@ const Button = ({
   isDisabled,
   iconClassName,
   onClick,
-  type,
+  type
 }) => {
   return (
     <button
       className={`flex flex-row align-center btn ${classNameBtn} `}
       onClick={onClick}
       disabled={isDisabled}
-      type={type}>
+      type={type}
+    >
       {iconClassName && (
         <span className={`icon icon-small ${iconClassName}`}></span>
       )}
