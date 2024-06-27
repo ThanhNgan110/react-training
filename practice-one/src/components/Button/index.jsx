@@ -3,7 +3,7 @@ import '../../styles/flex.css';
 
 const Button = ({
   classNameBtn,
-  text,
+  children,
   isDisabled,
   iconClassName,
   onClick,
@@ -18,7 +18,7 @@ const Button = ({
       {iconClassName && (
         <span className={`icon icon-small ${iconClassName}`}></span>
       )}
-      {text}
+      {children}
     </button>
   );
 };
