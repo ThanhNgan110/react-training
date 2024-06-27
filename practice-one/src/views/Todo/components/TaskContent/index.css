@@ -1,0 +1,17 @@
+.task-content {
+  padding: 8px 10px;
+  width: 100%;
+}
+
+.task-name {
+  font-size: var(--fs-x-small);
+  font-weight: var(--fw-normal);
+  color: var(--color-text-primary);
+  padding: 5px 0;
+  line-height: 21px;
+}
+
+.task-description {
+  font-size: var(--fs-small);
+  color: var(--color-dove-gray);
+}

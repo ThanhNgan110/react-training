@@ -8,7 +8,7 @@
 ## TIMELINE
 
 - Expected: 7 days (from 2024/06/17 - 2024/06/25)
-- Total: 
+- Total:  7 days (from 2024/06/17 - 2024/06/25)
 
 ## TEAM SIZE
 

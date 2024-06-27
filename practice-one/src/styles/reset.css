@@ -115,7 +115,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -171,6 +171,7 @@ input,
 select {
   vertical-align: middle;
 }
+
 /* Customize css */
 a {
   text-decoration: none;
