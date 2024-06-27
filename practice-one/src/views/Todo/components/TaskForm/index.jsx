@@ -62,16 +62,12 @@ const TaskForm = ({
       }
       footer={
         <div className="btn-group">
-          <Button
-            classNameBtn="btn-primary"
-            type="button"
-            onClick={onCancel}
-          >{textBtnPrimary}</Button>
-          <Button
-            classNameBtn="btn-secondary"
-            type="submit"
-            isDisabled={!name}
-          >{textBtnSecondary}</Button>
+          <Button classNameBtn="btn-primary" type="button" onClick={onCancel}>
+            {textBtnPrimary}
+          </Button>
+          <Button classNameBtn="btn-secondary" type="submit" isDisabled={!name}>
+            {textBtnSecondary}
+          </Button>
         </div>
       }
     />

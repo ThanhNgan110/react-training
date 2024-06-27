@@ -12,27 +12,27 @@ const TaskList = ({
   selectedTaskId,
 }) => {
   return (
-      <List>
-        {tasks.map((task) => (
-          <ListItem key={task.id}>
-            {selectedTaskId === task.id ? (
-              <TaskForm
-                data={task}
-                onCancel={onCancel}
-                onSubmit={onSubmit}
-                textBtnSecondary="Save"
-                textBtnPrimary="Cancel"
-              />
-            ) : (
-              <TaskContent
-                task={task}
-                onRemoveTask={onRemoveTask}
-                onEditTask={onEditTask}
-              />
-            )}
-          </ListItem>
-        ))}
-      </List>
+    <List>
+      {tasks.map((task) => (
+        <ListItem key={task.id}>
+          {selectedTaskId === task.id ? (
+            <TaskForm
+              data={task}
+              onCancel={onCancel}
+              onSubmit={onSubmit}
+              textBtnSecondary="Save"
+              textBtnPrimary="Cancel"
+            />
+          ) : (
+            <TaskContent
+              task={task}
+              onRemoveTask={onRemoveTask}
+              onEditTask={onEditTask}
+            />
+          )}
+        </ListItem>
+      ))}
+    </List>
   );
 };
 
