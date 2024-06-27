@@ -9,7 +9,8 @@ const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
       <Button
         classNameBtn="btn-remove"
         iconClassName="icon-remove"
-        onClick={() => onRemoveTask(task.id)}/>
+        onClick={() => onRemoveTask(task.id)}
+      />
       <div className="task-content">
         <h3 className="task-name">{name}</h3>
         <p className="task-description">{description}</p>
@@ -17,7 +18,8 @@ const TaskContent = ({ task, onRemoveTask, onEditTask }) => {
       <Button
         classNameBtn="btn-edit"
         iconClassName="icon-edit"
-        onClick={() => onEditTask(task.id)}/>
+        onClick={() => onEditTask(task.id)}
+      />
     </>
   );
 };
