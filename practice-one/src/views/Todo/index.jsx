@@ -76,11 +76,11 @@ const Todo = () => {
         />
       ) : (
         <Button
-          className="btn-toggle"
-          text="Add Task"
+          classNameBtn="btn-toggle"
           iconClassName="icon-plus"
-          onClick={handleToggleForm}
-        />
+          onClick={handleToggleForm}>
+          Add Task
+        </Button>
       )}
     </>
   );

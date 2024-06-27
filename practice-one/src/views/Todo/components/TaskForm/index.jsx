@@ -63,17 +63,15 @@ const TaskForm = ({
       footer={
         <div className="btn-group">
           <Button
-            text={textBtnPrimary}
             classNameBtn="btn-primary"
             type="button"
             onClick={onCancel}
-          />
+          >{textBtnPrimary}</Button>
           <Button
-            text={textBtnSecondary}
             classNameBtn="btn-secondary"
             type="submit"
             isDisabled={!name}
-          />
+          >{textBtnSecondary}</Button>
         </div>
       }
     />
