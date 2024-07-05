@@ -1,7 +1,10 @@
+import './index.css';
+
 const Button = ({ className, type, onClick, children }) => {
+  
   return (
     <button
-      className={className}
+      className={`btn ${className}`}
       type={type}
       onClick={onClick}
     >
