@@ -1,4 +1,4 @@
-import { useState,useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const tempMovieData = [
 	{
@@ -133,19 +133,19 @@ const Box = ({ children }) => {
 	);
 };
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, onSelectMovie }) => {
 	return (
-		<ul className="list">
+		<ul className="list list-movies">
 			{movies?.map((movie) => (
-				<Movie movie={movie} key={movie.imdbID} />
+				<Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
 			))}
 		</ul>
 	);
 };
 
-const Movie = ({ movie }) => {
+const Movie = ({ movie, onSelectMovie }) => {
 	return (
-		<li key={movie.imdbID}>
+		<li onClick={() => onSelectMovie(movie.imdbID)}>
 			<img src={movie.Poster} alt={`${movie.Title} poster`} />
 			<h3>{movie.Title}</h3>
 			<div>
@@ -221,6 +221,64 @@ const WatchedMovie = ({ movie }) => {
 	);
 };
 
+const MovieDetail = ({ selectedId, onCloseMovie }) => {
+	const [movie, setMovie] = useState({});
+
+	const {
+		Title: title,
+		Year: year,
+		Poster: poster,
+		Runtime: runtime,
+		imdbRating,
+		Plot: plot,
+		Released: released,
+		Actors: actors,
+		Director: director,
+		Genre: genre,
+	  } = movie;
+
+	  console.log(title, year);
+
+	useEffect(() => {
+		const getMovieDetails = async () => {
+			const res = await fetch(
+				`http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+			);
+			const data = await res.json();
+			setMovie(data);
+		};
+		getMovieDetails();
+	}, []);
+
+	return (
+		<div className="details">
+		   <header>
+            <button className="btn-back" onClick={onCloseMovie}>
+              &larr;
+            </button>
+            <img src={poster} alt={`Poster of ${movie} movie`} />
+            <div className="details-overview">
+              <h2>{title}</h2>
+              <p>
+                {released} &bull; {runtime}
+              </p>
+              <p>{genre}</p>
+              <p>
+                <span>⭐️</span>
+                {imdbRating} IMDb rating
+              </p>
+            </div>
+          </header>
+		  <section>
+			
+			<p><em>{plot}</em></p>
+			<p>Staring {actors}</p>
+			<p>Directed by {director}</p>
+		  </section>
+		</div>
+	);
+};
+
 const KEY = "bbf6f65b";
 
 export default function App() {
@@ -229,6 +287,7 @@ export default function App() {
 	const [watched, setWatched] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState("");
+	const [selectedId, setSelectedId] = useState(null);
 
 	// const tempQuery = "interstellar";
 
@@ -246,14 +305,21 @@ export default function App() {
 
 	console.log("E");
 	*/
+	const handleSelectMovie = (id) => {
+		setSelectedId((selectedId) => (id === selectedId ? null : id));
+	};
 
+	const handleCloseMovie = () => {
+		setSelectedId(null);
+	};
 	useEffect(() => {
 		const controller = new AbortController();
 		const fetchMovies = async () => {
 			try {
 				setIsLoading(true);
 				const res = await fetch(
-					`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {signal: controller.signal}
+					`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+					{ signal: controller.signal }
 				);
 				if (!res.ok) {
 					throw new Error("Something went wrong with fetching movies");
@@ -267,25 +333,25 @@ export default function App() {
 				}
 			} catch (error) {
 				console.error("Error fetching movies:", error.message);
-				if(error.name !== 'AbortError') {
+				if (error.name !== "AbortError") {
 					setIsError(error.message);
 				}
 			}
 		};
 
-		if(query.length <3) {
+		if (query.length < 3) {
 			setMovies([]);
-			setIsError('');
+			setIsError("");
 			return;
 		}
 
 		fetchMovies();
- 
+
 		// clean up function
-		return  () => {
-			 // Abort the request when the component unmounts or when a dependency changes
-			 controller.abort();
-		}
+		return () => {
+			// Abort the request when the component unmounts or when a dependency changes
+			controller.abort();
+		};
 	}, [query]);
 
 	return (
@@ -298,12 +364,24 @@ export default function App() {
 			<Main>
 				<Box>
 					{isLoading && <Loader />}
-					{!isLoading && !isError && <MovieList movies={movies} />}
+					{!isLoading && !isError && (
+						<MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+					)}
 					{isError && <ErrorMessage message={isError} />}
 				</Box>
 				<Box>
-					<WatchedSummary watched={watched} />
-					<WatchedMovieList watched={watched} />
+					{selectedId ? (
+						<MovieDetail
+							selectedId={selectedId}
+							onCloseMovie={handleCloseMovie}
+						/>
+					) : (
+						<>
+							{" "}
+							<WatchedSummary watched={watched} />
+							<WatchedMovieList watched={watched} />
+						</>
+					)}
 				</Box>
 			</Main>
 		</>
