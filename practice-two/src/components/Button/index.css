@@ -18,7 +18,7 @@
   background-color: var(--color-secondary);
 }
 
-.btn-ghost {
+.btn-link {
   font-size: var(--font-size-sm);
   color: var(--color-link-hover-color);
 }
