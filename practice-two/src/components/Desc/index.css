@@ -1,0 +1,19 @@
+.desc {
+  font-weight: var(--font-weight-normal);
+}
+
+.desc-primary {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  line-height: 21px;
+}
+
+.desc-secondary {
+  font-size: var(--font-size-xsm);
+  color: var(--color-bali-hai);
+  line-height: 21.6px;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+}
