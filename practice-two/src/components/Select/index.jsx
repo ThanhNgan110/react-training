@@ -1,9 +1,9 @@
 import './index.css';
 
-const Select = ({ name, onChange, children }) => {
+const Select = ({ className, name, onChange, children }) => {
   return (
     <select
-      className="select"
+      className={`select ${className}`}
       name={name}
       onChange={onChange}
     >
