@@ -1,8 +1,9 @@
 import './index.css';
 
-const Radio = ({ name, value, onChange, colorScheme }) => {
+const RadioInput = ({ className, name, value, onChange, colorScheme }) => {
   return (
     <input
+      className={className}
       type="radio"
       name={name}
       value={value}
@@ -12,4 +13,4 @@ const Radio = ({ name, value, onChange, colorScheme }) => {
   );
 };
 
-export default Radio;
+export default RadioInput;

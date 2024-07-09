@@ -1,6 +1,7 @@
-const Slider = ({ type, value, min, max, onChange }) => {
+const RangeInput = ({ className, type, value, min, max, onChange }) => {
   return (
     <input
+      className={className}
       type={type}
       min={min}
       max={max}
@@ -10,4 +11,4 @@ const Slider = ({ type, value, min, max, onChange }) => {
   );
 };
 
-export default Slider;
+export default RangeInput;
