@@ -1,8 +1,8 @@
-const RangeInput = ({ className, type, value, min, max, onChange }) => {
+const RangeInput = ({ className, value, min, max, onChange }) => {
   return (
     <input
       className={className}
-      type={type}
+      type="range"
       min={min}
       max={max}
       value={value}
