@@ -1,16 +1,11 @@
-import clsx from 'clsx';
-import './index.css';
-
-const Image = ({ className, imgUrl, alt, width, height }) => {
+const Image = ({ className, src, alt, width, height }) => {
   return (
     <img
-      src={imgUrl}
+      src={src}
       alt={alt}
       width={width}
       height={height}
-      className={clsx('img', {
-        [className]: !!className
-      })}
+      className={className}
     />
   );
 };

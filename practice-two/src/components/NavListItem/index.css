@@ -1,0 +1,10 @@
+.nav-item {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xlg);
+  color: var(--color-primary);
+  line-height: 36px;
+}
+
+.nav-item .active {
+  color: var(--color-link-hover-color);
+}
