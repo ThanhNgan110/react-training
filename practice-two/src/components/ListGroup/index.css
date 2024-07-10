@@ -1,0 +1,16 @@
+.list-group {
+  display: flex;
+  background-color: var(--color-white);
+}
+
+.horizontal {
+  flex-direction: column;
+}
+
+.list-group-item {
+  color: var(--color-primary);
+}
+
+.list-group-item .active {
+  color: var(--color-link-hover-color);
+}
