@@ -1,0 +1,33 @@
+:root {
+  --font-primary: 'Poppins';
+
+  --color-primary: #262626;
+  --color-secondary: #22262a;
+  --color-white: #fff;
+  --color-red: #ff4858;
+  --color-link-hover-color: #33a0ff;
+  --color-btn-primary: #385c8e;
+  --color-btn-secondary: #03a9f4;
+  --color-yellow: #fff600;
+  --color-shark: #22262a;
+  --color-red-orange: #fc3e39;
+  --color-cod-gray: #171717;
+  --color-hollywood-cerise: #ff00b4;
+  --color-bizarre: #efdfdf;
+  --color-dodger-blue: #40bfff;
+  --color-bali-hai: #9098b1;
+  --color-porcelain: #f1f3f4;
+
+  --border-radius-sm: 2px;
+
+  --font-size-xsm: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xlg: 24px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+}

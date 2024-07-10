@@ -1,0 +1,4 @@
+.select {
+  border: var(--border-radius-sm) solid var(--color-porcelain);
+  outline: none;
+}
