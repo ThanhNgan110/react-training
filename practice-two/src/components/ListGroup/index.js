@@ -1,9 +1,5 @@
-import List from './List';
-import ListItem from './ListItem';
+import ListGroup from './List';
+import ListGroupItem from './ListItem';
 
-const ListGroup = {
-  List,
-  ListItem
-};
-
+ListGroup.Item = ListGroupItem;
 export default ListGroup;

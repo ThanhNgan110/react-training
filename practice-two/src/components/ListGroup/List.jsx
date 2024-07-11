@@ -3,11 +3,11 @@ import clsx from 'clsx';
 // Import css
 import './index.css';
 
-const List = ({ className, horizontal = true, children }) => {
+const ListGroup = ({ className, horizontal = true, children }) => {
   return (
     <ul
       className={clsx('list-group', {
-        horizontal: !horizontal,
+        vertical: !horizontal,
         [className]: !!className
       })}
     >
@@ -16,4 +16,4 @@ const List = ({ className, horizontal = true, children }) => {
   );
 };
 
-export default List;
+export default ListGroup;

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 // Import css
 import './index.css';
 
-const ListItem = ({ className, children }) => {
+const ListGroupItem = ({ className, children }) => {
   return (
     <li
       className={clsx('list-group-item', {
@@ -15,4 +15,4 @@ const ListItem = ({ className, children }) => {
   );
 };
 
-export default ListItem;
+export default ListGroupItem;
