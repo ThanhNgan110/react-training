@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 
 // Import constants
-import { LINKS } from '../../constants/links';
+import LINKS from '../../constants/links';
 
 // Import component
 import ListGroup from '../ListGroup';
