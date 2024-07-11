@@ -7,10 +7,10 @@ import './index.css';
 
 const Header = () => {
   return (
-    <div className="flex align-items-center justify-content-center wrapper-header">
+    <nav className="flex align-items-center justify-content-center wrapper-header">
       <Logo />
       <NavList />
-    </div>
+    </nav>
   );
 };
 
