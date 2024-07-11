@@ -1,4 +1,11 @@
-.heading {
-  font-weight: var(--font-weight-medium);
+.heading-sm {
+  font-size: var(--font-size-sm);
+}
+
+.heading-lg {
+  font-size: var(--font-size-lg);
+}
+
+.heading-xlg {
   font-size: var(--font-size-xlg);
 }
