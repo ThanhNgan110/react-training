@@ -1,0 +1,24 @@
+.box-item {
+  background-color: var(--color-porcelain);
+  border-radius: var(--border-radius-sm);
+  padding: 35px 20px;
+  width: 270px;
+}
+
+.list-group-space {
+  gap: 36px;
+}
+
+.heading-sidebar {
+  padding-bottom: 19px;
+}
+
+.text-number {
+  color: var(--color-bali-hai);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
