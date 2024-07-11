@@ -1,5 +1,5 @@
-const Text = ({ className, as: Text, size, text }) => {
-  return <Text className={`text-${size} ${className}`}>{text}</Text>;
+const Text = ({ className, as: Text, size, children }) => {
+  return <Text className={`text-${size} ${className}`}>{children}</Text>;
 };
 
 export default Text;
