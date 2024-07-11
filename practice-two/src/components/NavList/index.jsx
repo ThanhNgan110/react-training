@@ -11,11 +11,10 @@ import ListGroup from '../ListGroup';
 import './index.css';
 
 const NavList = () => {
-  const { List, ListItem } = ListGroup;
   return (
-    <List className="nav-list">
+    <ListGroup className="nav-list">
       {LINKS.map(item => (
-        <ListItem
+        <ListGroup.Item
           className="nav-item"
           key={item.id}
         >
@@ -25,9 +24,9 @@ const NavList = () => {
           >
             {item.text}
           </Link>
-        </ListItem>
+        </ListGroup.Item>
       ))}
-    </List>
+    </ListGroup>
   );
 };
 
