@@ -1,9 +1,8 @@
 .list-group {
   display: flex;
-  background-color: var(--color-white);
 }
 
-.horizontal {
+.vertical {
   flex-direction: column;
 }
 
