@@ -12,3 +12,7 @@
   font: var(--font-size-xlg);
   line-height: 31px;
 }
+
+.ellipsis {
+  text-overflow: ellipsis;
+}

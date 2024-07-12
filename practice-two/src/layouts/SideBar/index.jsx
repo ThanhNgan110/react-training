@@ -1,7 +1,7 @@
 // Import component
-import BoxSideCategory from './BoxSideCategory';
-import BoxSidePrice from './BoxSidePrice';
-import BoxSideColor from './BoxSideColor';
+import Trademarks from './Trademarks';
+import Prices from './Prices';
+import Colors from './Colors';
 
 // Import css
 import './index.css';
@@ -9,9 +9,9 @@ import './index.css';
 const SideBar = () => {
   return (
     <div className="sidebar">
-      <BoxSideCategory />
-      <BoxSidePrice />
-      <BoxSideColor/>
+      <Trademarks />
+      <Prices />
+      <Colors />
     </div>
   );
 };

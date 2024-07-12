@@ -9,7 +9,7 @@ import ListGroup from '../../components/ListGroup';
 // Import css
 import './index.css';
 
-const BoxSideCategory = () => {
+const Trademarks = () => {
   return (
     <div className="box-item">
       <Heading
@@ -128,4 +128,4 @@ const BoxSideCategory = () => {
   );
 };
 
-export default BoxSideCategory;
+export default Trademarks;

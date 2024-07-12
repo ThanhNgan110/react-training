@@ -1,7 +1,6 @@
 // Import components
 import Logo from '../../components/Logo';
 import NavList from '../../components/NavList';
-import SideBar from '../SideBar';
 
 // Import css
 import './index.css';
@@ -13,9 +12,6 @@ const Header = () => {
         <Logo />
         <NavList />
       </nav>
-      <main className="wrapper-main">
-        <SideBar />
-      </main>
     </>
   );
 };

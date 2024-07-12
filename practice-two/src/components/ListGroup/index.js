@@ -1,5 +1,6 @@
-import ListGroup from './List';
-import ListGroupItem from './ListItem';
+import ListGroup from './ListGroup';
+import ListGroupItem from './ListGroupItem';
 
 ListGroup.Item = ListGroupItem;
+
 export default ListGroup;
