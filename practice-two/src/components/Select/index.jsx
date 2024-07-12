@@ -1,9 +1,13 @@
+import clsx from 'clsx';
+
 import './index.css';
 
 const Select = ({ className, name, onChange, children }) => {
   return (
     <select
-      className={`select ${className}`}
+      className={clsx('select', {
+        [className]: !!className
+      })}
       name={name}
       onChange={onChange}
     >

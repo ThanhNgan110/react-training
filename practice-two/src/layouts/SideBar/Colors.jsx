@@ -1,13 +1,10 @@
 // Import component
 import Heading from '../../components/Heading';
-import ListGroup from '../../components/ListGroup';
-import ListGroupItem from '../../components/ListGroup/ListItem';
-
 
 // Import css
 import './index.css';
 
-const BoxSideColor = () => {
+const Colors = () => {
   return (
     <div className="box-item">
       <Heading
@@ -21,4 +18,4 @@ const BoxSideColor = () => {
   );
 };
 
-export default BoxSideColor;
+export default Colors;

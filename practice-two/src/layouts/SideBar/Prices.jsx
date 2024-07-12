@@ -6,7 +6,7 @@ import RangeInput from '../../components/RangeInput';
 // Import css
 import './index.css';
 
-const BoxSidePrice = () => {
+const Prices = () => {
   return (
     <div className="box-item">
       <Heading
@@ -35,4 +35,4 @@ const BoxSidePrice = () => {
   );
 };
 
-export default BoxSidePrice;
+export default Prices;

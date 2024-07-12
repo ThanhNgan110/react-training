@@ -1,0 +1,11 @@
+.img {
+  object-fit: cover;
+}
+
+.full-w {
+  width: 100%;
+}
+
+.full-h {
+  height: 100%;
+}

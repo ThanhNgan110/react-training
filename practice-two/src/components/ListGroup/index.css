@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.vertical {
+.list-group.vertical {
   flex-direction: column;
 }
 
