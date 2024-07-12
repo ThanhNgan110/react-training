@@ -1,4 +1,16 @@
 .heading {
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
+}
+
+.heading-sm {
+  font-size: var(--font-size-sm);
+}
+
+.heading-lg {
+  font-size: var(--font-size-lg);
+  line-height: 27px;
+}
+
+.heading-xlg {
   font-size: var(--font-size-xlg);
 }

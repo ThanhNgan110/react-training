@@ -1,22 +1,32 @@
+// Import react router
+import { Link } from 'react-router-dom';
+
 // Import constants
-import { links } from '../../constants/links';
+import LINKS from '../../constants/links';
 
 // Import component
-import NavListItem from '../NavListItem';
+import ListGroup from '../ListGroup';
 
 // Import css
 import './index.css';
 
 const NavList = () => {
   return (
-    <ul className="flex nav-list">
-      {links.map(item => (
-        <NavListItem
+    <ListGroup className="nav-list">
+      {LINKS.map(item => (
+        <ListGroup.Item
+          className="nav-item"
           key={item.id}
-          item={item}
-        />
+        >
+          <Link
+            className="nav-item"
+            to={item.url}
+          >
+            {item.text}
+          </Link>
+        </ListGroup.Item>
       ))}
-    </ul>
+    </ListGroup>
   );
 };
 

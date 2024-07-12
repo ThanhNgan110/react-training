@@ -1,16 +1,22 @@
 // Import components
 import Logo from '../../components/Logo';
 import NavList from '../../components/NavList';
+import SideBar from '../SideBar';
 
 // Import css
 import './index.css';
 
 const Header = () => {
   return (
-    <div className="flex align-center justify-center wrapper-header">
-      <Logo />
-      <NavList />
-    </div>
+    <>
+      <nav className="flex align-items-center justify-content-center wrapper-header">
+        <Logo />
+        <NavList />
+      </nav>
+      <main className="wrapper-main">
+        <SideBar />
+      </main>
+    </>
   );
 };
 

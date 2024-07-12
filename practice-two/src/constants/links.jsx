@@ -1,29 +1,29 @@
-const links = [
+const LINKS = [
   {
     id: '1',
     text: 'HOME',
-    url: '/home'
+    url: ''
   },
   {
     id: '2',
     text: 'BAGS',
-    url: '/bags'
+    url: ''
   },
   {
     id: '3',
     text: 'SNEAKERS',
-    url: '/sneakers'
+    url: ''
   },
   {
     id: '4',
     text: 'BELT',
-    url: '/belt'
+    url: ''
   },
   {
     id: '5',
     text: 'CONTACT',
-    url: '/contact'
+    url: ''
   }
 ];
 
-export { links };
+export default LINKS;
