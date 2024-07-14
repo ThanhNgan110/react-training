@@ -1,10 +1,11 @@
 // Import component
 import Heading from '../../components/Heading';
+import RadioGroup from '../../components/RadioGroup';
 
 // Import css
 import './index.css';
 
-const Colors = () => {
+const Colors = ({ colors }) => {
   return (
     <div className="box-item">
       <Heading
@@ -14,6 +15,7 @@ const Colors = () => {
       >
         COLORS
       </Heading>
+      <RadioGroup colorSchemes={colors} />
     </div>
   );
 };
