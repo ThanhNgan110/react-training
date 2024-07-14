@@ -1,19 +1,16 @@
 // Import component
 import RadioInput from '../RadioInput';
 
-// Import css
-import './index.css';
-
-const RadioGroup = ({ colorSchemes, onChangeColor }) => {
+const RadioGroup = ({ colorSchemes }) => {
   return (
-    <div className="flex box-radio">
-      {colorSchemes.map(item => {
+    <div className="flex justify-content-between">
+      {colorSchemes.map((item, index) => (
         <RadioInput
-          value={item.colors}
-          colorScheme={item.colors}
-          onChange={() => onChangeColor()}
-        />;
-      })}
+          key={index}
+          value={item}
+          colorScheme={item}
+        />
+      ))}
     </div>
   );
 };
