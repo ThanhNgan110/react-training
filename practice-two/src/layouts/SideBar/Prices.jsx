@@ -6,7 +6,7 @@ import RangeInput from '../../components/RangeInput';
 // Import css
 import './index.css';
 
-const Prices = () => {
+const Prices = ({ maxPrice }) => {
   return (
     <div className="box-item">
       <Heading
@@ -27,7 +27,7 @@ const Prices = () => {
           as="p"
           size="lg"
         >
-          $13.99 - $25.99
+          {`$0 - $${maxPrice}`}
         </Text>
       </div>
       <RangeInput />
