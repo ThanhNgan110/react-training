@@ -16,7 +16,7 @@ const Prices = ({ maxPrice }) => {
       >
         PRICES
       </Heading>
-      <div className="flex justify-content-between">
+      <div className="d-flex justify-content-between">
         <Text
           as="p"
           size="lg"

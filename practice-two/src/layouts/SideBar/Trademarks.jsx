@@ -26,7 +26,7 @@ const Trademarks = ({ types }) => {
         {types.map((item, index) => (
           <ListGroup.Item key={index}>
             <Link
-              className="flex justify-content-between list-group-item"
+              className="d-flex justify-content-between list-group-item"
               to=""
             >
               <Text
