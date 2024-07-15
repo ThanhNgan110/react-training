@@ -1,15 +1,13 @@
 import clsx from 'clsx';
 import './index.css';
 
-const Text = ({ className, as: Text, size, ellipsis, children }) => {
+const Text = ({ className, variant, as: Text, ellipsis, children }) => {
   return (
     <Text
+      variant={variant}
       className={clsx('', {
         [className]: !!className,
-        ellipsis: ellipsis,
-        'text-size-sm': size === 'sm',
-        'text-size-lg': size === 'lg',
-        'text-size-xlg': size === 'xlg'
+        'text-ellipsis': ellipsis
       })}
     >
       {children}
