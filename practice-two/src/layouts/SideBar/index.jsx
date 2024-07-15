@@ -9,7 +9,10 @@ import './index.css';
 
 const SideBar = ({ productData }) => {
   return (
-    <ListGroup className="sidebar" horizontal={false}>
+    <ListGroup
+      className="sidebar"
+      vertical={true}
+    >
       <ListGroup.Item className="sidebar-item">
         <Trademarks types={productData.types} />
       </ListGroup.Item>

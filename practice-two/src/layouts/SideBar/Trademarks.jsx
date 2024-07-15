@@ -20,7 +20,7 @@ const Trademarks = ({ types }) => {
       </Text>
       <ListGroup
         className="list-group-space"
-        horizontal={false}
+        vertical={true}
       >
         {types.map((item, index) => (
           <ListGroup.Item key={index}>
