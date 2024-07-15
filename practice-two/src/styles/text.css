@@ -1,0 +1,51 @@
+/* Font-size */
+.fs-1 {
+  font-size: var(--font-size-2xlg);
+}
+
+.fs-2 {
+  font-size: var(--font-size-xlg);
+}
+
+.fs-3 {
+  font-size: var(--font-size-lg);
+}
+
+.fs-4 {
+  font-size: var(--font-size-md);
+}
+
+.fs-5 {
+  font-size: var(--font-size-sm);
+}
+
+.fs-6 {
+  font-size: var(--font-size-xsm);
+}
+
+/* Text transform */
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/* Text decoration */
+.text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+/* Font weight */
+.fw-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.fw-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fw-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.fw-normal {
+  font-weight: var(--font-weight-normal);
+}
