@@ -34,7 +34,7 @@ const HomePage = () => {
     <>
       <Header />
       <main className="wrapper-main">
-        <SideBar productData={productData} />
+        <SideBar settings={productData} />
       </main>
     </>
   );

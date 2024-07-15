@@ -7,20 +7,21 @@ import ListGroup from '../../components/ListGroup';
 // Import css
 import './index.css';
 
-const SideBar = ({ productData }) => {
+const SideBar = ({ settings }) => {
+  const { types, maxPrice, colors } = settings;
   return (
     <ListGroup
       className="sidebar"
       vertical={true}
     >
       <ListGroup.Item className="sidebar-item">
-        <Trademarks types={productData.types} />
+        <Trademarks types={types} />
       </ListGroup.Item>
       <ListGroup.Item className="sidebar-item">
-        <Prices maxPrice={productData.maxPrice} />
+        <Prices maxPrice={maxPrice} />
       </ListGroup.Item>
       <ListGroup.Item className="sidebar-item">
-        <Colors colors={productData.colors} />
+        <Colors colors={colors} />
       </ListGroup.Item>
     </ListGroup>
   );
