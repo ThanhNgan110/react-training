@@ -9,7 +9,7 @@ import ListGroup from '../../components/ListGroup';
 // Import css
 import './index.css';
 
-const Trademarks = () => {
+const Trademarks = ({ types }) => {
   return (
     <div className="box-item">
       <Heading
@@ -23,106 +23,28 @@ const Trademarks = () => {
         className="list-group-space"
         horizontal={false}
       >
-        <ListGroup.Item>
-          <Link
-            className="flex justify-content-between list-group-item"
-            to=""
-          >
-            <Text
-              as="p"
-              size="lg"
+        {types.map((item, index) => (
+          <ListGroup.Item key={index}>
+            <Link
+              className="flex justify-content-between list-group-item"
+              to=""
             >
-              Airmax
-            </Text>
-            <Text
-              as="p"
-              size="lg"
-              className="text-number"
-            >
-              48
-            </Text>
-          </Link>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Link
-            className="flex justify-content-between list-group-item"
-            to=""
-          >
-            <Text
-              as="p"
-              size="lg"
-            >
-              Nike
-            </Text>
-            <Text
-              as="p"
-              size="lg"
-              className="text-number"
-            >
-              14
-            </Text>
-          </Link>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Link
-            className="flex justify-content-between list-group-item"
-            to=""
-          >
-            <Text
-              as="p"
-              size="lg"
-            >
-              Vans
-            </Text>
-            <Text
-              as="p"
-              size="lg"
-              className="text-number"
-            >
-              23
-            </Text>
-          </Link>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Link
-            className="flex justify-content-between list-group-item"
-            to=""
-          >
-            <Text
-              as="p"
-              size="lg"
-            >
-              All Stars
-            </Text>
-            <Text
-              as="p"
-              size="lg"
-              className="text-number"
-            >
-              1
-            </Text>
-          </Link>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Link
-            className="flex justify-content-between list-group-item"
-            to=""
-          >
-            <Text
-              as="p"
-              size="lg"
-            >
-              Adidas
-            </Text>
-            <Text
-              as="p"
-              size="lg"
-              className="text-number"
-            >
-              95
-            </Text>
-          </Link>
-        </ListGroup.Item>
+              <Text
+                as="p"
+                size="lg"
+              >
+                {item.name}
+              </Text>
+              <Text
+                as="p"
+                size="lg"
+                className="text-number"
+              >
+                {item.count}
+              </Text>
+            </Link>
+          </ListGroup.Item>
+        ))}
       </ListGroup>
     </div>
   );

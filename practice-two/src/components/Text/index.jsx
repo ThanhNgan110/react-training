@@ -6,7 +6,7 @@ const Text = ({ className, as: Text, size, ellipsis, children }) => {
     <Text
       className={clsx('', {
         [className]: !!className,
-        'ellipsis': ellipsis,
+        ellipsis: ellipsis,
         'text-size-sm': size === 'sm',
         'text-size-lg': size === 'lg',
         'text-size-xlg': size === 'xlg'
