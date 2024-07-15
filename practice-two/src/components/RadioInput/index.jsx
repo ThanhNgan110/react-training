@@ -3,14 +3,14 @@ import clsx from 'clsx';
 // Import css
 import './index.css';
 
-const RadioInput = ({ className, value, onChange, colorScheme }) => {
+const RadioInput = ({ className, value, onChange, color }) => {
   return (
     <label
       htmlFor="radio"
       className={clsx('label', {
         [className]: !!className
       })}
-      style={{ '--label-before-bg': `#${colorScheme}` }}
+      style={{ '--label-before-bg': `#${color}` }}
     >
       <input
         type="radio"
