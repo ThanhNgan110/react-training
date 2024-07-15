@@ -6,7 +6,7 @@ const RadioGroup = ({ colorSchemes }) => {
     <div className="d-flex justify-content-between">
       {colorSchemes.map((item, index) => (
         <RadioInput
-          key={index}
+          key={`${index}`}
           value={item}
           colorScheme={item}
         />

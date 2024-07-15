@@ -9,7 +9,7 @@ import SideBar from '../../layouts/SideBar';
 import './index.css';
 
 // Import api
-import { getProductTypes } from '../../services/Products/filterService';
+import { getProductTypes } from '../../services/Products/filter-service';
 
 const HomePage = () => {
   const [productData, setProductData] = useState({
@@ -34,7 +34,7 @@ const HomePage = () => {
     <>
       <Header />
       <main className="wrapper-main">
-        <SideBar productData = {productData} />
+        <SideBar settings={productData} />
       </main>
     </>
   );

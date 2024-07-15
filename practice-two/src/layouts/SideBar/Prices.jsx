@@ -7,7 +7,7 @@ import './index.css';
 
 const Prices = ({ maxPrice }) => {
   return (
-    <div className="box-item">
+    <>
       <Text
         variant="heading"
         as="h2"
@@ -32,7 +32,7 @@ const Prices = ({ maxPrice }) => {
         </Text>
       </div>
       <RangeInput />
-    </div>
+    </>
   );
 };
 

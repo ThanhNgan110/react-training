@@ -12,7 +12,7 @@ const Textarea = ({ className, value, onChange, placeholder }) => {
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-    ></textarea>
+    />
   );
 };
 

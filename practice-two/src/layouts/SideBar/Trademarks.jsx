@@ -10,7 +10,7 @@ import './index.css';
 
 const Trademarks = ({ types }) => {
   return (
-    <div className="box-item">
+    <>
       <Text
         variant="heading"
         as="h2"
@@ -20,7 +20,7 @@ const Trademarks = ({ types }) => {
       </Text>
       <ListGroup
         className="list-group-space"
-        horizontal={false}
+        vertical={true}
       >
         {types.map((item, index) => (
           <ListGroup.Item key={index}>
@@ -46,7 +46,7 @@ const Trademarks = ({ types }) => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-    </div>
+    </>
   );
 };
 

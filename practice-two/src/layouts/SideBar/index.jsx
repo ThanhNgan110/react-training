@@ -2,17 +2,28 @@
 import Trademarks from './Trademarks';
 import Prices from './Prices';
 import Colors from './Colors';
+import ListGroup from '../../components/ListGroup';
 
 // Import css
 import './index.css';
 
-const SideBar = ({ productData }) => {
+const SideBar = ({ settings }) => {
+  const { types, maxPrice, colors } = settings;
   return (
-    <div className="sidebar">
-      <Trademarks types={productData.types} />
-      <Prices maxPrice={productData.maxPrice} />
-      <Colors colors={productData.colors} />
-    </div>
+    <ListGroup
+      className="sidebar"
+      vertical={true}
+    >
+      <ListGroup.Item className="sidebar-item">
+        <Trademarks types={types} />
+      </ListGroup.Item>
+      <ListGroup.Item className="sidebar-item">
+        <Prices maxPrice={maxPrice} />
+      </ListGroup.Item>
+      <ListGroup.Item className="sidebar-item">
+        <Colors colors={colors} />
+      </ListGroup.Item>
+    </ListGroup>
   );
 };
 
