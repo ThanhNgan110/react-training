@@ -1,0 +1,30 @@
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--fs-large);
+  font-weight: var(--fw-bold);
+  margin-bottom: 5px;
+}
+
+.number-task {
+  font-size: var(--fs-x-small);
+  font-weight: var(--fw-normal);
+  padding: 10px 5px;
+}
+
+.input-task {
+  font-weight: var(--fw-semi-bold);
+}
+
+.input-desc {
+  font-size: var(--fs-x-small);
+}
+
+.btn-edit {
+  display: none;
+  cursor: pointer;
+  background: none;
+}
+
+.btn-remove {
+  padding: 0;
+}

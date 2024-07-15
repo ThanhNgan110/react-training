@@ -1,0 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-regular);
+  margin: 100px 300px;
+}
