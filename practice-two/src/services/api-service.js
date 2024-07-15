@@ -13,15 +13,13 @@ const api = axios.create({
 export const get = async endPoint => {
   try {
     const res = await api.get(endPoint);
-    if (res.status >= 200 && res.status < 300) {
-      return {
-        isError: false,
-        data: res.data
-      };
-    }
+    return {
+      error: '',
+      data: res.data
+    };
   } catch (error) {
     return {
-      isError: true,
+      error: handleError(error),
       data: ''
     };
   }
@@ -36,14 +34,25 @@ export const get = async endPoint => {
 export const post = async (endPoint, payload) => {
   try {
     const res = await api.post(endPoint, payload);
-    if (res.status >= 200 && res.status < 300) {
-      return {
-        isError: false
-      };
-    }
+    return {
+      error: '',
+      data: res.data
+    };
   } catch (error) {
     return {
-      isError: true
+      error: handleError(error),
+      data: ''
     };
+  }
+};
+
+export const handleError = error => {
+  switch (true) {
+    case !!error.response:
+      return error.response.data.message || 'Server error';
+    case !!error.request:
+      return 'Network error';
+    default:
+      return error.message;
   }
 };
