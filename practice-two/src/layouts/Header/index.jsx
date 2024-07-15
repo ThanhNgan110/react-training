@@ -8,7 +8,7 @@ import './index.css';
 const Header = () => {
   return (
     <>
-      <nav className="flex align-items-center justify-content-center wrapper-header">
+      <nav className="d-flex align-items-center justify-content-center wrapper-header">
         <Logo />
         <NavList />
       </nav>

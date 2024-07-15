@@ -3,6 +3,9 @@
   border-radius: var(--border-radius-sm);
   padding: 35px 20px;
   width: 270px;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
 }
 
 .list-group-space {
@@ -20,5 +23,5 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 27px;
+  gap: 14px;
 }

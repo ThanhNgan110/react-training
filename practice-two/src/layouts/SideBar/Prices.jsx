@@ -1,5 +1,4 @@
 // Import component
-import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 import RangeInput from '../../components/RangeInput';
 
@@ -9,23 +8,25 @@ import './index.css';
 const Prices = ({ maxPrice }) => {
   return (
     <div className="box-item">
-      <Heading
+      <Text
+        variant="heading"
         as="h2"
-        size="lg"
-        className="heading-sidebar"
+        className="fs-3 fw-bold text-uppercase"
       >
-        PRICES
-      </Heading>
-      <div className="flex justify-content-between">
+        prices
+      </Text>
+      <div className="d-flex justify-content-between">
         <Text
+          variant="text"
           as="p"
-          size="lg"
+          className="fs-3 text-primary"
         >
           Ranger
         </Text>
         <Text
+          variant="text"
           as="p"
-          size="lg"
+          className="fs-3 text-primary"
         >
           {`$0 - $${maxPrice}`}
         </Text>
