@@ -10,7 +10,7 @@ import './index.css';
 
 const Trademarks = ({ types }) => {
   return (
-    <div className="box-item">
+    <>
       <Text
         variant="heading"
         as="h2"
@@ -46,7 +46,7 @@ const Trademarks = ({ types }) => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-    </div>
+    </>
   );
 };
 

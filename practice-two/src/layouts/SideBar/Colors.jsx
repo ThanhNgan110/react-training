@@ -7,7 +7,7 @@ import './index.css';
 
 const Colors = ({ colors }) => {
   return (
-    <div className="box-item">
+    <>
       <Text
         variant="heading"
         as="h2"
@@ -16,7 +16,7 @@ const Colors = ({ colors }) => {
         colors
       </Text>
       <RadioGroup colorSchemes={colors} />
-    </div>
+    </>
   );
 };
 

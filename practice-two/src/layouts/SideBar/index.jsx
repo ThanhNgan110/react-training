@@ -9,9 +9,15 @@ import './index.css';
 const SideBar = ({ productData }) => {
   return (
     <div className="sidebar">
-      <Trademarks types={productData.types} />
-      <Prices maxPrice={productData.maxPrice} />
-      <Colors colors={productData.colors} />
+      <div className="sidebar-item">
+        <Trademarks types={productData.types} />
+      </div>
+      <div className="sidebar-item">
+        <Prices maxPrice={productData.maxPrice} />
+      </div>
+      <div className="sidebar-item">
+        <Colors colors={productData.colors} />
+      </div>
     </div>
   );
 };
