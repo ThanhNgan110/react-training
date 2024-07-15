@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom';
 
 // Import component
-import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 import ListGroup from '../../components/ListGroup';
 
@@ -12,13 +11,13 @@ import './index.css';
 const Trademarks = ({ types }) => {
   return (
     <div className="box-item">
-      <Heading
+      <Text
+        variant="heading"
         as="h2"
-        size="lg"
-        className="heading-sidebar"
+        className="fs-3 fw-bold text-uppercase"
       >
-        TRADEMARKS
-      </Heading>
+        trademarks
+      </Text>
       <ListGroup
         className="list-group-space"
         horizontal={false}
@@ -30,15 +29,16 @@ const Trademarks = ({ types }) => {
               to=""
             >
               <Text
+                variant="text"
                 as="p"
-                size="lg"
+                className="fs-3"
               >
                 {item.name}
               </Text>
               <Text
+                variant="text"
                 as="p"
-                size="lg"
-                className="text-number"
+                className="fs-3 text-secondary"
               >
                 {item.count}
               </Text>

@@ -1,5 +1,5 @@
 // Import component
-import Heading from '../../components/Heading';
+import Text from '../../components/Text';
 import RadioGroup from '../../components/RadioGroup';
 
 // Import css
@@ -8,13 +8,13 @@ import './index.css';
 const Colors = ({ colors }) => {
   return (
     <div className="box-item">
-      <Heading
+      <Text
+        variant="heading"
         as="h2"
-        size="lg"
-        className="heading-sidebar"
+        className="fs-3 fw-bold text-uppercase"
       >
-        COLORS
-      </Heading>
+        colors
+      </Text>
       <RadioGroup colorSchemes={colors} />
     </div>
   );
