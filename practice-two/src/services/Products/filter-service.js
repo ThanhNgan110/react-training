@@ -1,5 +1,5 @@
 import { URL_API } from '../../constants/api';
-import { get } from '../apiService';
+import { get } from '../api-service';
 
 /** Get data types product */
 export const getProductTypes = async () => {
