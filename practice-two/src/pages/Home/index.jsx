@@ -9,10 +9,10 @@ import SideBar from '../../layouts/SideBar';
 import './index.css';
 
 // Import api
-import { getProductTypes } from '../../services/Products/filter-service';
+import { getSettingData } from '../../services/filter-service';
 
 const HomePage = () => {
-  const [productData, setProductData] = useState({
+  const [settings, setSettings] = useState({
     types: [],
     colors: [],
     maxPrice: 0
@@ -21,9 +21,9 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProductTypes = async () => {
       // Call loading icon if needed
-      const { data, isError } = await getProductTypes();
-      if (!isError) {
-        setProductData(data);
+      const { data, error } = await getSettingData();
+      if (!error) {
+        setSettings(data);
       }
       // Hide loading icon if needed
     };
@@ -34,7 +34,7 @@ const HomePage = () => {
     <>
       <Header />
       <main className="wrapper-main">
-        <SideBar settings={productData} />
+        <SideBar settings={settings} />
       </main>
     </>
   );

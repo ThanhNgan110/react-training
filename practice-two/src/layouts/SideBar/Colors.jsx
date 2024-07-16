@@ -1,11 +1,11 @@
 // Import component
 import Text from '../../components/Text';
-import RadioGroup from '../../components/RadioGroup';
+import ColorsPicker from '../../components/ColorsPicker';
 
 // Import css
 import './index.css';
 
-const Colors = ({ colors }) => {
+const Colors = ({ colors, handleChangeColor }) => {
   return (
     <>
       <Text
@@ -15,7 +15,10 @@ const Colors = ({ colors }) => {
       >
         colors
       </Text>
-      <RadioGroup colorSchemes={colors} />
+      <ColorsPicker
+        colors={colors}
+        onChange={handleChangeColor}
+      />
     </>
   );
 };
