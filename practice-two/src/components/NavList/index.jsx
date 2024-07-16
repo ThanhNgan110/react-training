@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 
 // Import constants
-import LINKS from '../../constants/links';
+import { PAGES } from '../../constants/route';
 
 // Import component
 import ListGroup from '../ListGroup';
@@ -11,18 +11,26 @@ import ListGroup from '../ListGroup';
 import './index.css';
 
 const NavList = () => {
+  const menus = [
+    { path: PAGES.HOME.PATH, value: PAGES.HOME.VALUE },
+    { path: PAGES.ABOUT.PATH, value: PAGES.ABOUT.VALUE },
+    { path: PAGES.SNEAKERS.PATH, value: PAGES.SNEAKERS.VALUE },
+    { path: PAGES.BELT.PATH, value: PAGES.BELT.VALUE },
+    { path: PAGES.CONTACT.PATH, value: PAGES.CONTACT.VALUE }
+  ];
+
   return (
     <ListGroup className="nav-list">
-      {LINKS.map(item => (
+      {menus.map((item, index) => (
         <ListGroup.Item
           className="nav-item"
-          key={item.id}
+          key={`${index}`}
         >
           <Link
-            className="nav-item"
-            to={item.url}
+            className="nav-item text-uppercase"
+            to={item.path}
           >
-            {item.text}
+            {item.value}
           </Link>
         </ListGroup.Item>
       ))}
