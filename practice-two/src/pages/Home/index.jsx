@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 
 //Import component
-import Header from '../../layouts/Header';
 import SideBar from '../../layouts/SideBar';
 
 // Import css
@@ -32,7 +31,6 @@ const Home = () => {
   }, []);
   return (
     <>
-      <Header />
       <div className="wrapper-content">
         <SideBar settings={settings} />
       </div>

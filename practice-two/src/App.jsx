@@ -1,23 +1,11 @@
-import { Routes, Route } from 'react-router-dom';
+// Import css
 import './styles/index.css';
 
-import Layout from './layouts/LayoutMain';
-import Home from './pages/Home';
+// Import Routes
+import Routing from './routes/routing';
 
 const App = () => {
-  return (
-    <Routes>
-      <Route
-        path="/"
-        element={<Layout />}
-      >
-        <Route
-          index
-          element={<Home />}
-        />
-      </Route>
-    </Routes>
-  );
+  return <Routing />;
 };
 
 export default App;
