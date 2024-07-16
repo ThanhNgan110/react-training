@@ -11,7 +11,7 @@ import './index.css';
 // Import api
 import { getSettingData } from '../../services/filter-service';
 
-const HomePage = () => {
+const Home = () => {
   const [settings, setSettings] = useState({
     types: [],
     colors: [],
@@ -33,11 +33,11 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <main className="wrapper-main">
+      <div className="wrapper-content">
         <SideBar settings={settings} />
-      </main>
+      </div>
     </>
   );
 };
 
-export default HomePage;
+export default Home;

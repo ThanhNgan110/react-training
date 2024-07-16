@@ -1,10 +1,10 @@
 // Import component
-import Text from '../../components/Text';
-import ListGroup from '../../components/ListGroup';
-import LabelInfo from '../../components/LabelInfo';
+import Text from '../../../components/Text';
+import ListGroup from '../../../components/ListGroup';
+import LabelInfo from '../../../components/LabelInfo';
 
 // Import css
-import './index.css';
+import './index';
 
 const Trademarks = ({ types }) => {
   return (

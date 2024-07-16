@@ -1,9 +1,9 @@
 // Import component
-import Text from '../../components/Text';
-import ColorsPicker from '../../components/ColorsPicker';
+import Text from '../../../components/Text';
+import ColorsPicker from '../../../components/ColorsPicker';
 
 // Import css
-import './index.css';
+import './index';
 
 const Colors = ({ colors, handleChangeColor }) => {
   return (

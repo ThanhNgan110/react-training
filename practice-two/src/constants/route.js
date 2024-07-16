@@ -3,36 +3,40 @@ const PAGES = {
     PATH: '/',
     VALUE: 'Home'
   },
+  PRODUCT: {
+    PATH: '/products/:productId',
+    VALUE: 'Product Detail'
+  },
   ABOUT: {
-    PATH: '/about',
+    PATH: 'about',
     VALUE: 'About Us'
   },
   BAGS: {
-    PATH: '/bags',
+    PATH: 'bags',
     VALUE: 'Bags'
   },
   SNEAKERS: {
-    PATH: '/sneakers',
+    PATH: 'sneakers',
     VALUE: 'Sneakers'
   },
   BELT: {
-    PATH: '/belt',
+    PATH: 'belt',
     VALUE: 'Belt'
   },
   CONTACT: {
-    PATH: '/contact',
+    PATH: 'contact',
     VALUE: 'Contact'
   },
   INFORMATION: {
-    PATH: '/information',
+    PATH: 'information',
     VALUE: 'Information'
   },
   Privacy: {
-    PATH: '/privacy',
+    PATH: 'privacy',
     VALUE: 'Privacy Policy'
   },
   Term: {
-    PATH: '/term',
+    PATH: 'term',
     VALUE: 'Term'
   }
 };

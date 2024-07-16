@@ -1,9 +1,9 @@
 // Import component
-import Text from '../../components/Text';
-import RangeInput from '../../components/RangeInput';
+import Text from '../../../components/Text';
+import RangeInput from '../../../components/RangeInput';
 
 // Import css
-import './index.css';
+import './index';
 
 const Prices = ({ maxPrice }) => {
   return (
