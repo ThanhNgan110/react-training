@@ -1,9 +1,7 @@
-//Import react
-import { Link } from 'react-router-dom';
-
 // Import component
 import Text from '../../components/Text';
 import ListGroup from '../../components/ListGroup';
+import LabelInfo from '../../components/LabelInfo';
 
 // Import css
 import './index.css';
@@ -23,26 +21,11 @@ const Trademarks = ({ types }) => {
         vertical={true}
       >
         {types.map((item, index) => (
-          <ListGroup.Item key={index}>
-            <Link
-              className="d-flex justify-content-between list-group-item"
-              to=""
-            >
-              <Text
-                variant="text"
-                as="p"
-                className="fs-3"
-              >
-                {item.name}
-              </Text>
-              <Text
-                variant="text"
-                as="p"
-                className="fs-3 text-secondary"
-              >
-                {item.count}
-              </Text>
-            </Link>
+          <ListGroup.Item key={`${index}`}>
+            <LabelInfo
+              label={item.name}
+              number={item.count}
+            />
           </ListGroup.Item>
         ))}
       </ListGroup>
