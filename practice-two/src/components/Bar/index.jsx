@@ -8,7 +8,7 @@ const Bar = ({ number, data, onChange }) => {
     <div className="d-flex align-items-center bar">
       <Text
         as="p"
-        className="text-secondary fs-5 "
+        className="text-secondary fs-5"
       >
         {number} Items
       </Text>
