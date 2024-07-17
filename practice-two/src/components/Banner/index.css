@@ -1,12 +1,12 @@
 .banner {
   background-color: var(--color-dodger-blue);
+  padding: 100px;
 }
 
 .banner-content {
   display: flex;
   flex-direction: column;
   gap: 66px;
-  padding: 100px;
 }
 
 .title-banner {
