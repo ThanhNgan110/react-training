@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react';
 //Import component
 import SideBar from '../../layouts/SideBar';
 import Banner from '../../components/Banner';
+import Bar from '../../components/Bar';
+
+// Import constant
+import { OPTIONS } from '../../constants/label';
 
 // Import css
 import './index.css';
@@ -17,6 +21,11 @@ const Home = () => {
     colors: [],
     maxPrice: 0
   });
+
+  const data = [
+    { name: OPTIONS.NAME, value: 'name' },
+    { name: OPTIONS.PRICE, value: 'price' }
+  ];
 
   useEffect(() => {
     const fetchProductTypes = async () => {
@@ -35,7 +44,8 @@ const Home = () => {
       <div className="d-flex wrapper-content">
         <SideBar settings={settings} />
         <main>
-          <Banner/>
+          <Banner />
+          <Bar data={data}/>
         </main>
       </div>
     </>

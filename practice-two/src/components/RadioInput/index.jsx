@@ -7,7 +7,7 @@ const RadioInput = ({ className, value, onChange, color }) => {
   return (
     <label
       htmlFor="radio"
-      className={clsx('label', {
+      className={clsx('label-radio', {
         [className]: !!className
       })}
       style={{ '--label-before-bg': `#${color}` }}
