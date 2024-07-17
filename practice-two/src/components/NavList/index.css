@@ -1,0 +1,17 @@
+.nav-list {
+  gap: 106px;
+}
+
+.nav-item {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xlg);
+  color: var(--color-primary);
+}
+
+.nav-item:hover {
+  color: var(--color-link-hover-color);
+}
+
+.nav-item .active {
+  color: var(--color-link-hover-color);
+}

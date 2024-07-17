@@ -1,0 +1,6 @@
+.select {
+  border: var(--border-radius-sm) solid var(--color-bali-hai);
+  outline: none;
+  padding: 10px;
+  background-color: var(--color-porcelain);
+}

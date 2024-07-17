@@ -1,14 +1,14 @@
-# REACT PRACTICE ONE
+# REACT PRACTICE TWO
 
 ## OVERVIEW
 
-- This is the document provided required for React practice one
-- Design [Figma](<https://app.todoist.com/app/today>)
+- This is the document provided required for React practice two
+- Design [Figma](<https://www.figma.com/design/784lDf295l43fqbmU48a0y/Shop?node-id=0-1&t=JwUew8jEbrxuhSu0-1>)
 
 ## TIMELINE
 
-- Expected: 7 days (from 2024/06/17 - 2024/06/25)
-- Total:  7 days (from 2024/06/17 - 2024/06/25)
+- Expected: 16 days (from 2024/07/05 - 2024/07/26)
+- Total:  
 
 ## TEAM SIZE
 
@@ -16,22 +16,25 @@
 
 ## TARGETS
 
-- Build a simple Todo app and  local storage for storing data
+- Understand and apply correctly React hooks
+- Have understanding deeply about useState, useEffect, useRef, useContext
+- Be able to manage state and check re-render when props or state stay touched
 
 ## TECHNICAL STACK
 
 - HTML/CSS3
-- Javascript(ES6)
-- React (version 18.2.0)
-- Vite (version 5.2.0)
+- Javascript (ES6)
+- React (version 18.3.1)
+- React router v6.x
+- Vite (version 5.3.1)
 - Parcel
 - Vercel
+- ESLint, Prettier
+
 
 ## REQUIREMENTS
 
-- Add new Task
-- Edit Task
-- Complete Task (remove from screen)
+- Features: [requirements](<https://docs.google.com/document/d/1vq00Nb78HwPHdT7kAzzuzaBqZ0x6x2X1qYMHKYS8K8Y/edit#heading=h.iag5tvnlb6h7>)
 
 ## How to run
 
@@ -41,16 +44,16 @@
 git clone https://github.com/ThanhNgan110/react-training
 ```
 
-- Git checkout feature/practice-one
+- Git checkout practice-two
 
 ```
-git checkout feature/practice-one
+git checkout practice-two
 ```
 
-- Go to folder practice-one
+- Go to folder practice-two
 
 ```
-cd practice-one
+cd practice-two
 ```
 
 - Install packages

@@ -1,0 +1,17 @@
+.sidebar-item {
+  background-color: var(--color-porcelain);
+  border-radius: var(--border-radius-sm);
+  padding: 35px 20px;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.list-group-space {
+  gap: 36px;
+}
+
+.sidebar {
+  gap: 14px;
+}

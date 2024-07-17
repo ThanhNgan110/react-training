@@ -1,0 +1,15 @@
+.text-primary {
+  color: var(--color-primary);
+  font-size: var(--font-size-xlg);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+}

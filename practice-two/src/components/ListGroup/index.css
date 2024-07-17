@@ -1,0 +1,15 @@
+.list-group {
+  display: flex;
+}
+
+.list-group.vertical {
+  flex-direction: column;
+}
+
+.list-group-item {
+  color: var(--color-primary);
+}
+
+.list-group-item .active {
+  color: var(--color-link-hover-color);
+}
