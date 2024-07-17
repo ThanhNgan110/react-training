@@ -7,6 +7,8 @@ const Text = ({ className, variant, as: Text, ellipsis, children }) => {
       variant={variant}
       className={clsx('', {
         [className]: !!className,
+        'text-primary': variant === 'primary',
+        'text-secondary': variant === 'secondary',
         'text-ellipsis': ellipsis
       })}
     >
