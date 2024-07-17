@@ -1,8 +1,8 @@
 // import css
 import './index.css';
 
-const ProductDetail = () => {
+const Product = () => {
   return <div>ProductDetail</div>;
 };
 
-export default ProductDetail;
+export default Product

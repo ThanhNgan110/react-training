@@ -19,14 +19,14 @@ const Prices = ({ maxPrice }) => {
         <Text
           variant="text"
           as="p"
-          className="fs-3 text-primary"
+          className="fs-3"
         >
           Ranger
         </Text>
         <Text
           variant="text"
           as="p"
-          className="fs-3 text-primary"
+          className="fs-3"
         >
           {`$0 - $${maxPrice}`}
         </Text>
