@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 //Import component
 import SideBar from '../../layouts/SideBar';
+import Banner from '../../components/Banner';
 
 // Import css
 import './index.css';
@@ -31,8 +32,11 @@ const Home = () => {
   }, []);
   return (
     <>
-      <div className="wrapper-content">
+      <div className="d-flex wrapper-content">
         <SideBar settings={settings} />
+        <main>
+          <Banner/>
+        </main>
       </div>
     </>
   );
