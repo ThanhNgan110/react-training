@@ -11,7 +11,7 @@ const Select = ({
   data
 }) => {
   return (
-    <div className="d-flex align-items-center ">
+    <>
       <label
         className={classNameLabel}
         htmlFor={name}
@@ -33,7 +33,7 @@ const Select = ({
           </option>
         ))}
       </select>
-    </div>
+    </>
   );
 };
 
