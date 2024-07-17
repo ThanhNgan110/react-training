@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 //Import component
 import SideBar from '../../layouts/SideBar';
 import Banner from '../../components/Banner';
-import Select from '../../components/Select';
+import Bar from '../../components/Bar';
 
+// Import constant
 import { OPTIONS } from '../../constants/label';
 
 // Import css
@@ -44,12 +45,7 @@ const Home = () => {
         <SideBar settings={settings} />
         <main>
           <Banner />
-          <Select
-            classNameLabel="fs-5 text-secondary"
-            label="Sort by"
-            name="sort-by"
-            data={data}
-          />
+          <Bar data={data}/>
         </main>
       </div>
     </>
