@@ -1,0 +1,16 @@
+.banner {
+  background-color: var(--color-dodger-blue);
+}
+
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 66px;
+  padding: 100px;
+}
+
+.title-banner {
+  font-weight: var(--font-weight-medium);
+  line-height: 40px;
+  font-size: var(--font-size-2xlg);
+}
