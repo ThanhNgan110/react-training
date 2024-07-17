@@ -1,4 +1,4 @@
-label {
+.label-radio {
   display: inline-block;
   width: 15px;
   height: 15px;
@@ -6,12 +6,12 @@ label {
   position: relative;
 }
 
-label:before {
+.label-radio:before {
   content: '';
   position: absolute;
   width: 15px;
   height: 15px;
-  background-color: var(--label-before-bg, #ff6347);
+  background-color: var(--label-before-bg, var(--color-blue));
   border-radius: var(--border-radius-md);
   transition: all 0.2s;
   z-index: 2;
@@ -33,6 +33,6 @@ input[type='radio']:checked {
   z-index: 1;
 }
 
-input[type='radio']:checked + label::after {
+input[type='radio']:checked + .label-radio::after {
   z-index: 3;
 }
