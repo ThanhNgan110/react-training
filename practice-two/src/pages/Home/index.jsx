@@ -1,13 +1,13 @@
 // Import react
 import { useState, useEffect } from 'react';
 
-//Import component
+// Import components
 import SideBar from '../../layouts/SideBar';
 import Banner from '../../components/Banner';
 import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
 
-// Import constant
+// Import constants
 import { OPTIONS } from '../../constants/label';
 
 // Import css
@@ -32,32 +32,39 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    const fetchProductTypes = async () => {
-      // Call loading icon if needed
-      const { data, error } = await getSettingData();
+    const fetchProduct = async () => {
+      try {
+        // Show loading icon
 
-      const products = await getProducts();
+        const { data: settingsData, error: settingsError } =
+          await getSettingData();
+        const { data: productsData, error: productsError } =
+          await getProducts();
 
-      if (!error) {
-        setSettings(data);
-        setProducts(products.data.products);
+        if (settingsError || productsError) {
+          throw new Error(settingsError || productsError);
+        }
+        setSettings(settingsData);
+        setProducts(productsData.products);
+      } catch (error) {
+        // error
+      } finally {
+        // Hide loading icon
       }
-      // Hide loading icon if needed
     };
 
-    fetchProductTypes();
+    fetchProduct();
   }, []);
+
   return (
-    <>
-      <div className="d-flex wrapper-content">
-        <SideBar settings={settings} />
-        <main>
-          <Banner />
-          <Bar data={data} />
-          <ProductList product={products} />
-        </main>
-      </div>
-    </>
+    <div className="d-flex wrapper-content">
+      <SideBar settings={settings} />
+      <main>
+        <Banner />
+        <Bar data={data} />
+        <ProductList products={products} />
+      </main>
+    </div>
   );
 };
 
