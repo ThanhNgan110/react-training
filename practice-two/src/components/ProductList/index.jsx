@@ -2,10 +2,10 @@ import ProductCard from '../ProductCard';
 
 import './index.css';
 
-const ProductList = ({ product }) => {
+const ProductList = ({ products }) => {
   return (
     <div className="product-list">
-      <ProductCard product={product} />
+      <ProductCard product={products} />
     </div>
   );
 };
