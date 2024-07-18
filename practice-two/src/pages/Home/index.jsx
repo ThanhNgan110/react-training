@@ -1,12 +1,13 @@
 // Import react
 import { useState, useEffect } from 'react';
 
-//Import component
+// Import components
 import SideBar from '../../layouts/SideBar';
 import Banner from '../../components/Banner';
 import Bar from '../../components/Bar';
+import ProductList from '../../components/ProductList';
 
-// Import constant
+// Import constants
 import { OPTIONS } from '../../constants/label';
 
 // Import css
@@ -14,6 +15,7 @@ import './index.css';
 
 // Import api
 import { getSettingData } from '../../services/filter-service';
+import { getProducts } from '../../services/product-service';
 
 const Home = () => {
   const [settings, setSettings] = useState({
@@ -22,33 +24,47 @@ const Home = () => {
     maxPrice: 0
   });
 
+  const [products, setProducts] = useState([]);
+
   const data = [
     { name: OPTIONS.NAME, value: 'name' },
     { name: OPTIONS.PRICE, value: 'price' }
   ];
 
   useEffect(() => {
-    const fetchProductTypes = async () => {
-      // Call loading icon if needed
-      const { data, error } = await getSettingData();
-      if (!error) {
-        setSettings(data);
+    const fetchProduct = async () => {
+      try {
+        // Show loading icon
+
+        const { data: settingsData, error: settingsError } =
+          await getSettingData();
+        const { data: productsData, error: productsError } =
+          await getProducts();
+
+        if (settingsError || productsError) {
+          throw new Error(settingsError || productsError);
+        }
+        setSettings(settingsData);
+        setProducts(productsData.products);
+      } catch (error) {
+        // error
+      } finally {
+        // Hide loading icon
       }
-      // Hide loading icon if needed
     };
 
-    fetchProductTypes();
+    fetchProduct();
   }, []);
+
   return (
-    <>
-      <div className="d-flex wrapper-content">
-        <SideBar settings={settings} />
-        <main>
-          <Banner />
-          <Bar data={data}/>
-        </main>
-      </div>
-    </>
+    <div className="d-flex wrapper-content">
+      <SideBar settings={settings} />
+      <main>
+        <Banner />
+        <Bar data={data} />
+        <ProductList products={products} />
+      </main>
+    </div>
   );
 };
 

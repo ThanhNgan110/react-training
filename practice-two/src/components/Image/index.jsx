@@ -10,7 +10,7 @@ const Image = ({ className, src, alt, width, height }) => {
         [className]: !!className
       })}
       src={src}
-      alt={alt}
+      alt={`img ${alt}` }
       width={width}
       height={height}
     />
