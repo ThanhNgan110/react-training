@@ -32,7 +32,7 @@
 
 .product-content {
   padding-left: 15px;
-  gap: 20px;
+  gap: 15px;
 }
 
 .discount {
@@ -48,4 +48,9 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   color: var(--color-pink);
+}
+
+.divider {
+  border-bottom: 2px solid var( --color-porcelain);
+  padding-bottom: 30px;
 }

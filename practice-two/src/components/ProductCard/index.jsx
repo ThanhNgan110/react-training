@@ -6,14 +6,14 @@ import Button from '../Button';
 import './index.css';
 
 const ProductCard = ({ product }) => {
-  return product?.map(item => (
-    <article
-      className="d-flex"
-      key={item.id}
+  const {name, image,reviews, price, description} = product
+  return (
+        <article
+      className="d-flex divider"
     >
       <div className="box-image">
         <Image
-          src={item.image[1]}
+          src={image[0]}
           alt="product"
         />
         <span className="badge"></span>
@@ -23,15 +23,15 @@ const ProductCard = ({ product }) => {
           as="h3"
           variant="primary"
         >
-          {item.name}
+          {name}
         </Text>
-        <div className="d-flex align-items-center">
-          <StarRating starFull={item.reviews} />
+        <div className="d-flex align-items-center divider">
+          <StarRating starFull={reviews} />
           <Text
             as="p"
             className="review"
           >
-            {item.reviews} reviews
+            {reviews} reviews
           </Text>
           <Button variant="link">Submit a review</Button>
         </div>
@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
             as="p"
             className="price"
           >
-            $ {item.price}
+            $ {price}
           </Text>
           <div className="d-flex group">
             <Text
@@ -49,7 +49,12 @@ const ProductCard = ({ product }) => {
             >
               $534,33
             </Text>
-            <Text as="p" className="percentage">24% Off</Text>
+            <Text
+              as="p"
+              className="percentage"
+            >
+              24% Off
+            </Text>
           </div>
         </div>
         <Text
@@ -57,11 +62,12 @@ const ProductCard = ({ product }) => {
           variant="secondary"
           ellipsis
         >
-          {item.description}
+          {description}
         </Text>
       </div>
     </article>
-  ));
+  )
+
 };
 
 export default ProductCard;
