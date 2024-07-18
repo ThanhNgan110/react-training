@@ -2,7 +2,7 @@
 import './styles/index.css';
 
 // Import Routes
-import Routing from './routes/routing';
+import Routing from './routes/index';
 
 const App = () => {
   return <Routing />;
