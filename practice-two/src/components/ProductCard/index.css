@@ -51,6 +51,6 @@
 }
 
 .divider {
-  border-bottom: 2px solid var( --color-porcelain);
+  border-bottom: 2px solid var(--color-porcelain);
   padding-bottom: 30px;
 }

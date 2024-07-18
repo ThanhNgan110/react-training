@@ -6,11 +6,9 @@ import Button from '../Button';
 import './index.css';
 
 const ProductCard = ({ product }) => {
-  const {name, image,reviews, price, description} = product
+  const { name, image, reviews, price, description } = product;
   return (
-        <article
-      className="d-flex divider"
-    >
+    <article className="d-flex divider">
       <div className="box-image">
         <Image
           src={image[0]}
@@ -66,8 +64,7 @@ const ProductCard = ({ product }) => {
         </Text>
       </div>
     </article>
-  )
-
+  );
 };
 
 export default ProductCard;
