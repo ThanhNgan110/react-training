@@ -1,18 +1,14 @@
 // Import components
-import Logo from '../../components/Logo';
-import NavList from '../../components/NavList';
+import NavBar from '../../components/NavBar';
 
 // Import css
 import './index.css';
 
 const Header = () => {
   return (
-    <>
-      <nav className="d-flex align-items-center justify-content-center wrapper-header">
-        <Logo />
-        <NavList />
-      </nav>
-    </>
+      <header className="d-flex align-items-center justify-content-center wrapper-header">
+        <NavBar />
+      </header>
   );
 };
 

@@ -7,10 +7,13 @@ import { PAGES } from '../../constants/route';
 // Import component
 import ListGroup from '../ListGroup';
 
+//
+import Logo from '../Logo';
+
 // Import css
 import './index.css';
 
-const NavList = () => {
+const NavBar = () => {
   const menus = [
     { path: PAGES.HOME.PATH, value: PAGES.HOME.VALUE },
     { path: PAGES.ABOUT.PATH, value: PAGES.ABOUT.VALUE },
@@ -20,22 +23,25 @@ const NavList = () => {
   ];
 
   return (
-    <ListGroup className="nav-list">
-      {menus.map((item, index) => (
-        <ListGroup.Item
-          className="nav-item"
-          key={`${index}`}
-        >
-          <Link
-            className="nav-item text-uppercase"
-            to={item.path}
+    <nav className="d-flex align-items-center nav">
+      <Logo />
+      <ListGroup className="nav-list">
+        {menus.map((item, index) => (
+          <ListGroup.Item
+            className="nav-item"
+            key={`${index}`}
           >
-            {item.value}
-          </Link>
-        </ListGroup.Item>
-      ))}
-    </ListGroup>
+            <Link
+              className="nav-item text-uppercase"
+              to={item.path}
+            >
+              {item.value}
+            </Link>
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
+    </nav>
   );
 };
 
-export default NavList;
+export default NavBar;
