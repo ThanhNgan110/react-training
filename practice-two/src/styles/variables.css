@@ -18,6 +18,8 @@
   --color-bali-hai: #9098b1;
   --color-porcelain: #f1f3f4;
   --color-blue: #006cff;
+  --color-loblolly: #c1c8ce;
+  --color-pink: #fb7181;
 
   --border-radius-sm: 2px;
   --border-radius-md: 50px;
@@ -27,8 +29,7 @@
   --font-size-md: 16px;
   --font-size-lg: 18px;
   --font-size-xlg: 24px;
-  --font-size-2xlg:30px;
-
+  --font-size-2xlg: 30px;
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
