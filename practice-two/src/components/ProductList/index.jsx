@@ -5,7 +5,12 @@ import './index.css';
 const ProductList = ({ products }) => {
   return (
     <div className="product-list">
-      <ProductCard product={products} />
+      {products.map(item => (
+        <ProductCard
+          key={item.id}
+          product={item}
+        />
+      ))}
     </div>
   );
 };
