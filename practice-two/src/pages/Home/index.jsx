@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import SideBar from '../../layouts/SideBar';
 import Banner from '../../components/Banner';
 import Bar from '../../components/Bar';
+import ProductList from '../../components/ProductList';
 
 // Import constant
 import { OPTIONS } from '../../constants/label';
@@ -14,6 +15,7 @@ import './index.css';
 
 // Import api
 import { getSettingData } from '../../services/filter-service';
+import { getProducts } from '../../services/product-service';
 
 const Home = () => {
   const [settings, setSettings] = useState({
@@ -21,6 +23,8 @@ const Home = () => {
     colors: [],
     maxPrice: 0
   });
+
+  const [products, setProducts] = useState([]);
 
   const data = [
     { name: OPTIONS.NAME, value: 'name' },
@@ -31,8 +35,12 @@ const Home = () => {
     const fetchProductTypes = async () => {
       // Call loading icon if needed
       const { data, error } = await getSettingData();
+
+      const products = await getProducts();
+
       if (!error) {
         setSettings(data);
+        setProducts(products.data.products);
       }
       // Hide loading icon if needed
     };
@@ -45,7 +53,8 @@ const Home = () => {
         <SideBar settings={settings} />
         <main>
           <Banner />
-          <Bar data={data}/>
+          <Bar data={data} />
+          <ProductList product={products} />
         </main>
       </div>
     </>
