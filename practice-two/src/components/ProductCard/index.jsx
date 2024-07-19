@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
           as="h3"
           variant="primary"
         >
-          {name}
+          {name ? name : ''}
         </Text>
         <div className="d-flex align-items-center divider">
           <StarRating starFull={reviews} />
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
             as="p"
             className="review"
           >
-            {reviews} reviews
+            {reviews ? reviews : ''} reviews
           </Text>
           <Button variant="link">Submit a review</Button>
         </div>
@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
             as="p"
             className="price"
           >
-            $ {price}
+            $ {price ? price : ''}
           </Text>
           <div className="d-flex group">
             <Text
