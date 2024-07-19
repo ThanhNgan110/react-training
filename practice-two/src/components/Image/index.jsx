@@ -3,7 +3,7 @@ import clsx from 'clsx';
 // Import css
 import './index.css';
 
-const Image = ({ className, src, alt, width, height }) => {
+const Image = ({ className, src, alt, width, height, onClick }) => {
   return (
     <img
       className={clsx('img', {
@@ -13,6 +13,7 @@ const Image = ({ className, src, alt, width, height }) => {
       alt={`img ${alt}`}
       width={width}
       height={height}
+      onClick={onClick}
     />
   );
 };
