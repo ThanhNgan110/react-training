@@ -14,13 +14,14 @@ export const get = async endPoint => {
   try {
     const res = await api.get(endPoint);
     return {
-      error: '',
+      success: true,
+      status: res.statusText,
       data: res.data
     };
   } catch (error) {
     return {
-      error: handleError(error),
-      data: ''
+      success: false,
+      errorMsg: new Error(error.message),
     };
   }
 };
@@ -35,24 +36,14 @@ export const post = async (endPoint, payload) => {
   try {
     const res = await api.post(endPoint, payload);
     return {
-      error: '',
+      success: true,
+      status: res.statusText,
       data: res.data
     };
   } catch (error) {
     return {
-      error: handleError(error),
-      data: ''
+      success: false,
+      errorMsg: new Error(error.message),
     };
-  }
-};
-
-export const handleError = error => {
-  switch (true) {
-    case !!error.response:
-      return error.response.data.message || 'Server error';
-    case !!error.request:
-      return 'Network error';
-    default:
-      return error.message;
   }
 };
