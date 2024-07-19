@@ -1,21 +1,18 @@
-// Import react
 import { useState, useEffect } from 'react';
 
-// Import components
 import SideBar from '../../layouts/SideBar';
 import Banner from '../../components/Banner';
 import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
 
-// Import constants
 import { OPTIONS } from '../../constants/label';
 
-// Import css
 import './index.css';
 
-// Import api
 import { getSettingData } from '../../services/filter-service';
 import { getProducts } from '../../services/product-service';
+
+import useFetchProduct from '../../hooks/useFetchProduct';
 
 const Home = () => {
   const [settings, setSettings] = useState({
@@ -24,7 +21,7 @@ const Home = () => {
     maxPrice: 0
   });
 
-  const [products, setProducts] = useState([]);
+  const { products } = useFetchProduct(getProducts);
 
   const data = [
     { name: OPTIONS.NAME, value: 'name' },
@@ -35,21 +32,14 @@ const Home = () => {
     const fetchProduct = async () => {
       try {
         // Show loading icon
-
-        const { data: settingsData, error: settingsError } =
+        const { data: settingsData, success: settingsSuccess } =
           await getSettingData();
-        const { data: productsData, error: productsError } =
-          await getProducts();
 
-        if (settingsError || productsError) {
-          throw new Error(settingsError || productsError);
+        if (settingsSuccess) {
+          setSettings(settingsData);
         }
-        setSettings(settingsData);
-        setProducts(productsData.products);
       } catch (error) {
         // error
-      } finally {
-        // Hide loading icon
       }
     };
 
@@ -62,7 +52,7 @@ const Home = () => {
       <main>
         <Banner />
         <Bar data={data} />
-        <ProductList products={products} />
+        <ProductList products={products.products} />
       </main>
     </div>
   );
