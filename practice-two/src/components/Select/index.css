@@ -3,4 +3,6 @@
   outline: none;
   padding: 10px;
   background-color: var(--color-porcelain);
+  width: 100%;
+  max-width: 123px;
 }
