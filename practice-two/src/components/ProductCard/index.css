@@ -19,38 +19,12 @@
   border-radius: var(--border-radius-sm);
 }
 
-.price {
-  color: var(--color-dodger-blue);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-}
-
-.review {
-  color: var(--color-loblolly);
-  padding: 0 5px 0 16px;
-}
-
 .product-content {
   padding-left: 15px;
   gap: 15px;
 }
 
-.discount {
-  color: var(--color-bali-hai);
-}
-
 .group {
   padding-left: 10px;
   gap: 9px;
-}
-
-.percentage {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-pink);
-}
-
-.divider {
-  border-bottom: 2px solid var(--color-porcelain);
-  padding-bottom: 30px;
 }
