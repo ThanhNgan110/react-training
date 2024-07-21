@@ -21,7 +21,7 @@ const Home = () => {
     maxPrice: 0
   });
 
-  const { products } = useFetchProduct(getProducts);
+  const { products, loading, error } = useFetchProduct(getProducts);
 
   const data = [
     { name: OPTIONS.NAME, value: 'name' },
@@ -45,6 +45,18 @@ const Home = () => {
 
     fetchProduct();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading product</div>;
+  }
+
+  if (!products) {
+    return <div>No product found</div>;
+  }
 
   return (
     <div className="d-flex wrapper-content">
