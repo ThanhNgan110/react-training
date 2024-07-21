@@ -1,0 +1,40 @@
+.product-center {
+  width: 100%;
+}
+
+.space-empty {
+  margin-top: 21.9px;
+  gap: 10px;
+}
+
+.space-top {
+  margin-top: 23px;
+}
+
+.space-btn-group {
+  gap: 11px;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-50 {
+  gap: 50px;
+}
+
+.gap-70 {
+  gap: 70px;
+}
+
+.gap-79 {
+  gap: 79px;
+}
+
+.gap-23 {
+  gap: 23px;
+}
+
+.gap-117 {
+  gap: 117px;
+}
