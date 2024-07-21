@@ -1,6 +1,6 @@
 .text-primary {
   color: var(--color-secondary);
-  font-size: var(--font-size-xlg);
+  font-size: var(--font-size-2xlg);
   font-weight: var(--font-weight-medium);
 }
 
@@ -11,5 +11,9 @@
 }
 
 .text-ellipsis {
-  text-overflow: ellipsis;
+  width: 700px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
