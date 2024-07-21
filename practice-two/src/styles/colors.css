@@ -10,3 +10,18 @@
   color: var(--color-white);
 }
 
+.text-info {
+  color: var(--color-dodger-blue);
+}
+
+.text-line-through {
+  color: var(--color-bali-hai);
+}
+
+.text-pink {
+  color: var(--color-pink);
+}
+
+.text-gray {
+  color: var(--color-loblolly);
+}

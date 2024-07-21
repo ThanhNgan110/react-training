@@ -5,3 +5,8 @@ import { get } from './api-service';
 export const getProducts = async () => {
   return await get(URL_API.END_POINT_PRODUCTS);
 };
+
+export const getProductById = async (id) => {
+  return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
+};
+

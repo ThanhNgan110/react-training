@@ -1,0 +1,12 @@
+.gallery {
+  gap: 10px;
+  margin-top: 110px;
+}
+
+.item-gallery {
+  border: var(--border-radius-sm) solid var(--color-porcelain);
+}
+
+.item-gallery.active {
+  border: var(--border-radius-sm) solid var(--color-blue);
+}

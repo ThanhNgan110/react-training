@@ -2,18 +2,17 @@ import Text from '../Text';
 import Image from '../Image';
 import StarRating from '../StarRating';
 import Button from '../Button';
+import Divider from '../Divider';
 
 import './index.css';
 
 const ProductCard = ({ product }) => {
-  return product?.map(item => (
-    <article
-      className="d-flex"
-      key={item.id}
-    >
+  const { name, image, reviews, price, description } = product;
+  return (
+    <article className="d-flex divider">
       <div className="box-image">
         <Image
-          src={item.image[1]}
+          src={image[0]}
           alt="product"
         />
         <span className="badge"></span>
@@ -23,33 +22,41 @@ const ProductCard = ({ product }) => {
           as="h3"
           variant="primary"
         >
-          {item.name}
+          {name ? name : ''}
         </Text>
-        <div className="d-flex align-items-center">
-          <StarRating starFull={item.reviews} />
+        <Divider>
+          <div className="d-flex align-items-center gap-10">
+            <StarRating starFull={reviews} />
+            <Text
+              as="p"
+              className="fs-4 text-gray"
+            >
+              {reviews ? reviews : ''} reviews
+            </Text>
+            <Button variant="link">Submit a review</Button>
+          </div>
+        </Divider>
+
+        <div className="d-flex align-items-center gap-10">
           <Text
             as="p"
-            className="review"
+            className="fs-3 text-info fw-bold"
           >
-            {item.reviews} reviews
-          </Text>
-          <Button variant="link">Submit a review</Button>
-        </div>
-        <div className="d-flex align-item-center">
-          <Text
-            as="p"
-            className="price"
-          >
-            $ {item.price}
+            $ {price ? price : ''}
           </Text>
           <div className="d-flex group">
             <Text
               as="p"
-              className="discount"
+              className="fs-5 fw-normal text-decoration-line-through text-line-through"
             >
               $534,33
             </Text>
-            <Text as="p" className="percentage">24% Off</Text>
+            <Text
+              as="p"
+              className="fs-5 fw-bold text-pink"
+            >
+              24% Off
+            </Text>
           </div>
         </div>
         <Text
@@ -57,11 +64,11 @@ const ProductCard = ({ product }) => {
           variant="secondary"
           ellipsis
         >
-          {item.description}
+          {description}
         </Text>
       </div>
     </article>
-  ));
+  );
 };
 
 export default ProductCard;

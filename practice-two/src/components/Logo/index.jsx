@@ -10,12 +10,10 @@ import Image from '../Image/index.jsx';
 const Logo = () => {
   return (
     <Link to="/">
-      <h1 className="logo">
-        <Image
-          src={logo}
-          alt="logo"
-        />
-      </h1>
+      <Image
+        src={logo}
+        alt="logo"
+      />
     </Link>
   );
 };

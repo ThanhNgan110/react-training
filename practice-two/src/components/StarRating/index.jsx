@@ -10,7 +10,7 @@ const StarRating = ({ starFull = 5 }) => {
           <Star
             width="12"
             height="12"
-            color={index < starFull ? "#FFC600" : "#C1C8CE"}
+            color={index < starFull ? '#FFC600' : '#C1C8CE'}
           />
         </ListGroupItem>
       ))}

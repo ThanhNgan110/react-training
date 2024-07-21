@@ -1,7 +1,15 @@
 import clsx from 'clsx';
 import './index.css';
 
-const Button = ({ className, variant, type, disabled, onClick, children }) => {
+const Button = ({
+  className,
+  variant,
+  type,
+  disabled,
+  onClick,
+  icon,
+  children
+}) => {
   return (
     <button
       className={clsx('btn', {
@@ -14,6 +22,12 @@ const Button = ({ className, variant, type, disabled, onClick, children }) => {
       disabled={disabled}
       onClick={onClick}
     >
+      {icon && (
+        <img
+          src={icon}
+          alt="icon"
+        />
+      )}
       {children}
     </button>
   );

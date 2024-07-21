@@ -1,9 +1,14 @@
+import clsx from 'clsx';
 // Import component
 import RadioInput from '../RadioInput';
 
-const ColorsPicker = ({ colors, onChange }) => {
+const ColorsPicker = ({ className, colors, onChange }) => {
   return (
-    <div className="d-flex justify-content-between">
+    <div
+      className={clsx('d-flex', {
+        [className]: !!className
+      })}
+    >
       {colors.map((item, index) => (
         <RadioInput
           key={`${index}`}
