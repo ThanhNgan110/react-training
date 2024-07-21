@@ -17,6 +17,7 @@ const ProductImages = ({ images = [], title }) => {
         src={images[indexCurrent]}
         alt={title}
         width="387px"
+        height="288px"
       />
       <div className="d-flex flex-row gallery">
         {images.map((image, index) => (
