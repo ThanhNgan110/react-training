@@ -1,10 +1,10 @@
 /* Font-size */
 .fs-1 {
-  font-size: var(--font-size-2xlg);
+  font-size: var(--font-size-3xlg);
 }
 
 .fs-2 {
-  font-size: var(--font-size-xlg);
+  font-size: var(--font-size-2xlg);
 }
 
 .fs-3 {
