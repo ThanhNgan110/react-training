@@ -5,9 +5,11 @@
   font-weight: var(--font-weight-medium);
   background-color: var(--color-white);
   color: var(--color-white);
-  border-radius: var(--border-radius-sm);
+  border-radius: 5px;
   line-height: 24px;
   transition: 0.3s;
+  padding: 15px 30px;
+  gap: 12px;
 }
 
 .btn-primary {
@@ -15,10 +17,11 @@
 }
 
 .btn-secondary {
-  background-color: var(--color-secondary);
+  background-color: var(--color-btn-secondary);
 }
 
 .btn-link {
   font-size: var(--font-size-sm);
   color: var(--color-link-hover-color);
+  padding: 0;
 }
