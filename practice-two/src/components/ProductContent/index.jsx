@@ -87,7 +87,10 @@ const ProductContent = ({ products }) => {
       <Divider>
         <span className="d-flex space-top gap-50">
           Select color:
-          <ColorsPicker className="gap-23" colors={colors} />
+          <ColorsPicker
+            className="gap-23"
+            colors={colors}
+          />
         </span>
         <div className="d-flex align-items-center space-top gap-117">
           <Select
