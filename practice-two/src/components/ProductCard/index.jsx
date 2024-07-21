@@ -2,6 +2,7 @@ import Text from '../Text';
 import Image from '../Image';
 import StarRating from '../StarRating';
 import Button from '../Button';
+import Divider from '../Divider';
 
 import './index.css';
 
@@ -23,33 +24,36 @@ const ProductCard = ({ product }) => {
         >
           {name ? name : ''}
         </Text>
-        <div className="d-flex align-items-center divider">
-          <StarRating starFull={reviews} />
+        <Divider>
+          <div className="d-flex align-items-center gap-10">
+            <StarRating starFull={reviews} />
+            <Text
+              as="p"
+              className="fs-4 text-gray"
+            >
+              {reviews ? reviews : ''} reviews
+            </Text>
+            <Button variant="link">Submit a review</Button>
+          </div>
+        </Divider>
+
+        <div className="d-flex align-items-center gap-10">
           <Text
             as="p"
-            className="review"
-          >
-            {reviews ? reviews : ''} reviews
-          </Text>
-          <Button variant="link">Submit a review</Button>
-        </div>
-        <div className="d-flex align-item-center">
-          <Text
-            as="p"
-            className="price"
+            className="fs-3 text-info fw-bold"
           >
             $ {price ? price : ''}
           </Text>
           <div className="d-flex group">
             <Text
               as="p"
-              className="discount"
+              className="fs-5 fw-normal text-decoration-line-through text-line-through"
             >
               $534,33
             </Text>
             <Text
               as="p"
-              className="percentage"
+              className="fs-5 fw-bold text-pink"
             >
               24% Off
             </Text>
