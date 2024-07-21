@@ -1,7 +1,7 @@
 .label-radio {
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 21px;
+  height: 21px;
   border-radius: var(--border-radius-md);
   position: relative;
 }
@@ -9,8 +9,8 @@
 .label-radio:before {
   content: '';
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 21px;
+  height: 21px;
   background-color: var(--label-before-bg, var(--color-blue));
   border-radius: var(--border-radius-md);
   transition: all 0.2s;
@@ -19,8 +19,8 @@
 
 input[type='radio'] {
   background-color: var(--color-blue);
-  width: 20px;
-  height: 20px;
+  width: 27px;
+  height: 26.1px;
   margin: 0;
   position: absolute;
   z-index: 3;
