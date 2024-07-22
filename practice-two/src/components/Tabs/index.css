@@ -1,0 +1,4 @@
+.tabs {
+  position: relative;
+  border-bottom: 5px solid var(--color-porcelain);
+}

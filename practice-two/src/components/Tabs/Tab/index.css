@@ -1,0 +1,18 @@
+.tab {
+  cursor: pointer;
+  color: #fc3e39;
+  transition: color 0.3s;
+}
+
+.btn-tab {
+  font-size: var(--font-size-lg);
+  color: var(--color-bali-hai);
+}
+
+.btn-tab.active {
+  position: absolute;
+  color: var(--color-blue-curious);
+  border-bottom: 5px solid var(--color-blue-curious);
+  bottom: -5px;
+  border-radius: 0;
+}
