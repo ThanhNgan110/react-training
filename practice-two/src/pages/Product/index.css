@@ -1,5 +1,16 @@
-.section-product {
+.wrapper-product {
   padding: 0 116px 0 119px;
   margin-top: 120px;
-  gap: 40px;
+}
+
+.section-product {
+  margin-bottom: 143px;
+}
+
+.tab-review {
+  background-color: var(--color-gray-100);
+}
+
+.divider-5 {
+  border-bottom: 5px solid var(--color-porcelain);
 }

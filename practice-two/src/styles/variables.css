@@ -20,6 +20,9 @@
   --color-blue: #006cff;
   --color-loblolly: #c1c8ce;
   --color-pink: #fb7181;
+  --color-blue-curious: #2e90e5;
+  --color-gray-100: #fafafb;
+  --color-gray-200: #9098b1;
 
   --border-radius-sm: 2px;
   --border-radius-md: 50px;
@@ -28,7 +31,7 @@
   --font-size-sm: 14px;
   --font-size-md: 16px;
   --font-size-lg: 18px;
-  --font-size-lg: 20px;
+  --font-size-xlg: 20px;
   --font-size-2xlg: 24px;
   --font-size-3xlg: 30px;
 

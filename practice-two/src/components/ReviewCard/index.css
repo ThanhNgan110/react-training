@@ -1,0 +1,16 @@
+.card-review {
+  margin-bottom: 24px;
+}
+
+.comment {
+  color: var(--color-bali-hai);
+  font-size: var(--font-size-xsm);
+  font-weight: var(--font-weight-normal);
+  line-height: 21.6px;
+}
+
+.date {
+  color: var(--color-bali-hai);
+  font-size: var(--font-size-xsm);
+  font-weight: var(--font-weight-normal);
+}
