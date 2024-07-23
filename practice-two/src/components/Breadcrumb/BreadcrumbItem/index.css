@@ -1,0 +1,14 @@
+.breadcrumb-item::after {
+  content: '/';
+  padding: 0 5px;
+  color: var(--color-loblolly);
+}
+
+.breadcrumb-item {
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg);
+}
+
+.breadcrumb-item.active::after {
+  content: '';
+}
