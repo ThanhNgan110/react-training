@@ -68,7 +68,7 @@ const Product = () => {
         <ProductImages images={products.image} />
         <ProductContent products={products} />
       </div>
-      <div className='tab-review'>
+      <div className="tab-review">
         <Tabs className="d-flex gap-20">
           {tabs.map((item, index) => (
             <Tab
@@ -80,7 +80,11 @@ const Product = () => {
             </Tab>
           ))}
         </Tabs>
-        <TabContent currentTab={currentTab} reviews={reviews} description={products.description}/>
+        <TabContent
+          currentTab={currentTab}
+          reviews={reviews}
+          description={products.description}
+        />
         {/* <ReviewList reviews={reviews} /> */}
       </div>
     </div>

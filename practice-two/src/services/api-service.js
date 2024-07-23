@@ -21,7 +21,7 @@ export const get = async endPoint => {
   } catch (error) {
     return {
       success: false,
-      errorMsg: new Error(error.message),
+      errorMsg: new Error(error.message)
     };
   }
 };
@@ -43,7 +43,7 @@ export const post = async (endPoint, payload) => {
   } catch (error) {
     return {
       success: false,
-      errorMsg: new Error(error.message),
+      errorMsg: new Error(error.message)
     };
   }
 };
