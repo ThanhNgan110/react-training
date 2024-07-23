@@ -12,6 +12,8 @@ import Tabs from '../../components/Tabs';
 import Tab from '../../components/Tabs/Tab';
 import TabContent from '../../components/Tabs/TabContent';
 
+import { PAGES } from '../../constants/route';
+
 import { TAB } from '../../constants/tab';
 
 const Product = () => {
@@ -22,6 +24,11 @@ const Product = () => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs = [{ title: TAB.PRODUCT_INFO }, { title: TAB.REVIEWS }];
+
+  const items = [
+    { title: PAGES.PRODUCT.VALUE, href: PAGES.HOME.PATH },
+    { title: products ? products.name : '', href: '', active: true }
+  ];
 
   const reviews = [
     {
@@ -63,12 +70,12 @@ const Product = () => {
   }
 
   return (
-    <div className="wrapper-product">
-      <div className="d-flex gap-40 section-product">
+    <main className="wrapper-product">
+      <section className="d-flex gap-40 section-product">
         <ProductImages images={products.image} />
         <ProductContent products={products} />
-      </div>
-      <div className="tab-review">
+      </section>
+      <section className="tab-review">
         <Tabs className="d-flex gap-20">
           {tabs.map((item, index) => (
             <Tab
@@ -85,9 +92,8 @@ const Product = () => {
           reviews={reviews}
           description={products.description}
         />
-        {/* <ReviewList reviews={reviews} /> */}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 
