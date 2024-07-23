@@ -12,7 +12,9 @@ const Tab = ({ className, active, onClick, children }) => {
       })}
     >
       <Button
-        className={`btn-tab ${active}`}
+        className={clsx('btn-tab', {
+          active: active === 'active'
+        })}
         onClick={onClick}
       >
         {children}

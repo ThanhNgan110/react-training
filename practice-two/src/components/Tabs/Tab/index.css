@@ -1,18 +1,20 @@
 .tab {
   cursor: pointer;
-  color: #fc3e39;
-  transition: color 0.3s;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .btn-tab {
   font-size: var(--font-size-lg);
   color: var(--color-bali-hai);
+  cursor: pointer;
+  border-radius: 0px;
+  padding: 23px;
+  background-color: var(--color-gray-100);
 }
 
 .btn-tab.active {
-  position: absolute;
   color: var(--color-blue-curious);
-  border-bottom: 5px solid var(--color-blue-curious);
-  bottom: -5px;
-  border-radius: 0;
+  box-shadow: 0 4px var(--color-blue-curious);
 }
