@@ -7,11 +7,14 @@ const TabContent = ({ currentTab, reviews, description }) => {
   return (
     <div className="tab-content">
       {currentTab === 0 ? (
-        <ReviewList reviews={reviews} />
-      ) : (
-        <Text as="p" className="fs-6 fw-normal text-gray">
+        <Text
+          as="p"
+          className="fs-6 fw-normal text-gray"
+        >
           {description}
         </Text>
+      ) : (
+        <ReviewList reviews={reviews} />
       )}
     </div>
   );
