@@ -4,7 +4,11 @@
 }
 
 .section-product {
-  margin-bottom: 115px;
+  margin-bottom: 143px;
+}
+
+.tab-review {
+  background-color: var(--color-gray-100);
 }
 
 .divider-5 {
