@@ -1,7 +1,7 @@
-import banner from '../../assets/images/banner.png';
+import banner from '../../../../assets/images/banner.png';
 
-import Image from '../Image';
-import Text from '../Text';
+import Image from '../../../../components/Image';
+import Text from '../../../../components/Text';
 
 import './index.css';
 

@@ -3,14 +3,14 @@ import Select from '../Select';
 
 import './index.css';
 
-const Bar = ({ number, data, onChange }) => {
+const Bar = ({ count, data, onChange }) => {
   return (
     <div className="d-flex align-items-center bar">
       <Text
         as="p"
         className="text-secondary fs-5"
       >
-        {number} Items
+        {count} Items
       </Text>
       <Select
         classNameLabel="fs-5 text-secondary"

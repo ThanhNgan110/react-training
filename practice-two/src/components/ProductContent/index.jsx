@@ -10,7 +10,7 @@ import socialTwitter from '../../assets/icons/socical-twitter.png';
 
 import './index.css';
 
-const ProductContent = ({ products }) => {
+const ProductContent = ({ product }) => {
   const {
     name,
     price,
@@ -20,7 +20,7 @@ const ProductContent = ({ products }) => {
     size,
     orderStatus,
     starFull
-  } = products;
+  } = product;
 
   return (
     <section className="product-center">
