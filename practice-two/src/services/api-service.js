@@ -14,14 +14,11 @@ export const get = async endPoint => {
   try {
     const res = await api.get(endPoint);
     return {
-      success: true,
-      status: res.statusText,
       data: res.data
     };
   } catch (error) {
     return {
-      success: false,
-      errorMsg: new Error(error.message)
+      error: error.message
     };
   }
 };
@@ -36,14 +33,11 @@ export const post = async (endPoint, payload) => {
   try {
     const res = await api.post(endPoint, payload);
     return {
-      success: true,
-      status: res.statusText,
       data: res.data
     };
   } catch (error) {
     return {
-      success: false,
-      errorMsg: new Error(error.message)
+      error: error.message
     };
   }
 };
