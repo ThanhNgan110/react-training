@@ -1,6 +1,10 @@
-import { URL_API } from '../constants/api';
-import { get } from './api-service';
-import { productsMock, productSettingsMock } from '../mocks/product';
+// import { URL_API } from '../constants/api';
+// import { get } from './api-service';
+import {
+  productsMock,
+  productSettingsMock,
+  productMock
+} from '../mocks/product';
 
 /** Get data product */
 export const getProducts = async () => {
@@ -18,6 +22,15 @@ export const getProductSettings = async () => {
   // return await get(URL_API.END_POINT_SETTING);
 };
 
-export const getProductById = async id => {
-  return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
+/** Get product by id (mock data)*/
+export const getProductById = async () => {
+  return {
+    data: productMock
+  };
+  // return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
 };
+
+/** Get product by id*/
+// export const getProductById = async id => {
+//   // return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
+// };
