@@ -15,7 +15,8 @@ const Colors = ({ colors, handleChangeColor }) => {
       >
         colors
       </Text>
-      <ColorsPicker className="justify-content-between"
+      <ColorsPicker
+        className="justify-content-between"
         colors={colors}
         onChange={handleChangeColor}
       />

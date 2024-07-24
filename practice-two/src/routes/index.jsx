@@ -18,7 +18,10 @@ const Routing = () => (
         index
         element={<Home />}
       />
-      <Route path={PAGES.PRODUCT.PATH} element={<Product/>} />
+      <Route
+        path={PAGES.PRODUCT.PATH}
+        element={<Product />}
+      />
     </Route>
   </Routes>
 );

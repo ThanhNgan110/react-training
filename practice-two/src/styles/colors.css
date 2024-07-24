@@ -1,3 +1,5 @@
+/* text color */
+
 .text-primary {
   color: var(--color-primary);
 }
@@ -27,6 +29,11 @@
 }
 
 .text-gray {
-  color: var(--color-gray-200);
+  color: var(--color-gray-300);
 }
 
+/* Link color */
+
+.link-primary {
+  color: var(--color-link-hover-color);
+}

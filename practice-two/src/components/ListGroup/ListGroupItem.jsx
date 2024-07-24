@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 
-// Import css
 import './index.css';
 
-const ListGroupItem = ({ className, children }) => {
+const ListGroupItem = ({ className, onClick, children }) => {
   return (
     <li
       className={clsx('list-group-item', {
         [className]: !!className
       })}
+      onClick={onClick}
     >
       {children}
     </li>
