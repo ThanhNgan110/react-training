@@ -1,8 +1,4 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect, Suspense } from 'react';
-
-import { getProductById } from '../../services/product-service';
-import { getReviews } from '../../services/review-service';
+import { useState } from 'react';
 
 import './index.css';
 
@@ -12,39 +8,22 @@ import Tabs from '../../components/Tabs';
 import Tab from '../../components/Tabs/Tab';
 import TabContent from '../../components/Tabs/TabContent';
 
-import { PAGES } from '../../constants/route';
+// import { PAGES } from '../../constants/route';
 
 import { TAB } from '../../constants/tab';
 
+import { productMock, reviews } from '../../mocks/product';
+
 const Product = () => {
-  // const { id } = useParams();
-  const [product, setProduct] = useState([]);
-  const [review, setReview] = useState([]);
-
-  useEffect(() => {
-    const handleProductDetail = async () => {
-      const { data, error } = await getProductById();
-      if (!error) {
-        setProduct(data);
-      }
-    };
-
-    const handleGetReviews = async () => {
-      const { data, error } = await getReviews();
-      if (!error) {
-        setReview(data);
-      }
-    };
-    handleProductDetail();
-    handleGetReviews();
-  }, []);
-
-  // const { products, loading, error } = useFetchProduct(getProductById, id);
+  // mock data
+  const product = productMock;
+  const review = reviews;
 
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs = [{ title: TAB.PRODUCT_INFO }, { title: TAB.REVIEWS }];
 
+  // breadcrumb
   // const items = [
   //   { title: PAGES.PRODUCT.VALUE, href: PAGES.HOME.PATH },
   //   { title: product ? product.name : '', href: '', active: true }
@@ -57,14 +36,10 @@ const Product = () => {
   return (
     <main className="wrapper-product">
       <section className="d-flex gap-40 section-product">
-        <Suspense fallback={<p>Loading...</p>}>
-          <ProductImages images={product.image} />
-        </Suspense>
-        {/* <Suspense fallback={<p>Loading....</p>}>
-          <ProductContent product={product} />
-        </Suspense> */}
+        <ProductImages images={product.image} />
+        <ProductContent product={product} />
       </section>
-      {/* <section className="tab-review">
+      <section className="tab-review">
         <Tabs className="d-flex gap-20">
           {tabs.map((item, index) => (
             <Tab
@@ -76,14 +51,12 @@ const Product = () => {
             </Tab>
           ))}
         </Tabs>
-        <Suspense fallback={<p>Loading...</p>}>
-          <TabContent
-            currentTab={currentTab}
-            reviews={review}
-            description={product.description}
-          />
-        </Suspense>
-      </section> */}
+        <TabContent
+          currentTab={currentTab}
+          reviews={review}
+          description={product.description}
+        />
+      </section>
     </main>
   );
 };

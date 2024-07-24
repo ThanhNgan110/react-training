@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 
 import SideBar from '../../layouts/SideBar';
 import Banner from './components/Banner';
@@ -68,9 +68,7 @@ const Home = () => {
           data={sortData}
           count={count}
         />
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <ProductList products={products} />
-        </Suspense>
+        <ProductList products={products} />
         <Pagination
           count={count}
           currentPage={currentPage}
