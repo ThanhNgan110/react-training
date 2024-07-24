@@ -4,6 +4,7 @@ import SideBar from '../../layouts/SideBar';
 import Banner from '../../components/Banner';
 import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
+import Pagination from '../../components/Pagination';
 
 import { OPTIONS } from '../../constants/label';
 
@@ -21,15 +22,21 @@ const Home = () => {
     maxPrice: 0
   });
 
-  const { products, loading, error } = useFetchProduct(getProducts);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { products, loading, error } = useFetchProduct(
+    getProducts,
+    currentPage
+  );
 
   const data = [
     { name: OPTIONS.NAME, value: 'name' },
     { name: OPTIONS.PRICE, value: 'price' }
   ];
 
+  const count = 5; // data mock
+
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchSettings = async () => {
       try {
         // Show loading icon
         const { data: settingsData, success: settingsSuccess } =
@@ -39,12 +46,16 @@ const Home = () => {
           setSettings(settingsData);
         }
       } catch (error) {
-        // error
+        // error handling
       }
     };
 
-    fetchProduct();
+    fetchSettings();
   }, []);
+
+  const handlePageClick = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -65,6 +76,11 @@ const Home = () => {
         <Banner />
         <Bar data={data} />
         <ProductList products={products.products} />
+        <Pagination
+          count={count}
+          currentPage={currentPage}
+          onClick={handlePageClick}
+        />
       </main>
     </div>
   );
