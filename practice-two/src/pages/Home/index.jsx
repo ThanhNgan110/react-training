@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 
 import SideBar from '../../layouts/SideBar';
-import Banner from '../../components/Banner';
+import Banner from './components/Banner';
 import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
 import Pagination from '../../components/Pagination';
@@ -10,12 +10,21 @@ import { OPTIONS } from '../../constants/label';
 
 import './index.css';
 
-import { getSettingData } from '../../services/filter-service';
-import { getProducts } from '../../services/product-service';
-
-import useFetchProduct from '../../hooks/useFetchProduct';
+import {
+  getProducts,
+  getProductSettings
+} from '../../services/product-service';
 
 const Home = () => {
+  const sortData = [
+    { name: OPTIONS.NAME, value: 'name' },
+    { name: OPTIONS.PRICE, value: 'price' }
+  ];
+
+  const [count, setCount] = useState(0);
+
+  const [products, setProducts] = useState([]);
+
   const [settings, setSettings] = useState({
     types: [],
     colors: [],
@@ -23,59 +32,45 @@ const Home = () => {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const { products, loading, error } = useFetchProduct(
-    getProducts,
-    currentPage
-  );
 
-  const data = [
-    { name: OPTIONS.NAME, value: 'name' },
-    { name: OPTIONS.PRICE, value: 'price' }
-  ];
-
-  const count = 5; // data mock
+  const handlePageClick = pageCurrent => {
+    setCurrentPage(pageCurrent);
+  };
 
   useEffect(() => {
-    const fetchSettings = async () => {
-      try {
-        // Show loading icon
-        const { data: settingsData, success: settingsSuccess } =
-          await getSettingData();
+    const handlePopulateProducts = async () => {
+      const { data, error } = await getProducts();
 
-        if (settingsSuccess) {
-          setSettings(settingsData);
-        }
-      } catch (error) {
-        // error handling
+      if (!error) {
+        setCount(data.count);
+        setProducts(data.products);
       }
     };
 
-    fetchSettings();
+    const handlePopulateSettings = async () => {
+      const { data, error } = await getProductSettings();
+
+      if (!error) {
+        setSettings(data);
+      }
+    };
+
+    handlePopulateSettings();
+    handlePopulateProducts();
   }, []);
-
-  const handlePageClick = pageNumber => {
-    setCurrentPage(pageNumber);
-  };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error loading product</div>;
-  }
-
-  if (!products) {
-    return <div>No product found</div>;
-  }
 
   return (
     <div className="d-flex wrapper-content">
       <SideBar settings={settings} />
       <main>
         <Banner />
-        <Bar data={data} />
-        <ProductList products={products.products} />
+        <Bar
+          data={sortData}
+          count={count}
+        />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <ProductList products={products} />
+        </Suspense>
         <Pagination
           count={count}
           currentPage={currentPage}
