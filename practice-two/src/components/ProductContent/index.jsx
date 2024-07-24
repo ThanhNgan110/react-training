@@ -11,7 +11,6 @@ import socialTwitter from '../../assets/icons/socical-twitter.png';
 import './index.css';
 
 const ProductContent = ({ product }) => {
-  console.log('product', product);
   const {
     name,
     price,

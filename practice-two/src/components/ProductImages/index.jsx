@@ -5,7 +5,6 @@ import './index.css';
 import Image from '../Image';
 
 const ProductImages = ({ images = [], title }) => {
-  console.log('image', images);
   const [indexCurrent, setIndexCurrent] = useState(0);
 
   const handleSetImage = index => {
