@@ -17,7 +17,7 @@
 }
 
 .page-link.active {
-  padding: 18px 25px;
+  padding: 14px 25px;
   background-color: var(--color-dodger-blue);
   color: var(--color-white);
 }
