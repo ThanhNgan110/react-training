@@ -7,7 +7,7 @@ import Divider from '../Divider';
 import './index.css';
 
 const ProductCard = ({ product }) => {
-  const { name, image, reviews, price, description } = product;
+  const { name, image, rating, price, description } = product;
   return (
     <article className="d-flex divider">
       <div className="box-image">
@@ -26,12 +26,16 @@ const ProductCard = ({ product }) => {
         </Text>
         <Divider>
           <div className="d-flex align-items-center gap-10">
-            <StarRating starFull={reviews} />
+            <StarRating
+              rating={rating}
+              width="12"
+              height="12"
+            />
             <Text
               as="p"
               className="fs-4 text-gray"
             >
-              {reviews ? reviews : ''} reviews
+              {rating ? rating : ''} reviews
             </Text>
             <Button variant="link">Submit a review</Button>
           </div>

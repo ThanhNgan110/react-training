@@ -2,18 +2,25 @@ import ListGroup from '../ListGroup';
 import Star from '../Icons/Star';
 import ListGroupItem from '../ListGroup/ListGroupItem';
 
-const StarRating = ({ className, starFull = 5, onClick }) => {
+const StarRating = ({
+  className,
+  max = 5,
+  rating = 5,
+  onClick,
+  width,
+  height
+}) => {
   return (
     <ListGroup className={className}>
-      {Array.from({ length: 5 }, (_, index) => (
+      {Array.from({ length: max }, (_, index) => (
         <ListGroupItem
           key={index}
-          onClick={onClick}
+          onClick={() => onClick(index + 1)}
         >
           <Star
-            width="12"
-            height="12"
-            color={index < starFull ? '#FFC600' : '#C1C8CE'}
+            width={width}
+            height={height}
+            color={index < rating ? '#FFC600' : '#C1C8CE'}
           />
         </ListGroupItem>
       ))}

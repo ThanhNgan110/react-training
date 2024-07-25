@@ -8,16 +8,8 @@ import Divider from '../Divider';
 import './index.css';
 
 const ProductContent = ({ product }) => {
-  const {
-    name,
-    price,
-    reviews,
-    category,
-    colors,
-    size,
-    orderStatus,
-    starFull
-  } = product;
+  const { name, price, reviews, category, colors, size, orderStatus, rating } =
+    product;
 
   return (
     <section className="product-center">
@@ -29,7 +21,11 @@ const ProductContent = ({ product }) => {
       </Text>
       <Divider>
         <div className="d-flex align-items-center space-empty">
-          <StarRating starFull={starFull} />
+          <StarRating
+            rating={rating}
+            width="12"
+            height="12"
+          />
           <Text
             as="p"
             className="fs-4 text-gray"
