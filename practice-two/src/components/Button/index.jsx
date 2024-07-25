@@ -10,6 +10,7 @@ const Button = ({
   iconClassName,
   children
 }) => {
+
   return (
     <button
       className={clsx('btn', {
