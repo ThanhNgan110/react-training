@@ -19,7 +19,7 @@ const App = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenModal = () => {
-    setIsOpen(true);
+    setIsOpen(prev => !prev);
   };
 
   return (
