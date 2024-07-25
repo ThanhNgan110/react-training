@@ -5,7 +5,6 @@ import Banner from './components/Banner';
 import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
 import Pagination from '../../components/Pagination';
-import ModalReview from '../../components/ModalReview';
 
 import { OPTIONS } from '../../constants/label';
 
@@ -60,10 +59,6 @@ const Home = () => {
     handlePopulateProducts();
   }, []);
 
-  // const handleSubmitReview = () => {
-  //   console.log('test');
-  // };
-
   return (
     <div className="d-flex wrapper-content">
       <SideBar settings={settings} />
@@ -79,7 +74,6 @@ const Home = () => {
           currentPage={currentPage}
           onClick={handlePageClick}
         />
-        {/* <ModalReview/> */}
       </main>
     </div>
   );
