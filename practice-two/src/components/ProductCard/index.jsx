@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import Text from '../Text';
 import Image from '../Image';
 import StarRating from '../StarRating';
@@ -6,15 +10,26 @@ import Divider from '../Divider';
 
 import './index.css';
 
+import { ModalContext } from '../../context';
+
 const ProductCard = ({ product }) => {
-  const { name, image, rating, price, description } = product;
+  const { id, name, image, rating, price, description } = product;
+
+  const { handleOpenModal } = useContext(ModalContext);
+
   return (
     <article className="d-flex divider">
       <div className="box-image">
-        <Image
-          src={image[0]}
-          alt="product"
-        />
+        <Link
+          key={id}
+          to={`/products/${id}`}
+        >
+          <Image
+            src={image[0]}
+            alt="product"
+          />
+        </Link>
+
         <span className="badge"></span>
       </div>
       <div className="d-flex flex-column product-content">
@@ -37,7 +52,12 @@ const ProductCard = ({ product }) => {
             >
               {rating ? rating : ''} reviews
             </Text>
-            <Button variant="link">Submit a review</Button>
+            <Button
+              variant="link"
+              onClick={handleOpenModal}
+            >
+              Submit a review
+            </Button>
           </div>
         </Divider>
 
