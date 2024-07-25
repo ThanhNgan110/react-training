@@ -15,6 +15,7 @@ export const productsMock = {
       category: 'Accessories',
       size: ['S', 'M', 'L'],
       type: 'Nike',
+      rating: 4,
       reviews: '4'
     },
     {
@@ -31,6 +32,7 @@ export const productsMock = {
       category: 'Accessories',
       size: ['S', 'M', 'L'],
       type: 'Nike',
+      rating: 4,
       reviews: '3'
     },
     {
@@ -47,6 +49,7 @@ export const productsMock = {
       category: 'Accessories',
       size: ['S', 'M', 'L'],
       type: 'Airmax',
+      rating: 4,
       reviews: '2'
     },
     {
@@ -63,6 +66,7 @@ export const productsMock = {
       category: 'Accessories',
       size: ['S', 'M', 'L'],
       type: 'Vans',
+      rating: 2,
       reviews: '1'
     }
   ],
@@ -117,7 +121,8 @@ export const productMock = {
   ],
   orderStatus: 'In Stock',
   type: 'Nike',
-  reviews: 4
+  reviews: 4,
+  rating: 3
 };
 
 export const reviews = [

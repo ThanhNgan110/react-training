@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { ModalContext } from '../../context';
+
 import Text from '../Text';
 import StarRating from '../StarRating';
 import Button from '../Button';
@@ -5,22 +8,12 @@ import ColorsPicker from '../ColorsPicker';
 import Select from '../Select';
 import Divider from '../Divider';
 
-import socialFace from '../../assets/icons/social-facebook.png';
-import socialTwitter from '../../assets/icons/socical-twitter.png';
-
 import './index.css';
 
 const ProductContent = ({ product }) => {
-  const {
-    name,
-    price,
-    reviews,
-    category,
-    colors,
-    size,
-    orderStatus,
-    starFull
-  } = product;
+  const { name, price, reviews, category, colors, size, orderStatus, rating } =
+    product;
+  const { handleOpenModal } = useContext(ModalContext);
 
   return (
     <section className="product-center">
@@ -32,14 +25,23 @@ const ProductContent = ({ product }) => {
       </Text>
       <Divider>
         <div className="d-flex align-items-center space-empty">
-          <StarRating starFull={starFull} />
+          <StarRating
+            rating={rating}
+            width="12"
+            height="12"
+          />
           <Text
             as="p"
             className="fs-4 text-gray"
           >
             {reviews} reviews
           </Text>
-          <Button className="btn-link fs-md">Submit a review</Button>
+          <Button
+            className="btn-link fs-md"
+            onClick={handleOpenModal}
+          >
+            Submit a review
+          </Button>
         </div>
       </Divider>
       <Divider>
@@ -105,13 +107,13 @@ const ProductContent = ({ product }) => {
         <div className="d-flex space-top space-btn-group">
           <Button
             className="btn-primary d-flex align-items-center"
-            icon={socialFace}
+            iconClassName="icon-facebook"
           >
             Share on a facebook
           </Button>
           <Button
             className="btn-secondary d-flex align-items-center"
-            icon={socialTwitter}
+            iconClassName="icon-twitter"
           >
             Share on a Twitter
           </Button>

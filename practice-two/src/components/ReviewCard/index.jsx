@@ -15,7 +15,11 @@ const ReviewCard = ({ reviews }) => {
         />
         <div className="d-flex flex-column">
           <Text as="h4">{name}</Text>
-          <StarRating starFull={ratting} />
+          <StarRating
+            starFull={ratting}
+            width={16}
+            height={16}
+          />
         </div>
       </div>
       <Text

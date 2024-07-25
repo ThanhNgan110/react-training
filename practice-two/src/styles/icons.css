@@ -1,0 +1,19 @@
+.icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.icon-close {
+  background-image: url('../assets/icons/close.png');
+  width: 25px;
+  height: 22px;
+}
+
+.icon-facebook {
+  background-image: url('../assets/icons/social-facebook.png');
+}
+
+.icon-twitter {
+  background-image: url('../assets/icons/social-twitter.png');
+}

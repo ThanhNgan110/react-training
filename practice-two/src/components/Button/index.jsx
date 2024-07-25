@@ -7,9 +7,10 @@ const Button = ({
   type,
   disabled,
   onClick,
-  icon,
+  iconClassName,
   children
 }) => {
+
   return (
     <button
       className={clsx('btn', {
@@ -22,12 +23,7 @@ const Button = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {icon && (
-        <img
-          src={icon}
-          alt="icon"
-        />
-      )}
+      {iconClassName && <span className={`icon ${iconClassName}`}></span>}
       {children}
     </button>
   );
