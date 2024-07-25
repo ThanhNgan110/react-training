@@ -23,6 +23,7 @@ const ModalReview = ({ onSubmit }) => {
     <>
       {isOpen && (
         <Modal
+          className={`${isOpen ? 'show' : 'close'}`}
           modalHeader={
             <div className="header-group">
               <Text
@@ -31,7 +32,10 @@ const ModalReview = ({ onSubmit }) => {
               >
                 Review
               </Text>
-              <Button iconClassName="btn-close icon-close" />
+              <Button
+                iconClassName="btn-close icon-close"
+                onClick={handleOpenModal}
+              />
             </div>
           }
           modalBody={
@@ -67,14 +71,7 @@ const ModalReview = ({ onSubmit }) => {
               </form>
             </>
           }
-          modalFooter={
-            <Button
-              className="btn-review"
-              onClick={() => handleOpenModal(false)}
-            >
-              Submit
-            </Button>
-          }
+          modalFooter={<Button className="btn-review">Submit</Button>}
         />
       )}
     </>
