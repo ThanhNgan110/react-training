@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { ModalContext } from '../../context';
+
 import Text from '../Text';
 import StarRating from '../StarRating';
 import Button from '../Button';
@@ -10,6 +13,7 @@ import './index.css';
 const ProductContent = ({ product }) => {
   const { name, price, reviews, category, colors, size, orderStatus, rating } =
     product;
+  const { handleOpenModal } = useContext(ModalContext);
 
   return (
     <section className="product-center">
@@ -32,7 +36,12 @@ const ProductContent = ({ product }) => {
           >
             {reviews} reviews
           </Text>
-          <Button className="btn-link fs-md">Submit a review</Button>
+          <Button
+            className="btn-link fs-md"
+            onClick={handleOpenModal}
+          >
+            Submit a review
+          </Button>
         </div>
       </Divider>
       <Divider>
