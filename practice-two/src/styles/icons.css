@@ -10,10 +10,31 @@
   height: 22px;
 }
 
+.icon-sm {
+  width: 40px;
+  height: 18px;
+}
+
 .icon-facebook {
   background-image: url('../assets/icons/social-facebook.png');
 }
 
 .icon-twitter {
   background-image: url('../assets/icons/social-twitter.png');
+}
+
+.icon-card-master {
+  background-image: url('../assets/images/card-master.png');
+}
+
+.icon-card-paypal {
+  background-image: url('../assets/images/card-paypal.png');
+}
+
+.icon-card-shape {
+  background-image: url('../assets/images/card-shape.png');
+}
+
+.icon-card-union {
+  background-image: url('../assets/images/card-union.png');
 }
