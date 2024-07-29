@@ -2,6 +2,8 @@ import { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { formatPrice } from '../../utils/formatPrice';
+
 import Text from '../Text';
 import Image from '../Image';
 import StarRating from '../StarRating';
@@ -66,7 +68,7 @@ const ProductCard = ({ product }) => {
             as="p"
             className="fs-3 text-info fw-bold"
           >
-            $ {price ? price : ''}
+            {price ? formatPrice(price) : ''}
           </Text>
           <div className="d-flex group">
             <Text
