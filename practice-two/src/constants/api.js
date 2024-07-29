@@ -5,5 +5,9 @@ export const URL_API = {
 };
 
 export const QUERY_PARAMETER = {
-  PARAM_TYPE: '?type='
+  PARAM_TYPE: '?type=',
+  PARAM_COLOR: '?color=',
+  PARAM_PAGE_SIZE: '?pageSize=',
+  PARAM_PAGE_NUMBER: '?pageNumber=',
+  PARAM_MAX_PRICE: '?maxPrice='
 };

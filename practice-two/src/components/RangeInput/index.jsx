@@ -3,7 +3,7 @@ import clsx from 'clsx';
 // Import css
 import './index.css';
 
-const RangeInput = ({ className, value, max, onChange }) => {
+const RangeInput = ({ className, value, max, handleChangePrice }) => {
   return (
     <input
       className={clsx('input', {
@@ -13,7 +13,7 @@ const RangeInput = ({ className, value, max, onChange }) => {
       min="0"
       max={max}
       value={value}
-      onChange={(e) => onChange(e)}
+      onChange={e => handleChangePrice(e)}
     />
   );
 };

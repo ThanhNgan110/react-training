@@ -4,16 +4,16 @@ import SideBar from '../../layouts/SideBar';
 import Banner from './components/Banner';
 import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
-// import Pagination from '../../components/Pagination';
 
 import { OPTIONS } from '../../constants/label';
+
+import { QUERY_PARAMETER } from '../../constants/api';
 
 import './index.css';
 
 import {
   getProducts,
-  getProductSettings,
-  filterProductByTradeMark
+  getProductSettings
 } from '../../services/product-service';
 
 const Home = () => {
@@ -30,24 +30,45 @@ const Home = () => {
     maxPrice: 0
   });
 
-  const [price, setPrice] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedType, setSelectedType] = useState(null);
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  
 
-  const handlePageClick = pageCurrent => {
-    setCurrentPage(pageCurrent);
-  };
 
-  const handleFilterCategory = async category => {
-    const { data, error } = await filterProductByTradeMark(category);
-    if (!error) {
-      setProducts(data.products);
-      setCount(data.count);
-    }
+
+  const handleSelectType = selectedType => {
+    setSelectedType(selectedType);
   };
 
   const handleChangePrice = e => {
-    setPrice(Number(e.target.value));
+    setSelectedPrice(Number(e.target.value));
   };
+
+  useEffect(() => {
+    const handlePopulateProducts = async () => {
+      const { data, error } = await getProducts(
+        `${QUERY_PARAMETER.PARAM_MAX_PRICE}${selectedPrice}`
+      );
+      if (!error) {
+        setCount(data.count);
+        setProducts(data.products);
+      }
+    };
+    handlePopulateProducts();
+  }, [selectedPrice]);
+
+  useEffect(() => {
+    const handlePopulateProducts = async () => {
+      const { data, error } = await getProducts(
+        `${QUERY_PARAMETER.PARAM_TYPE}${selectedType}`
+      );
+      if (!error) {
+        setCount(data.count);
+        setProducts(data.products);
+      }
+    };
+    handlePopulateProducts();
+  }, [selectedType]);
 
   useEffect(() => {
     const handlePopulateProducts = async () => {
@@ -57,25 +78,23 @@ const Home = () => {
         setProducts(data.products);
       }
     };
-
     const handlePopulateSettings = async () => {
       const { data, error } = await getProductSettings();
       if (!error) {
         setSettings(data);
       }
     };
-
-    handlePopulateSettings();
     handlePopulateProducts();
-  }, []); // Only run once when the component mounts
+    handlePopulateSettings();
+  }, []);
 
   return (
     <div className="d-flex wrapper-content">
       <SideBar
         settings={settings}
-        onClick={handleFilterCategory}
-        onChange={handleChangePrice}
-        price={price}
+        onClick={handleSelectType}
+        handleChangePrice={handleChangePrice}
+        price={selectedPrice}
       />
       <main>
         <Banner />

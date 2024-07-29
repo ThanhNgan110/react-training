@@ -7,7 +7,7 @@ import { formatPrice } from '../../../utils/formatPrice';
 // Import css
 import './index';
 
-const Prices = ({ maxPrice, price, onChange }) => {
+const Prices = ({ maxPrice, price, handleChangePrice }) => {
   return (
     <>
       <Text
@@ -35,7 +35,7 @@ const Prices = ({ maxPrice, price, onChange }) => {
       </div>
       <RangeInput
         max={maxPrice}
-        onChange={onChange}
+        handleChangePrice={handleChangePrice}
         value={price}
       />
     </>

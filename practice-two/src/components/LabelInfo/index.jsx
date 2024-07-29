@@ -3,15 +3,10 @@ import Button from '../Button';
 
 import './index.css';
 
-const LabelInfo = ({ label, number, onClick }) => {
+const LabelInfo = ({ label, number }) => {
   return (
     <div className="d-flex justify-content-between list-group-item">
-      <Button
-        className="btn-label"
-        onClick={() => onClick(label)}
-      >
-        {label}
-      </Button>
+      <Button className="btn-label">{label}</Button>
 
       <Text
         variant="text"

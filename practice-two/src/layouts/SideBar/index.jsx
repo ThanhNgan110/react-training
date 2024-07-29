@@ -7,7 +7,13 @@ import ListGroup from '../../components/ListGroup';
 // Import css
 import './index.css';
 
-const SideBar = ({ settings, handleChangeColor, onClick, onChange, price }) => {
+const SideBar = ({
+  settings,
+  handleChangeColor,
+  onClick,
+  handleChangePrice,
+  price
+}) => {
   const { types, maxPrice, colors } = settings;
   return (
     <ListGroup
@@ -15,10 +21,17 @@ const SideBar = ({ settings, handleChangeColor, onClick, onChange, price }) => {
       vertical={true}
     >
       <ListGroup.Item className="sidebar-item">
-        <Trademarks types={types} onClick={onClick} />
+        <Trademarks
+          types={types}
+          onClick={onClick}
+        />
       </ListGroup.Item>
       <ListGroup.Item className="sidebar-item">
-        <Prices maxPrice={maxPrice} price={price} onChange={onChange}/>
+        <Prices
+          maxPrice={maxPrice}
+          price={price}
+          handleChangePrice={handleChangePrice}
+        />
       </ListGroup.Item>
       <ListGroup.Item className="sidebar-item">
         <Colors
