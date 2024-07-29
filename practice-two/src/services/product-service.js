@@ -1,4 +1,4 @@
-import { URL_API, QUERY_PARAMETER } from '../constants/api';
+import { URL_API } from '../constants/api';
 import { get } from './api-service';
 
 /** Get data product */
@@ -30,10 +30,3 @@ export const getProductSettings = async () => {
 //   };
 //   // return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
 // };
-
-/** Get product by category (mock data)*/
-export const filterProductByTradeMark = async tradeMark => {
-  return await get(
-    `${URL_API.BASE_URL}${URL_API.END_POINT_PRODUCTS}${QUERY_PARAMETER.PARAM_TYPE}${tradeMark}`
-  );
-};
