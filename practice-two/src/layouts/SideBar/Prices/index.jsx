@@ -2,10 +2,12 @@
 import Text from '../../../components/Text';
 import RangeInput from '../../../components/RangeInput';
 
+import { formatPrice } from '../../../utils/formatPrice';
+
 // Import css
 import './index';
 
-const Prices = ({ maxPrice }) => {
+const Prices = ({ maxPrice, price, onChange }) => {
   return (
     <>
       <Text
@@ -28,10 +30,14 @@ const Prices = ({ maxPrice }) => {
           as="p"
           className="fs-3"
         >
-          {`$0 - $${maxPrice}`}
+          {`$0 - ${formatPrice(price)}`}
         </Text>
       </div>
-      <RangeInput />
+      <RangeInput
+        max={maxPrice}
+        onChange={onChange}
+        value={price}
+      />
     </>
   );
 };

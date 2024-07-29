@@ -7,6 +7,7 @@ import LabelInfo from '../../../components/LabelInfo';
 import './index';
 
 const Trademarks = ({ types, onClick }) => {
+
   return (
     <>
       <Text
@@ -21,13 +22,13 @@ const Trademarks = ({ types, onClick }) => {
         vertical={true}
       >
         {types.map((item, index) => (
-          <ListGroup.Item
+          <ListGroup.Item 
             key={`${index}`}
-            onClick={onClick}
           >
             <LabelInfo
-              label={item.name}
+              label={item.type}
               number={item.count}
+              onClick={onClick}
             />
           </ListGroup.Item>
         ))}
