@@ -1,5 +1,5 @@
-// import { URL_API } from '../constants/api';
-// import { get } from './api-service';
+import { URL_API, QUERY_PARAMETER } from '../constants/api';
+import { get } from './api-service';
 import {
   productsMock,
   productSettingsMock,
@@ -8,18 +8,14 @@ import {
 
 /** Get data product */
 export const getProducts = async () => {
-  return {
-    data: productsMock
-  };
-  // return await get(URL_API.END_POINT_PRODUCTS);
+  return await get(URL_API.END_POINT_PRODUCTS);
 };
 
 /** Get data types product */
 export const getProductSettings = async () => {
-  return {
-    data: productSettingsMock
-  };
-  // return await get(URL_API.END_POINT_SETTING);
+  return await get(
+    `${URL_API.END_POINT_PRODUCTS}/${URL_API.END_POINT_SETTING}`
+  );
 };
 
 /** Get product by id (mock data)*/
@@ -30,7 +26,9 @@ export const getProductById = async () => {
   // return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
 };
 
-/** Get product by id*/
-// export const getProductById = async id => {
-//   // return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
-// };
+/** Get product by category (mock data)*/
+export const filterProductByTradeMark = async tradeMark => {
+  return await get(
+    `${URL_API.BASE_URL}${URL_API.END_POINT_PRODUCTS}${QUERY_PARAMETER.PARAM_TYPE}${tradeMark}`
+  );
+};
