@@ -6,7 +6,7 @@ import LabelInfo from '../../../components/LabelInfo';
 // Import css
 import './index';
 
-const Trademarks = ({ types, onClick }) => {
+const Trademarks = ({ types, onClick, activeSelected }) => {
   return (
     <>
       <Text
@@ -28,6 +28,7 @@ const Trademarks = ({ types, onClick }) => {
             <LabelInfo
               label={item.type}
               number={item.count}
+              activeSelected={activeSelected === item.type}
             />
           </ListGroup.Item>
         ))}

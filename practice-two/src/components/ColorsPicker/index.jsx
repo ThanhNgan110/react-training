@@ -14,7 +14,7 @@ const ColorsPicker = ({ className, colors, onChange }) => {
           key={`${index}`}
           value={item}
           color={item}
-          onChange={onChange}
+          onChange={(e)=> onChange(e)}
         />
       ))}
     </div>

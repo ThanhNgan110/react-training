@@ -30,6 +30,7 @@ const Home = () => {
 
   const [selectedType, setSelectedType] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   const handleSelectType = selectedType => {
     setSelectedType(selectedType);
@@ -39,11 +40,16 @@ const Home = () => {
     setSelectedPrice(Number(e.target.value));
   };
 
+  const handleChangeColor = (e)=> {
+    setSelectedColor(e.target.value);
+  }
+
   useEffect(() => {
     const handlePopulateProducts = async () => {
       const { data, error } = await getProducts({
         selectedType,
-        selectedPrice
+        selectedPrice,
+        selectedColor
       });
 
       if (!error) {
@@ -52,7 +58,7 @@ const Home = () => {
       }
     };
     handlePopulateProducts();
-  }, [selectedType, selectedPrice]);
+  }, [selectedType, selectedPrice, selectedColor]);
 
   useEffect(() => {
     const handlePopulateSettings = async () => {
@@ -69,7 +75,9 @@ const Home = () => {
       <SideBar
         settings={settings}
         onClick={handleSelectType}
+        activeSelected={selectedType}
         handleChangePrice={handleChangePrice}
+        handleChangeColor={handleChangeColor}
         price={selectedPrice}
       />
       <main>

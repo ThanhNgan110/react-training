@@ -1,17 +1,22 @@
 import Text from '../Text';
-import Button from '../Button';
 
 import './index.css';
 
-const LabelInfo = ({ label, number }) => {
+const LabelInfo = ({ label, number, activeSelected }) => {
   return (
     <div className="d-flex justify-content-between list-group-item">
-      <Button className="btn-label">{label}</Button>
+      <Text
+        variant="text"
+        as="p"
+        className={`fs-3 text-secondary ${activeSelected ? 'active' : ''}`}
+      >
+        {label}
+      </Text>
 
       <Text
         variant="text"
         as="p"
-        className="fs-3 text-secondary"
+        className={`fs-3 text-secondary ${activeSelected ? 'active' : ''}`}
       >
         {number}
       </Text>

@@ -1,5 +1,3 @@
-.btn-label {
-  background: transparent;
-  padding: 0;
-  color: var(--color-primary);
+.active {
+  color: var(--color-link-hover-color);
 }

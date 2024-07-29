@@ -12,7 +12,8 @@ const SideBar = ({
   handleChangeColor,
   onClick,
   handleChangePrice,
-  price
+  price,
+  activeSelected
 }) => {
   const { types, maxPrice, colors } = settings;
   return (
@@ -24,6 +25,7 @@ const SideBar = ({
         <Trademarks
           types={types}
           onClick={onClick}
+          activeSelected={activeSelected}
         />
       </ListGroup.Item>
       <ListGroup.Item className="sidebar-item">
