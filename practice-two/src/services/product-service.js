@@ -2,15 +2,18 @@ import { URL_API, QUERY_PARAMETER } from '../constants/api';
 import { get } from './api-service';
 
 /** Get data product */
-export const getProducts = async (options = {}) => {
-  // Convert the options object to a query string
-  if (options !== null) {
-    const queryString = new URLSearchParams(options).toString();
-    const url = `${URL_API.BASE_URL}${URL_API.END_POINT_PRODUCTS}${
-      queryString ? `?${queryString}` : ''
-    }`;
-    return await get(url);
+export const getProducts = async ({ selectedType, selectedPrice }) => {
+  const url = new URL(`${URL_API.BASE_URL}${URL_API.END_POINT_PRODUCTS}`);
+
+  if (selectedType) {
+    url.searchParams.set('type', selectedType);
   }
+
+  if (selectedPrice) {
+    url.searchParams.set('price', selectedPrice);
+  }
+
+  return await get(url);
 };
 
 /** Get data types product */

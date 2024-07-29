@@ -7,8 +7,6 @@ import ProductList from '../../components/ProductList';
 
 import { OPTIONS } from '../../constants/label';
 
-import { QUERY_PARAMETER } from '../../constants/api';
-
 import './index.css';
 
 import {
@@ -32,9 +30,6 @@ const Home = () => {
 
   const [selectedType, setSelectedType] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
-  
-
-
 
   const handleSelectType = selectedType => {
     setSelectedType(selectedType);
@@ -46,45 +41,26 @@ const Home = () => {
 
   useEffect(() => {
     const handlePopulateProducts = async () => {
-      const { data, error } = await getProducts(
-        `${QUERY_PARAMETER.PARAM_MAX_PRICE}${selectedPrice}`
-      );
+      const { data, error } = await getProducts({
+        selectedType,
+        selectedPrice
+      });
+
       if (!error) {
         setCount(data.count);
         setProducts(data.products);
       }
     };
     handlePopulateProducts();
-  }, [selectedPrice]);
+  }, [selectedType, selectedPrice]);
 
   useEffect(() => {
-    const handlePopulateProducts = async () => {
-      const { data, error } = await getProducts(
-        `${QUERY_PARAMETER.PARAM_TYPE}${selectedType}`
-      );
-      if (!error) {
-        setCount(data.count);
-        setProducts(data.products);
-      }
-    };
-    handlePopulateProducts();
-  }, [selectedType]);
-
-  useEffect(() => {
-    const handlePopulateProducts = async () => {
-      const { data, error } = await getProducts();
-      if (!error) {
-        setCount(data.count);
-        setProducts(data.products);
-      }
-    };
     const handlePopulateSettings = async () => {
       const { data, error } = await getProductSettings();
       if (!error) {
         setSettings(data);
       }
     };
-    handlePopulateProducts();
     handlePopulateSettings();
   }, []);
 
