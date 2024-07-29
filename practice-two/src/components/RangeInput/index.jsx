@@ -3,17 +3,17 @@ import clsx from 'clsx';
 // Import css
 import './index.css';
 
-const RangeInput = ({ className, value, min, max, onChange }) => {
+const RangeInput = ({ className, value, max, onChange }) => {
   return (
     <input
       className={clsx('input', {
         [className]: !!className
       })}
       type="range"
-      min={min}
+      min="0"
       max={max}
       value={value}
-      onChange={onChange}
+      onChange={(e) => onChange(e)}
     />
   );
 };
