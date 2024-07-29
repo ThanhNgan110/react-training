@@ -1,15 +1,18 @@
 import Text from '../Text';
+import Button from '../Button';
 
-const LabelInfo = ({ label, number }) => {
+import './index.css';
+
+const LabelInfo = ({ label, number, onClick }) => {
   return (
     <div className="d-flex justify-content-between list-group-item">
-      <Text
-        variant="text"
-        as="p"
-        className="fs-3"
+      <Button
+        className="btn-label"
+        onClick={() => onClick(label)}
       >
         {label}
-      </Text>
+      </Button>
+
       <Text
         variant="text"
         as="p"
