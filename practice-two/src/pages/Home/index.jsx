@@ -18,8 +18,10 @@ import useDebouncedValue from '../../hooks/useDebouncedValue';
 
 const Home = () => {
   const sortData = [
-    { name: OPTIONS.NAME, value: 'name' },
-    { name: OPTIONS.PRICE, value: 'price' }
+    OPTIONS.NAME,
+    OPTIONS.PRICE
+    // { name: , value: 'name' },
+    // { name:, value: 'price' }
   ];
 
   const [count, setCount] = useState(0);
