@@ -14,6 +14,8 @@ import {
   getProductSettings
 } from '../../services/product-service';
 
+import useDebouncedValue from '../../hooks/useDebouncedValue';
+
 const Home = () => {
   const sortData = [
     { name: OPTIONS.NAME, value: 'name' },
@@ -31,6 +33,7 @@ const Home = () => {
   const [selectedType, setSelectedType] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const debouncedChangeInputRange = useDebouncedValue(selectedPrice, 500);
 
   const handleSelectType = selectedType => {
     setSelectedType(selectedType);
@@ -40,15 +43,15 @@ const Home = () => {
     setSelectedPrice(Number(e.target.value));
   };
 
-  const handleChangeColor = (e)=> {
+  const handleChangeColor = e => {
     setSelectedColor(e.target.value);
-  }
+  };
 
   useEffect(() => {
     const handlePopulateProducts = async () => {
       const { data, error } = await getProducts({
         selectedType,
-        selectedPrice,
+        selectedPrice: debouncedChangeInputRange,
         selectedColor
       });
 
@@ -58,7 +61,7 @@ const Home = () => {
       }
     };
     handlePopulateProducts();
-  }, [selectedType, selectedPrice, selectedColor]);
+  }, [selectedType, debouncedChangeInputRange, selectedColor]);
 
   useEffect(() => {
     const handlePopulateSettings = async () => {
