@@ -2,7 +2,11 @@ import { URL_API } from '../constants/api';
 import { get } from './api-service';
 
 /** Get data product */
-export const getProducts = async ({ selectedType, selectedPrice, selectedColor }) => {
+export const getProducts = async ({
+  selectedType,
+  selectedPrice,
+  selectedColor
+}) => {
   const url = new URL(`${URL_API.BASE_URL}${URL_API.END_POINT_PRODUCTS}`);
 
   if (selectedType) {
@@ -27,10 +31,7 @@ export const getProductSettings = async () => {
   );
 };
 
-/** Get product by id (mock data)*/
-// export const getProductById = async () => {
-//   return {
-//     data: productMock
-//   };
-//   // return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
-// };
+/** Get product by id */
+export const getProductById = async id => {
+  return await get(`${URL_API.END_POINT_PRODUCTS}/${id}`);
+};
