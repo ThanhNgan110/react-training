@@ -1,5 +1,9 @@
-.tabs {
-  position: relative;
-  border-bottom: 5px solid var(--color-porcelain);
-  padding: 0 38px;
+.hozitional {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
 }

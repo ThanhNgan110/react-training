@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.tab-item {
+  border-bottom: 5px solid var(--color-porcelain);
+}
+
 .btn-tab {
   font-size: var(--font-size-lg);
   color: var(--color-bali-hai);

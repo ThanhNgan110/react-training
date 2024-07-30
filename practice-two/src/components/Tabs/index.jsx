@@ -5,7 +5,7 @@ import './index.css';
 const Tabs = ({ className, variant, children }) => {
   return (
     <div
-      className={clsx('tabs', {
+      className={clsx('', {
         [className]: !!className,
         vertical: variant === 'vertical',
         hozitional: variant === 'hozitional'
