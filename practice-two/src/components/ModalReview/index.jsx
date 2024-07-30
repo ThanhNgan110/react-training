@@ -10,13 +10,24 @@ import { ModalContext } from '../../context';
 
 import './index.css';
 
-const ModalReview = ({ onSubmit }) => {
+const ModalReview = () => {
   const [rating, setRating] = useState(0);
+  const [review, setReview] = useState('');
 
   const { isOpen, handleOpenModal } = useContext(ModalContext);
 
   const handleChangeRating = numberRating => {
     setRating(numberRating);
+  };
+
+  const handleReviewChange = e => {
+    setReview(e.target.value);
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    // code here
+    handleOpenModal();
   };
 
   return (
@@ -67,11 +78,18 @@ const ModalReview = ({ onSubmit }) => {
                 <Textarea
                   className="textarea-size"
                   placeholder="Write your review here"
+                  value={review}
+                  onChange={handleReviewChange}
                 />
+                <Button
+                  className="btn-review"
+                  type="submit"
+                >
+                  Submit
+                </Button>
               </form>
             </>
           }
-          modalFooter={<Button className="btn-review">Submit</Button>}
         />
       )}
     </>
