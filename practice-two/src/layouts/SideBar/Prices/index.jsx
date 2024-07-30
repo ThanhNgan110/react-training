@@ -13,7 +13,7 @@ const Prices = ({ maxPrice, price, handleChangePrice }) => {
       <Text
         variant="heading"
         as="h2"
-        className="fs-3 fw-bold text-uppercase"
+        className="fs-3 fw-medium text-uppercase"
       >
         prices
       </Text>

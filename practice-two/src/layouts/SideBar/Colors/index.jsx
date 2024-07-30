@@ -11,7 +11,7 @@ const Colors = ({ colors, handleChangeColor }) => {
       <Text
         variant="heading"
         as="h2"
-        className="fs-3 fw-bold text-uppercase"
+        className="fs-3 fw-medium text-uppercase"
       >
         colors
       </Text>

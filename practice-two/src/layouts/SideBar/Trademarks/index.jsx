@@ -12,7 +12,7 @@ const Trademarks = ({ types, onClick, activeSelected }) => {
       <Text
         variant="heading"
         as="h2"
-        className="fs-3 fw-bold text-uppercase"
+        className="fs-3 fw-medium text-uppercase"
       >
         trademarks
       </Text>
