@@ -6,7 +6,7 @@ const BreadcrumbItem = ({ active = false, href, title }) => {
   return (
     <li
       className={clsx('breadcrumb-item', {
-        active: active
+        'item-active': active
       })}
       aria-current={active ? 'page' : undefined}
     >

@@ -9,6 +9,7 @@
   font-size: var(--font-size-lg);
 }
 
-.breadcrumb-item.active::after {
+.breadcrumb-item.item-active::after {
+  color: var(--color-loblolly) !important;
   content: '';
 }
