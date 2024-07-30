@@ -12,7 +12,6 @@ const api = axios.create({
  */
 export const get = async endPoint => {
   try {
-    console.log('endPoint', endPoint);
     const res = await api.get(endPoint);
     return {
       data: res.data
