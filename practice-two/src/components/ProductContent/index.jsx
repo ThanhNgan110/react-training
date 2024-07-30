@@ -10,6 +10,8 @@ import Divider from '../Divider';
 
 import './index.css';
 
+import { formatPrice } from '../../utils/formatPrice';
+
 const ProductContent = ({ product }) => {
   const { name, price, reviews, category, colors, size, orderStatus, rating } =
     product;
@@ -50,7 +52,7 @@ const ProductContent = ({ product }) => {
             as="p"
             className="fs-3 text-info fw-bold space-top"
           >
-            ${price}
+            {formatPrice(price)}
           </Text>
           <Text
             as="p"

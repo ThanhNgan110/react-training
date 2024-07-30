@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
   return (
     <article className="d-flex divider">
       <div className="box-image">
-        <Link
+        <Link className='box-image'
           key={id}
           to={`/products/${id}`}
         >
