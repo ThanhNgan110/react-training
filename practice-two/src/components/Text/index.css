@@ -11,7 +11,7 @@
 }
 
 .text-ellipsis {
-  width: 700px;
+  max-width: 538px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
