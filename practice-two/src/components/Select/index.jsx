@@ -24,12 +24,12 @@ const Select = ({
         })}
         onChange={onChange}
       >
-        {data.map(({ value, name }, index) => (
+        {data.map((item, index) => (
           <option
             key={`${index}`}
-            value={value}
+            value={item}
           >
-            {name}
+            {item}
           </option>
         ))}
       </select>
