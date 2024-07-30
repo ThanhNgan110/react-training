@@ -24,6 +24,7 @@
 .product-content {
   padding-left: 15px;
   gap: 15px;
+  width: calc(100% - 300px);
 }
 
 .group {
