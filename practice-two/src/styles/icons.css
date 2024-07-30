@@ -16,10 +16,14 @@
 }
 
 .icon-facebook {
+  width: 8px;
+  height: 16px;
   background-image: url('../assets/icons/social-facebook.png');
 }
 
 .icon-twitter {
+  width: 18px;
+  height: 13px;
   background-image: url('../assets/icons/social-twitter.png');
 }
 
