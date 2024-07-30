@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import './index.css';
 
@@ -7,57 +8,84 @@ import ProductContent from '../../components/ProductContent';
 import Tabs from '../../components/Tabs';
 import Tab from '../../components/Tabs/Tab';
 import TabContent from '../../components/Tabs/TabContent';
+import TabBar from '../../components/TabBar';
+import Loading from '../../components/Spinner';
 
-// import { PAGES } from '../../constants/route';
+import { PAGES } from '../../constants/route';
 
 import { TAB } from '../../constants/tab';
 
-import { productMock, reviews } from '../../mocks/product';
+import { reviews } from '../../mocks/product';
+import { getProductById } from '../../services/product-service';
 
 const Product = () => {
+  let { id } = useParams();
+
   // mock data
-  const product = productMock;
   const review = reviews;
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs = [{ title: TAB.PRODUCT_INFO }, { title: TAB.REVIEWS }];
 
-  // breadcrumb
-  // const items = [
-  //   { title: PAGES.PRODUCT.VALUE, href: PAGES.HOME.PATH },
-  //   { title: product ? product.name : '', href: '', active: true }
-  // ];
+  const items = [
+    { title: PAGES.PRODUCT.VALUE, href: PAGES.HOME.PATH },
+    { title: product ? product.name : '', href: '', active: true }
+  ];
 
   const handleSetTab = index => {
     setCurrentTab(index);
   };
 
+  useEffect(() => {
+    const fetchProductById = async () => {
+      setIsLoading(true);
+      const { data, error } = await getProductById(id);
+      if (!error) {
+        setProduct(data);
+      }
+      setIsLoading(false);
+    };
+    fetchProductById();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <main className="wrapper-product">
-      <section className="d-flex gap-40 section-product">
-        <ProductImages images={product.image} />
-        <ProductContent product={product} />
-      </section>
-      <section className="tab-review">
-        <Tabs className="d-flex gap-20">
-          {tabs.map((item, index) => (
-            <Tab
-              key={index}
-              onClick={() => handleSetTab(index)}
-              active={index === currentTab ? 'active' : ''}
-            >
-              {item.title}
-            </Tab>
-          ))}
-        </Tabs>
-        <TabContent
-          currentTab={currentTab}
-          reviews={review}
-          description={product.description}
-        />
-      </section>
-    </main>
+    <>
+      <TabBar items={items} />
+      <main className="wrapper-product">
+        <section className="d-flex gap-40 section-product">
+          <ProductImages images={product.image} />
+          <ProductContent product={product} />
+        </section>
+        <section className="tab-review">
+          <Tabs>
+            <div className="d-flex tab-item">
+              {tabs.map((item, index) => (
+                <Tab
+                  key={index}
+                  onClick={() => handleSetTab(index)}
+                  active={index === currentTab ? 'active' : ''}
+                >
+                  {item.title}
+                </Tab>
+              ))}
+            </div>
+            <TabContent
+              currentTab={currentTab}
+              reviews={review}
+              description={product.description}
+            />
+          </Tabs>
+        </section>
+      </main>
+    </>
   );
 };
 
