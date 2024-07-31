@@ -6,11 +6,15 @@ import Textarea from '../Textarea';
 import Button from '../Button';
 import StarRating from '../StarRating';
 
-import { ModalContext, UserContext } from '../../context';
+import { ModalContext } from '../../context';
 
 import './index.css';
 
 import { createReviews } from '../../services/review-service';
+
+import { users } from '../../mocks/users';
+
+import { getRandomUser } from '../../utils/randomUser';
 
 const ModalReview = () => {
   const [rating, setRating] = useState(0);
@@ -18,7 +22,6 @@ const ModalReview = () => {
 
   const { isOpen, selectedProductId, handleOpenModal } =
     useContext(ModalContext);
-  const { userName, handleRandomUser } = useContext(UserContext);
 
   const handleChangeRating = numberRating => {
     setRating(numberRating);
@@ -30,11 +33,10 @@ const ModalReview = () => {
 
   const onSubmitReview = async e => {
     e.preventDefault();
-    handleRandomUser();
     const userReview = {
       rating,
       comment: review,
-      userName,
+      userName: users[getRandomUser(users.length)],
       productId: selectedProductId
     };
     await createReviews(userReview);
