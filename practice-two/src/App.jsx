@@ -30,8 +30,10 @@ const App = () => {
   };
 
   const handleRandomUser = () => {
-    setUserName(users[getRandomUser(users.length)]);
-    console.log('userName', userName);
+    const userName = users[getRandomUser(users.length)];
+    console.log('userName1', userName);
+    setUserName(userName);
+    console.log('userName2', userName);
   };
 
   return (
