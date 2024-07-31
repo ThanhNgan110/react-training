@@ -12,7 +12,7 @@ const RangeInput = ({ className, value, max, handleChangePrice }) => {
       type="range"
       min="0"
       max={max}
-      value={value}
+      value={value ?? ''}
       onChange={e => handleChangePrice(e)}
     />
   );

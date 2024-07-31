@@ -15,7 +15,7 @@ const RadioInput = ({ className, value, onChange, color }) => {
       <input
         type="radio"
         name="radio"
-        value={value}
+        value={value ?? ''}
         onChange={onChange}
       />
     </label>
