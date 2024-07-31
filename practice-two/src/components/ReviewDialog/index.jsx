@@ -1,12 +1,10 @@
-import { useState, useContext } from 'react';
+import { useState} from 'react';
 
 import Modal from '../Modal';
 import Text from '../Text';
 import Textarea from '../Textarea';
 import Button from '../Button';
 import StarRating from '../StarRating';
-
-import { ModalContext } from '../../context';
 
 import './index.css';
 
@@ -16,12 +14,10 @@ import { users } from '../../mocks/users';
 
 import { getRandomUser } from '../../utils/randomUser';
 
-const ReviewDialog = () => {
+
+const ModalReview = () => {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
-
-  const { isOpen, selectedProductId, handleOpenModal } =
-    useContext(ModalContext);
 
   const handleChangeRating = numberRating => {
     setRating(numberRating);
@@ -32,23 +28,21 @@ const ReviewDialog = () => {
   };
 
   const onSubmitReview = async e => {
-    console.log('productId', selectedProductId);
+    console.log('productId');
     e.preventDefault();
     const userReview = {
       rating,
       comment: review,
       userName: users[getRandomUser(users.length)],
-      productId: selectedProductId
+      productId:""
     };
     await createReviews(userReview);
-    handleOpenModal();
   };
 
   return (
     <>
-      {isOpen && (
         <Modal
-          className={`${isOpen ? 'show' : 'close'}`}
+          className={''}
           modalHeader={
             <div className="header-group">
               <Text
@@ -59,7 +53,7 @@ const ReviewDialog = () => {
               </Text>
               <Button
                 iconClassName="btn-close icon-close"
-                onClick={handleOpenModal}
+                onClick={''}
               />
             </div>
           }
@@ -105,9 +99,8 @@ const ReviewDialog = () => {
             </>
           }
         />
-      )}
     </>
   );
 };
 
-export default ReviewDialog;
+export default ModalReview;

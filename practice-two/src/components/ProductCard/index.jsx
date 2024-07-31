@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-
 import { Link } from 'react-router-dom';
 
 import { formatPrice } from '../../utils/formatPrice';
@@ -12,12 +10,8 @@ import Divider from '../Divider';
 
 import './index.css';
 
-import { ModalContext } from '../../context';
-
 const ProductCard = ({ product }) => {
   const { id, name, image, rating, price, description } = product;
-
-  const { handleOpenModal } = useContext(ModalContext);
 
   return (
     <article className="d-flex divider">
@@ -57,7 +51,7 @@ const ProductCard = ({ product }) => {
             </Text>
             <Button
               variant="link"
-              onClick={() => handleOpenModal(id)}
+              onClick={''}
             >
               Submit a review
             </Button>

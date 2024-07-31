@@ -1,4 +1,3 @@
-import { useState } from 'react';
 // Import router
 import { Routes, Route } from 'react-router-dom';
 
@@ -9,30 +8,12 @@ import './styles/index.css';
 import Layout from './layouts';
 import Home from './pages/Home';
 import Product from './pages/Product';
-// import ModalReview from './components/ModalReview';
-
 import { PAGES } from './constants/route';
 
-import { ModalContext } from './context';
-
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState('');
-
-  const handleOpenModal = productId => {
-    setIsOpen(prev => !prev);
-    setSelectedProductId(productId);
-  };
 
   return (
     <>
-      <ModalContext.Provider
-        value={{
-          isOpen,
-          selectedProductId,
-          handleOpenModal
-        }}
-      >
         {/* <ModalReview /> */}
         <Routes>
           <Route
@@ -49,7 +30,6 @@ const App = () => {
             />
           </Route>
         </Routes>
-      </ModalContext.Provider>
     </>
   );
 };
