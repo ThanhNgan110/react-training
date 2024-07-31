@@ -13,57 +13,43 @@ import ModalReview from './components/ModalReview';
 
 import { PAGES } from './constants/route';
 
-import { users } from './mocks/users';
-
-import { getRandomUser } from './utils/randomUser';
-
-import { ModalContext, UserContext } from './context';
+import { ModalContext } from './context';
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState('');
-  const [userName, setUserName] = useState('');
 
   const handleOpenModal = productId => {
     setIsOpen(prev => !prev);
     setSelectedProductId(productId);
   };
 
-  const handleRandomUser = () => {
-    const userName = users[getRandomUser(users.length)];
-    console.log('userName1', userName);
-    setUserName(userName);
-    console.log('userName2', userName);
-  };
-
   return (
     <>
-      <UserContext.Provider value={{ userName, handleRandomUser }}>
-        <ModalContext.Provider
-          value={{
-            isOpen,
-            selectedProductId,
-            handleOpenModal
-          }}
-        >
-          <ModalReview />
-          <Routes>
+      <ModalContext.Provider
+        value={{
+          isOpen,
+          selectedProductId,
+          handleOpenModal
+        }}
+      >
+        <ModalReview />
+        <Routes>
+          <Route
+            path="/"
+            element={<Layout />}
+          >
             <Route
-              path="/"
-              element={<Layout />}
-            >
-              <Route
-                index
-                element={<Home />}
-              />
-              <Route
-                path={PAGES.PRODUCT.PATH}
-                element={<Product />}
-              />
-            </Route>
-          </Routes>
-        </ModalContext.Provider>
-      </UserContext.Provider>
+              index
+              element={<Home />}
+            />
+            <Route
+              path={PAGES.PRODUCT.PATH}
+              element={<Product />}
+            />
+          </Route>
+        </Routes>
+      </ModalContext.Provider>
     </>
   );
 };
