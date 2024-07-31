@@ -18,6 +18,8 @@ import { TAB } from '../../constants/tab';
 import { reviews } from '../../mocks/product';
 import { getProductById } from '../../services/product-service';
 
+import ReviewDialog from '../../components/ReviewDialog';
+
 const Product = () => {
   let { id } = useParams();
 
@@ -58,10 +60,14 @@ const Product = () => {
 
   return (
     <>
+    <ReviewDialog/>
       <TabBar items={items} />
       <main className="wrapper-product">
         <section className="d-flex gap-40 section-product">
-          <ProductImages images={product.image} />
+          <ProductImages
+            images={product.image}
+            name={product.name}
+          />
           <ProductContent product={product} />
         </section>
         <section className="tab-review">

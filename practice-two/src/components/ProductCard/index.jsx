@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
         >
           <Image
             src={image[0]}
-            alt="product"
+            alt={`product ${name}`}
           />
         </Link>
 

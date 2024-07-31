@@ -10,7 +10,7 @@ const Image = ({ className, src, alt, width, height, onClick }) => {
         [className]: !!className
       })}
       src={src}
-      alt={`img ${alt}`}
+      alt={alt}
       width={width}
       height={height}
       onClick={onClick}

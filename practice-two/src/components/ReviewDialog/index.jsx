@@ -16,7 +16,7 @@ import { users } from '../../mocks/users';
 
 import { getRandomUser } from '../../utils/randomUser';
 
-const ModalReview = () => {
+const ReviewDialog = () => {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
 
@@ -32,6 +32,7 @@ const ModalReview = () => {
   };
 
   const onSubmitReview = async e => {
+    console.log('productId', selectedProductId);
     e.preventDefault();
     const userReview = {
       rating,
@@ -109,4 +110,4 @@ const ModalReview = () => {
   );
 };
 
-export default ModalReview;
+export default ReviewDialog;

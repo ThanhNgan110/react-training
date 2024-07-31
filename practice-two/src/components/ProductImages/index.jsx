@@ -4,7 +4,7 @@ import './index.css';
 
 import Image from '../Image';
 
-const ProductImages = ({ images = [], title }) => {
+const ProductImages = ({ images = [], name }) => {
   const [indexCurrent, setIndexCurrent] = useState(0);
 
   const handleSetImage = index => {
@@ -15,7 +15,7 @@ const ProductImages = ({ images = [], title }) => {
     <div className="d-flex flex-column product-img">
       <Image
         src={images[indexCurrent]}
-        alt={title}
+        alt={name}
         width="387px"
         height="288px"
       />
@@ -25,8 +25,9 @@ const ProductImages = ({ images = [], title }) => {
             className={`item-gallery ${indexCurrent === index ? 'active' : ''}`}
             key={index}
             src={image}
-            alt={title}
-            width="89px"
+            alt={`${name}-${index}`}
+            width="87px"
+            height="86px"
             onClick={() => handleSetImage(index)}
           />
         ))}

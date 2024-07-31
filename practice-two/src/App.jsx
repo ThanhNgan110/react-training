@@ -9,7 +9,7 @@ import './styles/index.css';
 import Layout from './layouts';
 import Home from './pages/Home';
 import Product from './pages/Product';
-import ModalReview from './components/ModalReview';
+// import ModalReview from './components/ModalReview';
 
 import { PAGES } from './constants/route';
 
@@ -33,7 +33,7 @@ const App = () => {
           handleOpenModal
         }}
       >
-        <ModalReview />
+        {/* <ModalReview /> */}
         <Routes>
           <Route
             path="/"

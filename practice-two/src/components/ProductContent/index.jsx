@@ -14,6 +14,7 @@ import { formatPrice } from '../../utils/formatPrice';
 
 const ProductContent = ({ product }) => {
   const {
+    id,
     name,
     price,
     reviews,
@@ -48,7 +49,7 @@ const ProductContent = ({ product }) => {
           </Text>
           <Button
             className="btn-link fs-md"
-            onClick={handleOpenModal}
+            onClick={() => handleOpenModal(id)}
           >
             Submit a review
           </Button>
