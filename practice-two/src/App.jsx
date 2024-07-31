@@ -13,40 +13,55 @@ import ModalReview from './components/ModalReview';
 
 import { PAGES } from './constants/route';
 
-import { ModalContext } from './context';
+import { users } from './mocks/users';
+
+import { getRandomUser } from './utils/randomUser';
+
+import { ModalContext, UserContext } from './context';
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState('');
+  const [userName, setUserName] = useState('');
 
-  const handleOpenModal = () => {
+  const handleOpenModal = productId => {
     setIsOpen(prev => !prev);
+    setSelectedProductId(productId);
+  };
+
+  const handleRandomUser = () => {
+    setUserName(users[getRandomUser(users.length)]);
+    console.log('userName', userName);
   };
 
   return (
     <>
-      <ModalContext.Provider
-        value={{
-          isOpen,
-          handleOpenModal
-        }}
-      >
-        <ModalReview />
-        <Routes>
-          <Route
-            path="/"
-            element={<Layout />}
-          >
+      <UserContext.Provider value={{ userName, handleRandomUser }}>
+        <ModalContext.Provider
+          value={{
+            isOpen,
+            selectedProductId,
+            handleOpenModal
+          }}
+        >
+          <ModalReview />
+          <Routes>
             <Route
-              index
-              element={<Home />}
-            />
-            <Route
-              path={PAGES.PRODUCT.PATH}
-              element={<Product />}
-            />
-          </Route>
-        </Routes>
-      </ModalContext.Provider>
+              path="/"
+              element={<Layout />}
+            >
+              <Route
+                index
+                element={<Home />}
+              />
+              <Route
+                path={PAGES.PRODUCT.PATH}
+                element={<Product />}
+              />
+            </Route>
+          </Routes>
+        </ModalContext.Provider>
+      </UserContext.Provider>
     </>
   );
 };

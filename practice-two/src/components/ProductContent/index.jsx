@@ -13,8 +13,16 @@ import './index.css';
 import { formatPrice } from '../../utils/formatPrice';
 
 const ProductContent = ({ product }) => {
-  const { name, price, reviews, category, colors, size, orderStatus, rating } =
-    product;
+  const {
+    name,
+    price,
+    reviews,
+    category,
+    colors,
+    size,
+    orderStatus,
+    rating
+  } = product;
   const { handleOpenModal } = useContext(ModalContext);
 
   return (

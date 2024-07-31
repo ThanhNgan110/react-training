@@ -6,15 +6,19 @@ import Textarea from '../Textarea';
 import Button from '../Button';
 import StarRating from '../StarRating';
 
-import { ModalContext } from '../../context';
+import { ModalContext, UserContext } from '../../context';
 
 import './index.css';
+
+import { createReviews } from '../../services/review-service';
 
 const ModalReview = () => {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
 
-  const { isOpen, handleOpenModal } = useContext(ModalContext);
+  const { isOpen, selectedProductId, handleOpenModal } =
+    useContext(ModalContext);
+  const { userName, handleRandomUser } = useContext(UserContext);
 
   const handleChangeRating = numberRating => {
     setRating(numberRating);
@@ -24,9 +28,16 @@ const ModalReview = () => {
     setReview(e.target.value);
   };
 
-  const onSubmit = e => {
+  const onSubmitReview = async e => {
     e.preventDefault();
-    // code here
+    handleRandomUser();
+    const userReview = {
+      rating,
+      comment: review,
+      userName,
+      productId: selectedProductId
+    };
+    await createReviews(userReview);
     handleOpenModal();
   };
 
@@ -53,7 +64,7 @@ const ModalReview = () => {
             <>
               <form
                 className="form"
-                onSubmit={onSubmit}
+                onSubmit={onSubmitReview}
               >
                 <Text
                   as="p"

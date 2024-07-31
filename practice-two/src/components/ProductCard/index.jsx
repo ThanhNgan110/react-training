@@ -22,7 +22,8 @@ const ProductCard = ({ product }) => {
   return (
     <article className="d-flex divider">
       <div className="box-image">
-        <Link className='box-image'
+        <Link
+          className="box-image"
           key={id}
           to={`/products/${id}`}
         >
@@ -56,7 +57,7 @@ const ProductCard = ({ product }) => {
             </Text>
             <Button
               variant="link"
-              onClick={handleOpenModal}
+              onClick={() => handleOpenModal(id)}
             >
               Submit a review
             </Button>
