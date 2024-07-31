@@ -20,34 +20,3 @@ export const reviews = [
     id: '04798deb-586e-4006-92dc-11d852c850dc'
   }
 ];
-
-export const users = [
-  {
-    id: 1,
-    name: 'Anh Nguyen',
-    avatar:
-      'https://github.com/user-attachments/assets/a6b92232-6256-4894-adb8-78db03904281',
-    userName: 'anh.nguyen'
-  },
-  {
-    id: 2,
-    name: 'Minh Dinh Nguyen',
-    avatar:
-      'https://github.com/user-attachments/assets/a6b92232-6256-4894-adb8-78db03904281',
-    userName: 'minh.dinh'
-  },
-  {
-    id: 3,
-    name: 'Do Nguyen',
-    avatar:
-      'https://github.com/user-attachments/assets/a6b92232-6256-4894-adb8-78db03904281',
-    userName: 'do.nguyen'
-  },
-  {
-    id: 4,
-    name: 'Ngan Thai',
-    avatar:
-      'https://github.com/user-attachments/assets/f3bf0119-8057-45e1-bb61-41be8e184905',
-    userName: 'ngan.thai'
-  }
-];
