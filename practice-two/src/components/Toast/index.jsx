@@ -3,7 +3,6 @@ import clxs from 'clsx';
 import './index.css';
 
 const Toast = ({ type, msg }) => {
-  console.log("type", type);
   return (
     <p
       className={clxs('toast', {

@@ -38,7 +38,7 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
-  const [reviews, setReview] = useState(null);
+  const [reviews, setReview] = useState([]);
 
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -51,15 +51,6 @@ const Product = () => {
 
   const handleSetTab = async index => {
     setCurrentTab(index);
-    // default tab first click tab not call api
-    if (index !== 0) {
-      fetchGetReviews();
-    }
-  };
-
-  const fetchGetReviews = async () => {
-    const { data } = await getReviewsByProductId(id);
-    setReview(data);
   };
 
   const handleCloseReviewDialog = () => {
@@ -71,9 +62,9 @@ const Product = () => {
     setOpenReviewDialog(true);
   };
 
-  const fetchProductById = async () => {
+  const fetchProductById = async productId => {
     setIsLoading(true);
-    const { data, error } = await getProductById(id);
+    const { data, error } = await getProductById(productId);
     if (!error) {
       setProduct(data);
     }
@@ -81,7 +72,7 @@ const Product = () => {
   };
 
   const handleSubmitReview = async ({ rating, comment }) => {
-    const { error } = await createReviews({
+    const { data, error } = await createReviews({
       rating,
       comment,
       userName: users[getRandomInt(users.length)],
@@ -93,15 +84,28 @@ const Product = () => {
     }
 
     showToast('🦄 Review submitted successfully!', 'success');
+    // set data reviews
+    setReview(prevReviews => {
+      return [data, ...prevReviews];
+    });
     setOpenReviewDialog(false);
     // call fetch product by id
-    await fetchProductById();
-    const { data: reviews } = await getReviewsByProductId(id);
-    setReview(reviews);
+    const productId = data.productId;
+    await fetchProductById(productId);
   };
 
   useEffect(() => {
-    fetchProductById();
+    fetchProductById(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // call api fetch get reviews
+    const fetchGetReviews = async () => {
+      const { data } = await getReviewsByProductId(id);
+      setReview(data.reviews);
+    };
+    fetchGetReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

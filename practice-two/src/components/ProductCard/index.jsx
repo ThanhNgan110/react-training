@@ -10,8 +10,9 @@ import Divider from '../Divider';
 
 import './index.css';
 
-const ProductCard = ({ product }) => {
-  const { id, name, image, rating, reviews, price, description } = product;
+const ProductCard = ({ product, onOpen }) => {
+  const { id, name, image, aveRating, reviewCount, price, description } =
+    product;
 
   return (
     <article className="d-flex divider">
@@ -39,7 +40,7 @@ const ProductCard = ({ product }) => {
         <Divider>
           <div className="d-flex align-items-center gap-10">
             <StarRating
-              rating={rating}
+              rating={aveRating}
               width="12"
               height="12"
             />
@@ -47,11 +48,11 @@ const ProductCard = ({ product }) => {
               as="p"
               className="fs-4 text-gray"
             >
-              {reviews ?? 0} reviews
+              {reviewCount ?? 0} reviews
             </Text>
             <Button
               variant="link"
-              onClick={''}
+              onClick={() => onOpen(id)}
             >
               Submit a review
             </Button>

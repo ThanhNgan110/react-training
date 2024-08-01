@@ -80,7 +80,7 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
             />
             <Button
               className="btn-review"
-              type="submit" // Ensure button type is submit
+              type="submit"
             >
               Submit
             </Button>

@@ -3,12 +3,12 @@ import ReviewCard from '../ReviewCard';
 import './index.css';
 
 const ReviewList = ({ reviews }) => {
-
+  console.log('reviews', reviews);
   return (
     <div className="reviews">
-      {reviews?.reviews.map(item => (
+      {reviews?.map((item, index) => (
         <ReviewCard
-          key={item.id}
+          key={`${index}`}
           reviews={item}
         />
       ))}

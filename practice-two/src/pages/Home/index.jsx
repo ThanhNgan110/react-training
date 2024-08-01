@@ -4,6 +4,7 @@ import SideBar from '../../layouts/SideBar';
 import Banner from './components/Banner';
 import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
+import ReviewDialog from '../../components/ReviewDialog';
 
 import { OPTIONS } from '../../constants/label';
 
@@ -17,8 +18,6 @@ import {
 import useDebouncedValue from '../../hooks/useDebouncedValue';
 
 const Home = () => {
-  const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
-
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
   const [settings, setSettings] = useState({
@@ -31,6 +30,10 @@ const Home = () => {
   const [selectedPrice, setSelectedPrice] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const debouncedChangeInputRange = useDebouncedValue(selectedPrice, 500);
+  const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState('');
+
+  const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
 
   const handleSelectType = selectedType => {
     setSelectedType(selectedType);
@@ -44,29 +47,43 @@ const Home = () => {
     setSelectedColor(e.target.value);
   };
 
-  useEffect(() => {
-    const handlePopulateProducts = async () => {
-      const { data, error } = await getProducts({
-        selectedType,
-        selectedPrice: debouncedChangeInputRange,
-        selectedColor
-      });
+  const handleCloseReviewDialog = () => {
+    setOpenReviewDialog(false);
+  };
 
-      if (!error) {
-        setCount(data.count);
-        setProducts(data.products);
-      }
-    };
+  const handleOpenReviewDialog = id => {
+    setSelectedProduct(id);
+    setOpenReviewDialog(true);
+  };
+
+  // call api get products
+  const handlePopulateProducts = async () => {
+    const { data, error } = await getProducts({
+      selectedType,
+      selectedPrice: debouncedChangeInputRange,
+      selectedColor
+    });
+
+    if (!error) {
+      setCount(data.count);
+      setProducts(data.products);
+    }
+  };
+
+  useEffect(() => {
     handlePopulateProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedType, debouncedChangeInputRange, selectedColor]);
 
+  // call api get settings
+  const handlePopulateSettings = async () => {
+    const { data, error } = await getProductSettings();
+    if (!error) {
+      setSettings(data);
+    }
+  };
+
   useEffect(() => {
-    const handlePopulateSettings = async () => {
-      const { data, error } = await getProductSettings();
-      if (!error) {
-        setSettings(data);
-      }
-    };
     handlePopulateSettings();
   }, []);
 
@@ -86,12 +103,19 @@ const Home = () => {
           data={sortData}
           count={count}
         />
-        <ProductList products={products} />
+        <ProductList
+          products={products}
+          onOpen={handleOpenReviewDialog}
+        />
         {/* <Pagination
           count={count}
           currentPage={currentPage}
           onClick={handlePageClick}
         /> */}
+        <ReviewDialog
+          open={isOpenReviewDialog}
+          onClose={handleCloseReviewDialog}
+        />
       </main>
     </div>
   );

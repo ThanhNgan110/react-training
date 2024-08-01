@@ -14,12 +14,12 @@ const ProductContent = ({ product, onOpen }) => {
     id,
     name,
     price,
-    reviews,
+    reviewCount,
     category,
     colors,
     size,
     orderStatus,
-    rating
+    aveRating
   } = product;
 
   return (
@@ -33,7 +33,7 @@ const ProductContent = ({ product, onOpen }) => {
       <Divider>
         <div className="d-flex align-items-center space-empty">
           <StarRating
-            rating={rating}
+            rating={aveRating}
             width="12"
             height="12"
           />
@@ -41,7 +41,7 @@ const ProductContent = ({ product, onOpen }) => {
             as="p"
             className="fs-4 text-gray"
           >
-            {reviews ?? 0} reviews
+            {reviewCount ?? 0} reviews
           </Text>
           <Button
             className="btn-link fs-md"
