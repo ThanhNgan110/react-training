@@ -5,18 +5,18 @@ import StarRating from '../StarRating';
 import './index.css';
 
 const ReviewCard = ({ reviews }) => {
-  const { imgUrl, name, ratting, comment, ratingDate } = reviews;
+  const { user, rating, comment, ratingDate } = reviews;
   return (
     <article className="d-flex flex-column gap-16 card-review">
       <div className="d-flex gap-16">
         <Image
-          src={imgUrl}
-          alt="avatar"
+          src={user.avatar ?? ''}
+          alt={user.name}
         />
         <div className="d-flex flex-column">
-          <Text as="h4">{name}</Text>
+          <Text as="h4">{user.name ?? ''}</Text>
           <StarRating
-            starFull={ratting}
+            rating={rating}
             width={16}
             height={16}
           />
