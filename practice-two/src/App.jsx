@@ -11,25 +11,23 @@ import Product from './pages/Product';
 import { PAGES } from './constants/route';
 
 const App = () => {
-
   return (
     <>
-        {/* <ModalReview /> */}
-        <Routes>
+      <Routes>
+        <Route
+          path="/"
+          element={<Layout />}
+        >
           <Route
-            path="/"
-            element={<Layout />}
-          >
-            <Route
-              index
-              element={<Home />}
-            />
-            <Route
-              path={PAGES.PRODUCT.PATH}
-              element={<Product />}
-            />
-          </Route>
-        </Routes>
+            index
+            element={<Home />}
+          />
+          <Route
+            path={PAGES.PRODUCT.PATH}
+            element={<Product />}
+          />
+        </Route>
+      </Routes>
     </>
   );
 };
