@@ -17,12 +17,7 @@ import {
 import useDebouncedValue from '../../hooks/useDebouncedValue';
 
 const Home = () => {
-  const sortData = [
-    OPTIONS.NAME,
-    OPTIONS.PRICE
-    // { name: , value: 'name' },
-    // { name:, value: 'price' }
-  ];
+  const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
 
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
