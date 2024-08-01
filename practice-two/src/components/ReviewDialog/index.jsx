@@ -20,7 +20,8 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
     setComment(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     if (typeof onSubmit === 'function') {
       onSubmit({
         rating,
@@ -42,7 +43,7 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
           </Text>
           <Button
             iconClassName="btn-close icon-close"
-            onClick={onClose}
+            onClick={() => onClose()}
           />
         </div>
       }
@@ -50,7 +51,7 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
         <>
           <form
             className="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit} // Updated onSubmit handler
           >
             <Text
               as="p"
@@ -79,7 +80,7 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
             />
             <Button
               className="btn-review"
-              type="submit"
+              type="submit" // Ensure button type is submit
             >
               Submit
             </Button>
