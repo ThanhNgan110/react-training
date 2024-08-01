@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 
 const useToast = () => {
   const [alert, setAlert] = useState({ show: false, type: '', msg: '' });
@@ -6,7 +6,7 @@ const useToast = () => {
   const showToast = (msg, type = 'info', duration = 2000) => {
     setAlert({ show: true, type, msg });
     const handler = setTimeout(() => {
-      setAlert({ show: false, type: '', msg: '' });
+      setAlert({ show: false, type, msg });
     }, duration);
 
     return () => clearTimeout(handler);

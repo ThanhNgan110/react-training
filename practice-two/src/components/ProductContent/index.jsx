@@ -17,7 +17,7 @@ const ProductContent = ({ product, onOpen }) => {
     reviewCount,
     category,
     colors,
-    size,
+    sizes,
     orderStatus,
     aveRating
   } = product;
@@ -106,7 +106,7 @@ const ProductContent = ({ product, onOpen }) => {
             classNameLabel="fs-5 text-secondary"
             label="Size"
             name="select size"
-            data={size}
+            data={sizes}
           />
         </div>
       </Divider>

@@ -119,7 +119,7 @@ const Product = () => {
       <main className="wrapper-product">
         <section className="d-flex gap-40 section-product">
           <ProductImages
-            images={product.image}
+            images={product.images}
             name={product.name}
           />
           <ProductContent

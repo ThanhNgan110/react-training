@@ -11,7 +11,7 @@ import Divider from '../Divider';
 import './index.css';
 
 const ProductCard = ({ product, onOpen }) => {
-  const { id, name, image, aveRating, reviewCount, price, description } =
+  const { id, name, images, aveRating, reviewCount, price, description } =
     product;
 
   return (
@@ -23,7 +23,7 @@ const ProductCard = ({ product, onOpen }) => {
           to={`/products/${id}`}
         >
           <Image
-            src={image[0]}
+            src={images[0] ?? ''}
             alt={`product ${name}`}
           />
         </Link>
