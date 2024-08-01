@@ -9,7 +9,7 @@ import './index.css';
 
 import { formatPrice } from '../../utils/formatPrice';
 
-const ProductContent = ({ product }) => {
+const ProductContent = ({ product, onOpen }) => {
   const {
     id,
     name,
@@ -41,11 +41,11 @@ const ProductContent = ({ product }) => {
             as="p"
             className="fs-4 text-gray"
           >
-            {reviews} reviews
+            {reviews ?? 0} reviews
           </Text>
           <Button
             className="btn-link fs-md"
-            onClick={''}
+            onClick={()=> onOpen(id)}
           >
             Submit a review
           </Button>

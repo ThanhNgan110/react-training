@@ -11,7 +11,7 @@ import Divider from '../Divider';
 import './index.css';
 
 const ProductCard = ({ product }) => {
-  const { id, name, image, rating, price, description } = product;
+  const { id, name, image, rating, reviews, price, description } = product;
 
   return (
     <article className="d-flex divider">
@@ -47,7 +47,7 @@ const ProductCard = ({ product }) => {
               as="p"
               className="fs-4 text-gray"
             >
-              {rating ? rating : ''} reviews
+              {reviews ?? 0} reviews
             </Text>
             <Button
               variant="link"
