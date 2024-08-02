@@ -1,19 +1,19 @@
 .toast {
   position: fixed;
-  top: 0;
+  top: 10%;
   right: 0;
   transform: translateX(-50%);
   padding: 10px 20px;
   border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
+  color: var(--color-white);
+  font-size: var(--font-size-md);
   z-index: 1000;
 }
 
 .toast.success {
-  background-color: green;
+  background-color: var(--color-success);
 }
 
 .toast.danger {
-  background-color: red;
+  background-color: var(--color-danger);
 }
