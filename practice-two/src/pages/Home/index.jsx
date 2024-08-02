@@ -28,6 +28,8 @@ import useToast from '../../hooks/useToast';
 
 import { MESSAGE } from '../../constants/message';
 
+import { VARIABLES } from '../../constants/variable';
+
 const Home = () => {
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
@@ -38,9 +40,14 @@ const Home = () => {
   });
 
   const [selectedType, setSelectedType] = useState(null);
-  const [selectedPrice, setSelectedPrice] = useState(990);
+  const [selectedPrice, setSelectedPrice] = useState(
+    VARIABLES.DEFAULT_VALUE_PRICE
+  );
   const [selectedColor, setSelectedColor] = useState(null);
-  const debouncedChangeInputRange = useDebouncedValue(selectedPrice, 500);
+  const debouncedChangeInputRange = useDebouncedValue(
+    selectedPrice,
+    VARIABLES.TIME_OUT
+  );
   const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
   const { showToast, alert } = useToast();
