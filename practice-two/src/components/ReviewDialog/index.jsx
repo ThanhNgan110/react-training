@@ -27,6 +27,8 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
         rating,
         comment
       });
+      setRating(5);
+      setComment('');
     }
   };
 
