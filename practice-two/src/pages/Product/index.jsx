@@ -29,6 +29,8 @@ import { users } from '../../mocks/users';
 
 import useToast from '../../hooks/useToast';
 
+import { MESSAGE } from '../../constants/message';
+
 const Product = () => {
   let { id } = useParams();
 
@@ -80,10 +82,10 @@ const Product = () => {
     });
 
     if (error) {
-      showToast('Review submitted failed!', 'danger');
+      showToast(MESSAGE.MESSAGE_FAILED, 'danger');
     }
 
-    showToast('🦄 Review submitted successfully!', 'success');
+    showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
     // set data reviews
     setReview(prevReviews => {
       return [data, ...prevReviews];
