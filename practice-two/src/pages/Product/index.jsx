@@ -34,7 +34,7 @@ import { MESSAGE } from '../../constants/message';
 const Product = () => {
   let { id } = useParams();
 
-  const { showToast, alert } = useToast(); // Use the custom hook for toast notifications
+  const { showToast, alert } = useToast();
 
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
