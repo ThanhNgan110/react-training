@@ -1,26 +1,55 @@
-import ListGroup from '../ListGroup';
-import { Link } from 'react-router-dom';
+import Button from '../Button';
 
 import './index.css';
 
-const Pagination = ({ count, currentPage, onClick }) => {
+const Pagination = ({ value, onChange, range }) => {
+  let pattern = null;
+
+  switch (true) {
+    case range < 7:
+      pattern = [...new Array(range)].map((_, i) => i + 1);
+      break;
+    case value < 3:
+      pattern = [1, 2, 3, 4, '...', range];
+      break;
+    case value > range - 4:
+      pattern = [1, '...', range - 4, range - 3, range - 2, range - 1, range];
+      break;
+    default:
+      pattern = [1, '...', value - 1, value, value + 1, '...', range];
+  }
+
+  const changeNumber = n => {
+    if (typeof n === 'number' && n > 0 && n <= range) {
+      onChange(n);
+    }
+  };
   return (
-    <ListGroup className="pagination">
-      {Array.from({ length: count }, (_, index) => (
-        <ListGroup.Item
-          className="page-item"
-          key={index}
+    <div className="pagination">
+      <Button
+        className="page-item"
+        disabled={value <= 1}
+        onClick={() => changeNumber(value - 1)}
+      >
+        {'Previous'}
+      </Button>
+      {pattern.map((label, index) => (
+        <Button
+          key={`${index}`}
+          className={`page-item ${value === label ? 'active' : ''} `}
+          onClick={() => changeNumber(label)}
         >
-          <Link
-            className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
-            to={`${index}`}
-            onClick={() => onClick(index + 1)}
-          >
-            {index + 1}
-          </Link>
-        </ListGroup.Item>
+          {label}
+        </Button>
       ))}
-    </ListGroup>
+      <Button
+        className="page-item"
+        disabled={value >= range}
+        onClick={() => changeNumber(value + 1)}
+      >
+        {'Next'}
+      </Button>
+    </div>
   );
 };
 

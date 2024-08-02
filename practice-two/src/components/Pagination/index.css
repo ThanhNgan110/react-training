@@ -1,23 +1,19 @@
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 61px;
   margin-top: 29px;
   background-color: var(--color-gray-100);
 }
 
 .page-item {
   padding: 18px 25px;
-}
-
-.page-link {
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg);
   color: var(--color-secondary);
+  background-color: var(--color-gray-100);
 }
 
-.page-link.active {
-  padding: 14px 25px;
+.page-item.active {
   background-color: var(--color-dodger-blue);
   color: var(--color-white);
 }
