@@ -3,11 +3,12 @@ import Button from '../Button';
 import './index.css';
 
 const Pagination = ({ value, onChange, range }) => {
+
   let pattern = null;
 
   switch (true) {
     case range < 7:
-      pattern = [...new Array(range)].map((_, i) => i + 1);
+      pattern = Array.from({ length: range }, (_, i) => i + 1);
       break;
     case value < 3:
       pattern = [1, 2, 3, 4, '...', range];
