@@ -8,8 +8,6 @@ import ReviewDialog from '../../components/ReviewDialog';
 import Toast from '../../components/Toast';
 import Pagination from '../../components/Pagination';
 
-import { OPTIONS } from '../../constants/label';
-
 import './index.css';
 
 import {
@@ -30,6 +28,7 @@ import useToast from '../../hooks/useToast';
 import { MESSAGE } from '../../constants/message';
 
 import { VARIABLES } from '../../constants/variable';
+import { sortData } from '../../constants/label';
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -54,8 +53,6 @@ const Home = () => {
   const { showToast, alert } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-
-  const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
 
   const handleSelectType = selectedType => {
     setSelectedType(selectedType);
@@ -84,9 +81,6 @@ const Home = () => {
 
   const handleTotalPage = count => {
     const result = Math.ceil(count / VARIABLES.PAGE_SIZE);
-    // if (count % VARIABLES.PAGE_SIZE !== 0) {
-    //   result = Math.ceil(result);
-    // }
     setTotalPage(result);
   };
 
