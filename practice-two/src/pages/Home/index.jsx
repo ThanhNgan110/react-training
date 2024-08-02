@@ -13,6 +13,7 @@ import './index.css';
 
 import {
   getProducts,
+  getProductById,
   getProductSettings
 } from '../../services/product-service';
 import { createReviews } from '../../services/review-service';
@@ -25,6 +26,8 @@ import useDebouncedValue from '../../hooks/useDebouncedValue';
 
 import useToast from '../../hooks/useToast';
 
+import { MESSAGE } from '../../constants/message';
+
 const Home = () => {
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
@@ -35,12 +38,12 @@ const Home = () => {
   });
 
   const [selectedType, setSelectedType] = useState(null);
-  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [selectedPrice, setSelectedPrice] = useState(990);
   const [selectedColor, setSelectedColor] = useState(null);
   const debouncedChangeInputRange = useDebouncedValue(selectedPrice, 500);
   const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
-  const { showToast, alert } = useToast(); // Use the custom hook for toast notifications
+  const { showToast, alert } = useToast();
 
   const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
 
@@ -79,29 +82,6 @@ const Home = () => {
     }
   };
 
-  const handleSubmitReview = async ({ rating, comment }) => {
-    const { error } = await createReviews({
-      rating,
-      comment,
-      userName: users[getRandomInt(users.length)],
-      productId: selectedProduct
-    });
-
-    if (error) {
-      showToast('Review submitted failed!', 'danger');
-    }
-
-    showToast('🦄 Review submitted successfully!', 'success');
-   // call api fetch product
-   
-    setOpenReviewDialog(false);
-  };
-
-  useEffect(() => {
-    handlePopulateProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedType, debouncedChangeInputRange, selectedColor]);
-
   // call api get settings
   const handlePopulateSettings = async () => {
     const { data, error } = await getProductSettings();
@@ -109,6 +89,40 @@ const Home = () => {
       setSettings(data);
     }
   };
+
+  const handleSubmitReview = async ({ rating, comment }) => {
+    const { error: reviewError } = await createReviews({
+      rating,
+      comment,
+      userName: users[getRandomInt(users.length)],
+      productId: selectedProduct
+    });
+
+    if (reviewError) {
+      showToast(MESSAGE.MESSAGE_FAILED, 'danger');
+      return;
+    }
+
+    showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
+    setOpenReviewDialog(false);
+
+    // call api fetch product by id
+    const { data: product, error: productErr } = await getProductById(
+      selectedProduct
+    );
+
+    if (!productErr) {
+      const updatedProducts = products.map(item =>
+        item.id === selectedProduct ? product : item
+      );
+      setProducts(updatedProducts);
+    }
+  };
+
+  useEffect(() => {
+    handlePopulateProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedType, debouncedChangeInputRange, selectedColor]);
 
   useEffect(() => {
     handlePopulateSettings();
