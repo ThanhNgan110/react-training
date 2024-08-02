@@ -6,6 +6,7 @@ import Bar from '../../components/Bar';
 import ProductList from '../../components/ProductList';
 import ReviewDialog from '../../components/ReviewDialog';
 import Toast from '../../components/Toast';
+import Pagination from '../../components/Pagination';
 
 import { OPTIONS } from '../../constants/label';
 
@@ -51,6 +52,8 @@ const Home = () => {
   const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
   const { showToast, alert } = useToast();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
 
@@ -75,17 +78,32 @@ const Home = () => {
     setOpenReviewDialog(true);
   };
 
+  const handlePageChange = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleTotalPage = count => {
+    const result = Math.ceil(count / VARIABLES.PAGE_SIZE);
+    // if (count % VARIABLES.PAGE_SIZE !== 0) {
+    //   result = Math.ceil(result);
+    // }
+    setTotalPage(result);
+  };
+
   // call api get products
   const handlePopulateProducts = async () => {
     const { data, error } = await getProducts({
       selectedType,
       selectedPrice: debouncedChangeInputRange,
-      selectedColor
+      selectedColor,
+      selectedPageNumber: currentPage
     });
 
     if (!error) {
       setCount(data.count);
       setProducts(data.products);
+      // Calculate total page
+      handleTotalPage(data.count);
     }
   };
 
@@ -129,7 +147,7 @@ const Home = () => {
   useEffect(() => {
     handlePopulateProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedType, debouncedChangeInputRange, selectedColor]);
+  }, [selectedType, debouncedChangeInputRange, selectedColor, currentPage]);
 
   useEffect(() => {
     handlePopulateSettings();
@@ -155,11 +173,11 @@ const Home = () => {
           products={products}
           onOpen={handleOpenReviewDialog}
         />
-        {/* <Pagination
-          count={count}
-          currentPage={currentPage}
-          onClick={handlePageClick}
-        /> */}
+        <Pagination
+          range={totalPage}
+          value={currentPage}
+          onChange={handlePageChange}
+        />
         <ReviewDialog
           open={isOpenReviewDialog}
           onClose={handleCloseReviewDialog}
