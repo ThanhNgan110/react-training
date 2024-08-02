@@ -5,7 +5,8 @@ import { get } from './api-service';
 export const getProducts = async ({
   selectedType,
   selectedPrice,
-  selectedColor
+  selectedColor,
+  selectedPageNumber
 }) => {
   const url = new URL(`${URL_API.BASE_URL}${URL_API.END_POINT_PRODUCTS}`);
 
@@ -19,6 +20,10 @@ export const getProducts = async ({
 
   if (selectedColor) {
     url.searchParams.set('color', selectedColor);
+  }
+
+  if (selectedPageNumber) {
+    url.searchParams.set('pageNumber', selectedPageNumber);
   }
 
   return await get(url);
