@@ -13,7 +13,7 @@ const ReviewCard = ({ reviews }) => {
           src={user.avatar ?? ''}
           alt={user.name}
         />
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column gap-10">
           <Text as="h4">{user.name ?? ''}</Text>
           <StarRating
             rating={rating}
