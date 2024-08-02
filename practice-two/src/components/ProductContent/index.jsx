@@ -45,7 +45,7 @@ const ProductContent = ({ product, onOpen }) => {
           </Text>
           <Button
             className="btn-link fs-md"
-            onClick={()=> onOpen(id)}
+            onClick={() => onOpen(id)}
           >
             Submit a review
           </Button>
