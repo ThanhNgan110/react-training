@@ -23,7 +23,7 @@ export const getProducts = async ({
   }
 
   if (selectedPageNumber) {
-    url.searchParams.set('pageNumber', selectedPageNumber);
+    url.searchParams.set('page', selectedPageNumber);
   }
 
   return await get(url);
