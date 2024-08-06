@@ -11,7 +11,7 @@ import Divider from '../Divider';
 import './index.css';
 
 const ProductCard = ({ product, onOpen }) => {
-  const { id, name, images, aveRating, reviewCount, price, description } =
+  const { id, name, images, averageRating, reviewsCount, price, description } =
     product;
 
   return (
@@ -38,7 +38,7 @@ const ProductCard = ({ product, onOpen }) => {
           <Divider>
             <div className="d-flex align-items-center gap-10">
               <StarRating
-                rating={aveRating}
+                rating={averageRating}
                 width="12"
                 height="12"
               />
@@ -46,7 +46,7 @@ const ProductCard = ({ product, onOpen }) => {
                 as="p"
                 className="fs-4 text-gray"
               >
-                {reviewCount ?? 0} reviews
+                {reviewsCount ?? 0} reviews
               </Text>
               <Button
                 variant="link"
@@ -83,6 +83,7 @@ const ProductCard = ({ product, onOpen }) => {
             </div>
           </div>
           <Text
+            className="line-height-sm "
             as="p"
             variant="secondary"
             ellipsis
