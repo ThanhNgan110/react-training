@@ -7,6 +7,7 @@ import ProductList from '../../components/ProductList';
 import ReviewDialog from '../../components/ReviewDialog';
 import Toast from '../../components/Toast';
 import Pagination from '../../components/Pagination';
+import Text from '../../components/Text';
 
 import './index.css';
 
@@ -39,6 +40,8 @@ const Home = () => {
     maxPrice: 0
   });
 
+  const [message, setMessage] = useState('');
+
   const [selectedType, setSelectedType] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(
     VARIABLES.DEFAULT_VALUE_PRICE
@@ -55,14 +58,17 @@ const Home = () => {
   const [totalPage, setTotalPage] = useState(0);
 
   const handleSelectType = selectedType => {
+    setCurrentPage(1);
     setSelectedType(selectedType);
   };
 
   const handleChangePrice = e => {
+    setCurrentPage(1);
     setSelectedPrice(Number(e.target.value));
   };
 
   const handleChangeColor = e => {
+    setCurrentPage(1);
     setSelectedColor(e.target.value);
   };
 
@@ -94,10 +100,18 @@ const Home = () => {
     });
 
     if (!error) {
+      
+      if (!data.products) {
+        setCount(data.count);
+        setProducts(data.products);
+        setMessage(MESSAGE.MESSAGE_NOT_FIND_PRODUCT);
+        handleTotalPage(data.count);
+      }
       setCount(data.count);
       setProducts(data.products);
       // Calculate total page
       handleTotalPage(data.count);
+      setMessage(MESSAGE.MESSAGE_NOT_FIND_PRODUCT);
     }
   };
 
@@ -163,10 +177,15 @@ const Home = () => {
           data={sortData}
           count={count}
         />
-        <ProductList
-          products={products}
-          onOpen={handleOpenReviewDialog}
-        />
+        {!message ? (
+          <Text as="p">{message}</Text>
+        ) : (
+          <ProductList
+            products={products}
+            onOpen={handleOpenReviewDialog}
+          />
+        )}
+
         <Pagination
           range={totalPage}
           value={currentPage}
