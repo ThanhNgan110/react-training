@@ -73,7 +73,7 @@ const Product = () => {
     const { data, error } = await createReviews({
       rating,
       comment,
-      userName: users[getRandomInt(users.length)],
+      userId: users[getRandomInt(users.length)],
       productId: selectedProduct
     });
 

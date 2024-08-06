@@ -113,7 +113,7 @@ const Home = () => {
     const { error: reviewError } = await createReviews({
       rating,
       comment,
-      userName: users[getRandomInt(users.length)],
+      userId: users[getRandomInt(users.length)],
       productId: selectedProduct
     });
 
