@@ -15,7 +15,7 @@ export const getProducts = async ({
   }
 
   if (selectedPrice) {
-    url.searchParams.set('price', selectedPrice);
+    url.searchParams.set('minPrice', selectedPrice);
   }
 
   if (selectedColor) {
