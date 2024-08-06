@@ -9,7 +9,7 @@ const TabContent = ({ currentTab, reviews, description }) => {
       {currentTab === 0 ? (
         <Text
           as="p"
-          className="fs-6 fw-normal text-gray"
+          className="fs-6 fw-normal text-gray line-height-sm "
         >
           {description}
         </Text>
