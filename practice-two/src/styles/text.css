@@ -49,3 +49,8 @@
 .fw-normal {
   font-weight: var(--font-weight-normal);
 }
+
+/* Line-height */
+.line-height-sm {
+  line-height: 21px;
+}
