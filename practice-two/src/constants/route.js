@@ -4,7 +4,7 @@ const PAGES = {
     VALUE: 'Home'
   },
   PRODUCT: {
-    PATH: '/products/:id',
+    PATH: 'products/:id',
     VALUE: 'Product'
   },
   ABOUT: {
