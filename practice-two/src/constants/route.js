@@ -1,6 +1,6 @@
 const PAGES = {
   HOME: {
-    PATH: '',
+    PATH: '/',
     VALUE: 'Home'
   },
   PRODUCT: {
@@ -8,15 +8,15 @@ const PAGES = {
     VALUE: 'Product'
   },
   ABOUT: {
-    PATH: '',
+    PATH: '#',
     VALUE: 'About Us'
   },
   BAGS: {
-    PATH: '',
+    PATH: '#',
     VALUE: 'Bags'
   },
   SNEAKERS: {
-    PATH: '',
+    PATH: '#',
     VALUE: 'Sneakers'
   },
   BELT: {
@@ -24,19 +24,19 @@ const PAGES = {
     VALUE: 'Belt'
   },
   CONTACT: {
-    PATH: '',
+    PATH: '#',
     VALUE: 'Contact'
   },
   INFORMATION: {
-    PATH: '',
+    PATH: '#',
     VALUE: ''
   },
   Privacy: {
-    PATH: '',
+    PATH: '#',
     VALUE: ''
   },
   Term: {
-    PATH: '',
+    PATH: '#',
     VALUE: ''
   }
 };
