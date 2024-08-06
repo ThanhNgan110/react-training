@@ -3,7 +3,6 @@ import Button from '../Button';
 import './index.css';
 
 const Pagination = ({ value, onChange, range }) => {
-
   let pattern = null;
 
   switch (true) {

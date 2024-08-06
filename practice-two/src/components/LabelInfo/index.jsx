@@ -4,7 +4,7 @@ import './index.css';
 
 const LabelInfo = ({ label, number, activeSelected }) => {
   return (
-    <div className="d-flex justify-content-between list-group-item">
+    <div className="d-flex justify-content-between list-group-item group-item">
       <Text
         variant="text"
         as="p"

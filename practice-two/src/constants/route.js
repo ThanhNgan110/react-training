@@ -4,40 +4,40 @@ const PAGES = {
     VALUE: 'Home'
   },
   PRODUCT: {
-    PATH: '/products/:id',
+    PATH: 'products/:id',
     VALUE: 'Product'
   },
   ABOUT: {
-    PATH: 'about',
+    PATH: '#',
     VALUE: 'About Us'
   },
   BAGS: {
-    PATH: 'bags',
+    PATH: '#',
     VALUE: 'Bags'
   },
   SNEAKERS: {
-    PATH: 'sneakers',
+    PATH: '#',
     VALUE: 'Sneakers'
   },
   BELT: {
-    PATH: 'belt',
+    PATH: '',
     VALUE: 'Belt'
   },
   CONTACT: {
-    PATH: 'contact',
+    PATH: '#',
     VALUE: 'Contact'
   },
   INFORMATION: {
-    PATH: 'information',
-    VALUE: 'Information'
+    PATH: '#',
+    VALUE: ''
   },
   Privacy: {
-    PATH: 'privacy',
-    VALUE: 'Privacy Policy'
+    PATH: '#',
+    VALUE: ''
   },
   Term: {
-    PATH: 'term',
-    VALUE: 'Term'
+    PATH: '#',
+    VALUE: ''
   }
 };
 

@@ -3,4 +3,6 @@ const OPTIONS = {
   PRICE: 'Price'
 };
 
-export { OPTIONS };
+const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
+
+export { sortData };

@@ -7,8 +7,7 @@ import ProductList from '../../components/ProductList';
 import ReviewDialog from '../../components/ReviewDialog';
 import Toast from '../../components/Toast';
 import Pagination from '../../components/Pagination';
-
-import { OPTIONS } from '../../constants/label';
+import Text from '../../components/Text';
 
 import './index.css';
 
@@ -30,6 +29,7 @@ import useToast from '../../hooks/useToast';
 import { MESSAGE } from '../../constants/message';
 
 import { VARIABLES } from '../../constants/variable';
+import { sortData } from '../../constants/label';
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -39,6 +39,8 @@ const Home = () => {
     colors: [],
     maxPrice: 0
   });
+
+  const [message, setMessage] = useState('');
 
   const [selectedType, setSelectedType] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(
@@ -55,17 +57,18 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
-  const sortData = [OPTIONS.NAME, OPTIONS.PRICE];
-
   const handleSelectType = selectedType => {
+    setCurrentPage(1);
     setSelectedType(selectedType);
   };
 
   const handleChangePrice = e => {
+    setCurrentPage(1);
     setSelectedPrice(Number(e.target.value));
   };
 
   const handleChangeColor = e => {
+    setCurrentPage(1);
     setSelectedColor(e.target.value);
   };
 
@@ -84,9 +87,6 @@ const Home = () => {
 
   const handleTotalPage = count => {
     const result = Math.ceil(count / VARIABLES.PAGE_SIZE);
-    // if (count % VARIABLES.PAGE_SIZE !== 0) {
-    //   result = Math.ceil(result);
-    // }
     setTotalPage(result);
   };
 
@@ -100,10 +100,18 @@ const Home = () => {
     });
 
     if (!error) {
+      
+      if (!data.products) {
+        setCount(data.count);
+        setProducts(data.products);
+        setMessage(MESSAGE.MESSAGE_NOT_FIND_PRODUCT);
+        handleTotalPage(data.count);
+      }
       setCount(data.count);
       setProducts(data.products);
       // Calculate total page
       handleTotalPage(data.count);
+      setMessage(MESSAGE.MESSAGE_NOT_FIND_PRODUCT);
     }
   };
 
@@ -119,7 +127,7 @@ const Home = () => {
     const { error: reviewError } = await createReviews({
       rating,
       comment,
-      userName: users[getRandomInt(users.length)],
+      userId: users[getRandomInt(users.length)],
       productId: selectedProduct
     });
 
@@ -169,10 +177,15 @@ const Home = () => {
           data={sortData}
           count={count}
         />
-        <ProductList
-          products={products}
-          onOpen={handleOpenReviewDialog}
-        />
+        {!message ? (
+          <Text as="p">{message}</Text>
+        ) : (
+          <ProductList
+            products={products}
+            onOpen={handleOpenReviewDialog}
+          />
+        )}
+
         <Pagination
           range={totalPage}
           value={currentPage}

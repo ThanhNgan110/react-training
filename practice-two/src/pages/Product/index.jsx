@@ -5,17 +5,14 @@ import './index.css';
 
 import ProductImages from '../../components/ProductImages';
 import ProductContent from '../../components/ProductContent';
-import Tabs from '../../components/Tabs';
 import Tab from '../../components/Tabs/Tab';
 import TabContent from '../../components/Tabs/TabContent';
 import TabBar from '../../components/TabBar';
-import Loading from '../../components/Spinner';
+import Loading from '../../components/Loading';
 import Toast from '../../components/Toast';
 import ReviewDialog from '../../components/ReviewDialog';
 
 import { PAGES } from '../../constants/route';
-
-import { TAB } from '../../constants/tab';
 
 import { getProductById } from '../../services/product-service';
 import {
@@ -30,6 +27,7 @@ import { users } from '../../mocks/users';
 import useToast from '../../hooks/useToast';
 
 import { MESSAGE } from '../../constants/message';
+import { TABS } from '../../constants/tab';
 
 const Product = () => {
   let { id } = useParams();
@@ -43,8 +41,6 @@ const Product = () => {
   const [reviews, setReview] = useState([]);
 
   const [currentTab, setCurrentTab] = useState(0);
-
-  const tabs = [{ title: TAB.PRODUCT_INFO }, { title: TAB.REVIEWS }];
 
   const items = [
     { title: PAGES.PRODUCT.VALUE, href: PAGES.HOME.PATH },
@@ -77,7 +73,7 @@ const Product = () => {
     const { data, error } = await createReviews({
       rating,
       comment,
-      userName: users[getRandomInt(users.length)],
+      userId: users[getRandomInt(users.length)],
       productId: selectedProduct
     });
 
@@ -130,9 +126,9 @@ const Product = () => {
           />
         </section>
         <section className="tab-review">
-          <Tabs>
+          <>
             <div className="d-flex tab-item">
-              {tabs.map((item, index) => (
+              {TABS.map((item, index) => (
                 <Tab
                   key={index}
                   onClick={() => handleSetTab(index)}
@@ -147,7 +143,7 @@ const Product = () => {
               reviews={reviews ?? null}
               description={product.description}
             />
-          </Tabs>
+          </>
         </section>
       </main>
       <ReviewDialog

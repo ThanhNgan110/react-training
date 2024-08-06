@@ -14,12 +14,12 @@ const ProductContent = ({ product, onOpen }) => {
     id,
     name,
     price,
-    reviewCount,
+    reviewsCount,
     category,
     colors,
     sizes,
     orderStatus,
-    aveRating
+    averageRating
   } = product;
 
   return (
@@ -33,7 +33,7 @@ const ProductContent = ({ product, onOpen }) => {
       <Divider>
         <div className="d-flex align-items-center space-empty">
           <StarRating
-            rating={aveRating}
+            rating={averageRating}
             width="12"
             height="12"
           />
@@ -41,11 +41,11 @@ const ProductContent = ({ product, onOpen }) => {
             as="p"
             className="fs-4 text-gray"
           >
-            {reviewCount ?? 0} reviews
+            {reviewsCount ?? 0} reviews
           </Text>
           <Button
             className="btn-link fs-md"
-            onClick={()=> onOpen(id)}
+            onClick={() => onOpen(id)}
           >
             Submit a review
           </Button>

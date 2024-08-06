@@ -3,4 +3,6 @@ const TAB = {
   REVIEWS: 'Reviews'
 };
 
-export { TAB };
+const TABS = [{ title: TAB.PRODUCT_INFO }, { title: TAB.REVIEWS }];
+
+export { TABS };

@@ -7,7 +7,7 @@ const ListGroup = ({ className, vertical = false, children }) => {
   return (
     <ul
       className={clsx('list-group', {
-        'vertical': vertical,
+        vertical: vertical,
         [className]: !!className
       })}
     >
