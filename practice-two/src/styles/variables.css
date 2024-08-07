@@ -30,7 +30,8 @@
   --color-success: #198754;
   --color-danger: #dc3545;
 
-  --border-radius-sm: 2px;
+  --border-radius-xsm: 2px;
+  --border-radius-sm: 5px;
   --border-radius-md: 50px;
 
   --font-size-xsm: 12px;

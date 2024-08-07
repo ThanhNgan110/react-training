@@ -4,10 +4,10 @@
 }
 
 .item-gallery {
-  border: var(--border-radius-sm) solid var(--color-porcelain);
+  border: var(--border-radius-xsm) solid var(--color-porcelain);
   cursor: pointer;
 }
 
 .item-gallery.active {
-  border: var(--border-radius-sm) solid var(--color-blue);
+  border: var(--border-radius-xsm) solid var(--color-blue);
 }

@@ -1,5 +1,5 @@
 .divider {
-  border-bottom: var(--border-radius-sm) solid var(--color-porcelain);
+  border-bottom: var(--border-radius-xsm) solid var(--color-porcelain);
   padding-bottom: 11px;
   width: 100%;
 }
