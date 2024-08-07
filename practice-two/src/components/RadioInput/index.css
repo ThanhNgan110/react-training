@@ -15,10 +15,10 @@
   border-radius: var(--border-radius-md);
   transition: all 0.2s;
   z-index: 2;
-  cursor: pointer;
 }
 
 input[type='radio'] {
+  cursor: pointer;
   background-color: var(--color-blue);
   width: 27px;
   height: 26.1px;
