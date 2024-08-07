@@ -41,7 +41,7 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
             as="p"
             className="text-info fw-semibold fs-1"
           >
-            Review
+            Submit Your Review
           </Text>
           <Button
             className="btn-close "
@@ -54,7 +54,7 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
         <>
           <form
             className="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit} // Updated onSubmit handler
           >
             <Text
               as="p"
