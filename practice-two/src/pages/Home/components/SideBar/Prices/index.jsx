@@ -1,8 +1,8 @@
 // Import component
-import Text from '../../../components/Text';
-import RangeInput from '../../../components/RangeInput';
+import Text from '../../../../../components/Text';
+import RangeInput from '../../../../../components/RangeInput';
 
-import { formatPrice } from '../../../utils/formatPrice';
+import { formatPrice } from '../../../../../utils/formatPrice';
 
 // Import css
 import './index';

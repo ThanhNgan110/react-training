@@ -1,9 +1,9 @@
 import Text from '../Text';
-import StarRating from '../StarRating';
 import Button from '../Button';
 import ColorsPicker from '../ColorsPicker';
 import Select from '../Select';
 import Divider from '../Divider';
+import CardHeader from '../CardHeader';
 
 import './index.css';
 
@@ -24,33 +24,16 @@ const ProductContent = ({ product, onOpen }) => {
 
   return (
     <section className="product-center">
-      <Text
-        as="h2"
-        className="fs-2"
-      >
-        {name}
-      </Text>
-      <Divider>
-        <div className="d-flex align-items-center space-empty">
-          <StarRating
-            rating={averageRating}
-            width="12"
-            height="12"
-          />
-          <Text
-            as="p"
-            className="fs-4 text-gray"
-          >
-            {reviewsCount ?? 0} reviews
-          </Text>
-          <Button
-            className="btn-link fs-md"
-            onClick={() => onOpen(id)}
-          >
-            Submit a review
-          </Button>
-        </div>
-      </Divider>
+      <div className="d-flex flex-column space-empty">
+        <CardHeader
+          id={id}
+          name={name}
+          averageRating={averageRating}
+          reviewsCount={reviewsCount}
+          onOpen={onOpen}
+        />
+      </div>
+
       <Divider>
         <div className="d-flex align-items-center gap-10">
           <Text

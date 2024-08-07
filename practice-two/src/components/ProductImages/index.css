@@ -5,6 +5,7 @@
 
 .item-gallery {
   border: var(--border-radius-sm) solid var(--color-porcelain);
+  cursor: pointer;
 }
 
 .item-gallery.active {

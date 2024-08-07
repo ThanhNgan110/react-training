@@ -1,7 +1,0 @@
-.group-item {
-  cursor: pointer;
-}
-
-.active {
-  color: var(--color-link-hover-color);
-}

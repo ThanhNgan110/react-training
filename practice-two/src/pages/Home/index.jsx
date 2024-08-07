@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import SideBar from '../../layouts/SideBar';
+import SideBar from './components/SideBar';
 import Banner from './components/Banner';
-import Bar from '../../components/Bar';
+import Bar from './components/Bar';
 import ProductList from '../../components/ProductList';
 import ReviewDialog from '../../components/ReviewDialog';
 import Toast from '../../components/Toast';
@@ -100,7 +100,6 @@ const Home = () => {
     });
 
     if (!error) {
-      
       if (!data.products) {
         setCount(data.count);
         setProducts(data.products);
