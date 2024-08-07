@@ -44,7 +44,8 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
             Review
           </Text>
           <Button
-            iconClassName="btn-close icon-close"
+            className="btn-close "
+            iconClassName="icon-close"
             onClick={() => onClose()}
           />
         </div>
@@ -53,7 +54,7 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
         <>
           <form
             className="form"
-            onSubmit={handleSubmit} // Updated onSubmit handler
+            onSubmit={handleSubmit}
           >
             <Text
               as="p"
