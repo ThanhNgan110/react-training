@@ -1,6 +1,6 @@
 .select {
   cursor: pointer;
-  border: var(--border-radius-xsm) solid var(--color-bali-hai);
+  border: var(--border-radius-xsm) solid solid #F1F3F4;
   outline: none;
   padding: 10px;
   background-color: var(--color-porcelain);
