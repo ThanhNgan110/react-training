@@ -4,7 +4,7 @@ import ListGroup from '../../components/ListGroup';
 import Text from '../../components/Text';
 
 // Constants
-import { FOOTER_LIST_INFORMATION } from '../../constants/category';
+import { FOOTER_LIST_INFORMATION, LIST_ICON } from '../../constants';
 
 // Css
 import './index.css';
@@ -38,18 +38,11 @@ const Footer = () => {
           © 2018 Ecommerce theme by www.bisenbaev.com
         </Text>
         <ListGroup className="gap-30">
-          <ListGroup.Item>
-            <span className="icon icon-sm icon-card-master"></span>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <span className="icon icon-sm icon-card-paypal"></span>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <span className="icon icon-sm icon-card-shape"></span>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <span className="icon  icon-sm icon-card-union "></span>
-          </ListGroup.Item>
+          {LIST_ICON.map((item, index) => (
+            <ListGroup.Item key={`${index}`}>
+              <span className={`icon icon-sm ${item}`}></span>
+            </ListGroup.Item>
+          ))}
         </ListGroup>
       </div>
     </footer>
