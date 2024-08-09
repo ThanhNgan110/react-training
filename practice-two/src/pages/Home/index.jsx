@@ -152,7 +152,7 @@ const Home = () => {
 
   const fetchData = async () => {
     setLoading(true);
-    await Promise.all([handlePopulateSettings(), handlePopulateProducts()]);
+    await Promise.all([handlePopulateSettings(), handlePopulateProducts]);
     setLoading(false);
   };
 
