@@ -1,5 +1,5 @@
-import Text from '../Text';
-import Select from '../Select';
+import Text from '../../../../components/Text';
+import Select from '../../../../components/Select';
 
 import './index.css';
 

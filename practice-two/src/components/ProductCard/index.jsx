@@ -4,9 +4,7 @@ import { formatPrice } from '../../utils/formatPrice';
 
 import Text from '../Text';
 import Image from '../Image';
-import StarRating from '../StarRating';
-import Button from '../Button';
-import Divider from '../Divider';
+import CardHeader from '../CardHeader';
 
 import './index.css';
 
@@ -29,36 +27,13 @@ const ProductCard = ({ product, onOpen }) => {
           <span className="badge"></span>
         </div>
         <div className="d-flex flex-column product-content">
-          <Text
-            as="h3"
-            variant="primary"
-          >
-            {name ? name : ''}
-          </Text>
-          <Divider>
-            <div className="d-flex align-items-center gap-10">
-              <StarRating
-                rating={averageRating}
-                width="12"
-                height="12"
-              />
-              <Text
-                as="p"
-                className="fs-4 text-gray"
-              >
-                {reviewsCount ?? 0} reviews
-              </Text>
-              <Button
-                variant="link"
-                onClick={e => {
-                  e.preventDefault();
-                  onOpen(id);
-                }}
-              >
-                Submit a review
-              </Button>
-            </div>
-          </Divider>
+          <CardHeader
+            id={id}
+            name={name}
+            averageRating={averageRating}
+            reviewsCount={reviewsCount}
+            onOpen={onOpen}
+          />
 
           <div className="d-flex align-items-center gap-10">
             <Text

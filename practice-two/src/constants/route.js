@@ -41,4 +41,12 @@ const PAGES = {
   }
 };
 
-export { PAGES };
+const menus = [
+  { path: PAGES.HOME.PATH, value: PAGES.HOME.VALUE },
+  { path: PAGES.ABOUT.PATH, value: PAGES.ABOUT.VALUE },
+  { path: PAGES.SNEAKERS.PATH, value: PAGES.SNEAKERS.VALUE },
+  { path: PAGES.BELT.PATH, value: PAGES.BELT.VALUE },
+  { path: PAGES.CONTACT.PATH, value: PAGES.CONTACT.VALUE }
+];
+
+export { PAGES, menus };

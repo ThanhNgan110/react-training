@@ -1,0 +1,6 @@
+.bar {
+  background-color: var(--color-gray-200);
+  gap: 57px;
+  padding: 5px 23px;
+  margin-top: 14px;
+}

@@ -41,10 +41,11 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
             as="p"
             className="text-info fw-semibold fs-1"
           >
-            Review
+            Submit Your Review
           </Text>
           <Button
-            iconClassName="btn-close icon-close"
+            className="btn-close "
+            iconClassName="icon-close"
             onClick={() => onClose()}
           />
         </div>

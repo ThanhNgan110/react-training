@@ -11,7 +11,7 @@ const ReviewCard = ({ reviews }) => {
       <div className="d-flex gap-16">
         <Image
           src={user.avatar ?? ''}
-          alt={user.name}
+          alt="avatar"
         />
         <div className="d-flex flex-column gap-10">
           <Text as="h4">{user.name ?? ''}</Text>
