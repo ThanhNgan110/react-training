@@ -1,10 +1,10 @@
-// Import component
+// Component
 import Text from '../../../../../components/Text';
 import RangeInput from '../../../../../components/RangeInput';
 
-import { formatPrice } from '../../../../../utils/formatPrice';
+import { formatPrice } from '../../../../../utils/common';
 
-// Import css
+// Css
 import './index';
 
 const Prices = ({ maxPrice, price, handleChangePrice }) => {

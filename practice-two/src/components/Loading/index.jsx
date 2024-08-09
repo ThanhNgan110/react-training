@@ -1,3 +1,4 @@
+// Css
 import './index.css';
 
 const Loading = () => {

@@ -1,3 +1,4 @@
+// Components
 import Text from '../Text';
 import StarRating from '../StarRating';
 import Button from '../Button';

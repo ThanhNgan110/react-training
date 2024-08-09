@@ -1,7 +1,9 @@
 import clsx from 'clsx';
 
+// Component
 import BreadcrumbItem from '../BreadcrumbItem';
 
+// Css
 import './index.css';
 
 const Breadcrumb = ({ className, items }) => {
