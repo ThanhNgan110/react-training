@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import SideBar from './components/SideBar';
 import Banner from './components/Banner';
@@ -7,7 +7,7 @@ import ProductList from '../../components/ProductList';
 import ReviewDialog from '../../components/ReviewDialog';
 import Toast from '../../components/Toast';
 import Pagination from '../../components/Pagination';
-import Text from '../../components/Text';
+import Loading from '../../components/Loading';
 
 import './index.css';
 
@@ -39,9 +39,7 @@ const Home = () => {
     colors: [],
     maxPrice: 0
   });
-
   const [message, setMessage] = useState('');
-
   const [selectedType, setSelectedType] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(
     VARIABLES.DEFAULT_VALUE_PRICE
@@ -56,6 +54,9 @@ const Home = () => {
   const { showToast, alert } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const mounted = useRef(false);
 
   const handleSelectType = selectedType => {
     setCurrentPage(1);
@@ -90,7 +91,6 @@ const Home = () => {
     setTotalPage(result);
   };
 
-  // call api get products
   const handlePopulateProducts = async () => {
     const { data, error } = await getProducts({
       selectedType,
@@ -98,6 +98,8 @@ const Home = () => {
       selectedColor,
       selectedPageNumber: currentPage
     });
+
+    console.log('data', data);
 
     if (!error) {
       if (!data.products) {
@@ -108,13 +110,11 @@ const Home = () => {
       }
       setCount(data.count);
       setProducts(data.products);
-      // Calculate total page
       handleTotalPage(data.count);
-      setMessage(MESSAGE.MESSAGE_NOT_FIND_PRODUCT);
+      setMessage('');
     }
   };
 
-  // call api get settings
   const handlePopulateSettings = async () => {
     const { data, error } = await getProductSettings();
     if (!error) {
@@ -138,7 +138,6 @@ const Home = () => {
     showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
     setOpenReviewDialog(false);
 
-    // call api fetch product by id
     const { data: product, error: productErr } = await getProductById(
       selectedProduct
     );
@@ -151,57 +150,74 @@ const Home = () => {
     }
   };
 
+  const fetchData = async () => {
+    setLoading(true);
+    await Promise.all([handlePopulateSettings(), handlePopulateProducts]);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    handlePopulateProducts();
+    if (!mounted.current) {
+      // componentDidMount logic
+      // const fetchData = async () => {
+      //   setLoading(true);
+      //   await Promise.all([handlePopulateSettings(), handlePopulateProducts]);
+      //   setLoading(false);
+      // };
+      fetchData();
+      mounted.current = true;
+    } else {
+      // componentDidUpdate logic
+      handlePopulateProducts();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedType, debouncedChangeInputRange, selectedColor, currentPage]);
 
-  useEffect(() => {
-    handlePopulateSettings();
-  }, []);
-
   return (
     <div className="d-flex wrapper-content">
-      <SideBar
-        settings={settings}
-        onClick={handleSelectType}
-        activeSelected={selectedType}
-        handleChangePrice={handleChangePrice}
-        handleChangeColor={handleChangeColor}
-        price={selectedPrice}
-      />
-      <main>
-        <Banner />
-        <Bar
-          data={sortData}
-          count={count}
-        />
-        {!message ? (
-          <Text as="p">{message}</Text>
-        ) : (
-          <ProductList
-            products={products}
-            onOpen={handleOpenReviewDialog}
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <SideBar
+            settings={settings}
+            onClick={handleSelectType}
+            activeSelected={selectedType}
+            handleChangePrice={handleChangePrice}
+            handleChangeColor={handleChangeColor}
+            price={selectedPrice}
           />
-        )}
+          <main>
+            <Banner />
+            <Bar
+              data={sortData}
+              count={count}
+            />
 
-        <Pagination
-          range={totalPage}
-          value={currentPage}
-          onChange={handlePageChange}
-        />
-        <ReviewDialog
-          open={isOpenReviewDialog}
-          onClose={handleCloseReviewDialog}
-          onSubmit={handleSubmitReview}
-        />
-        {alert.show && (
-          <Toast
-            type={alert.type}
-            msg={alert.msg}
-          />
-        )}
-      </main>
+            <ProductList
+              products={products}
+              onOpen={handleOpenReviewDialog}
+              message={message}
+            />
+            <Pagination
+              range={totalPage}
+              value={currentPage}
+              onChange={handlePageChange}
+            />
+            <ReviewDialog
+              open={isOpenReviewDialog}
+              onClose={handleCloseReviewDialog}
+              onSubmit={handleSubmitReview}
+            />
+            {alert.show && (
+              <Toast
+                type={alert.type}
+                msg={alert.msg}
+              />
+            )}
+          </main>
+        </>
+      )}
     </div>
   );
 };
