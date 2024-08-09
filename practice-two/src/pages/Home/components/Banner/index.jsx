@@ -1,11 +1,12 @@
-import banner from '../../../../assets/images/banner.png';
-
+// Components
 import Image from '../../../../components/Image';
 import Text from '../../../../components/Text';
 
+// Css
 import './index.css';
 
-const Banner = () => {
+const Banner = ({ data }) => {
+  const { title, subTitle, image } = data;
   return (
     <div className="d-flex banner">
       <div className="d-flex justify-content-center banner-content">
@@ -13,17 +14,17 @@ const Banner = () => {
           as="h2"
           className="text-white title-banner"
         >
-          Adidas Men Running Sneakers
+          {title}
         </Text>
         <Text
           as="p"
           className="text-white fs-5 fw-normal"
         >
-          Performance and design. Taken right to the edge.
+          {subTitle}
         </Text>
       </div>
       <Image
-        src={banner}
+        src={image}
         alt="banner"
       />
     </div>
