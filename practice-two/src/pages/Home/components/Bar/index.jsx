@@ -1,6 +1,8 @@
+// Components
 import Text from '../../../../components/Text';
 import Select from '../../../../components/Select';
 
+// Css
 import './index.css';
 
 const Bar = ({ count, data, onChange }) => {

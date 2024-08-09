@@ -1,9 +1,10 @@
 .select {
   cursor: pointer;
-  border: var(--border-radius-xsm) solid solid #F1F3F4;
+  border: 2px solid var(--color-loblolly);
   outline: none;
   padding: 10px;
   background-color: var(--color-porcelain);
   width: 100%;
   max-width: 123px;
+  border-radius: var(--border-radius-sm);
 }

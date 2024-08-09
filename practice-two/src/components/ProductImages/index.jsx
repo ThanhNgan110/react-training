@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
+// Css
 import './index.css';
 
+// Components
 import Image from '../Image';
 
 const ProductImages = ({ images = [], name }) => {

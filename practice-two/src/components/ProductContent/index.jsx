@@ -1,3 +1,4 @@
+// Components
 import Text from '../Text';
 import Button from '../Button';
 import ColorsPicker from '../ColorsPicker';
@@ -7,7 +8,7 @@ import CardHeader from '../CardHeader';
 
 import './index.css';
 
-import { formatPrice } from '../../utils/formatPrice';
+import { formatPrice } from '../../utils/common';
 
 const ProductContent = ({ product, onOpen }) => {
   const {

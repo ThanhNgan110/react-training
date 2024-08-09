@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 
-import { formatPrice } from '../../utils/formatPrice';
+// Common
+import { formatPrice } from '../../utils/common';
 
+// Components
 import Text from '../Text';
 import Image from '../Image';
 import CardHeader from '../CardHeader';
 
+// Css
 import './index.css';
 
 const ProductCard = ({ product, onOpen }) => {

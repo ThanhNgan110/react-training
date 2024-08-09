@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 
+// Constant
 import { menus } from '../../constants/route';
 
+// Components
 import ListGroup from '../ListGroup';
-
 import Logo from '../Logo';
 
+// Css
 import './index.css';
 
 const NavBar = () => {

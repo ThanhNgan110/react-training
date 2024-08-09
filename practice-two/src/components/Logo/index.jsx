@@ -1,10 +1,9 @@
-// Import router
 import { Link } from 'react-router-dom';
 
-// Import image
+// Image
 import logo from '../../assets/images/logo.png';
 
-// Import component
+// Component
 import Image from '../Image/index.jsx';
 
 const Logo = () => {

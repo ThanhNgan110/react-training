@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import './index.css';
 
 const Modal = ({ open, className, modalHeader, modalBody, modalFooter }) => {

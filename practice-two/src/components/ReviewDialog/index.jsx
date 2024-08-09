@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
+// Components
 import Modal from '../Modal';
 import Text from '../Text';
 import Textarea from '../Textarea';
 import Button from '../Button';
 import StarRating from '../StarRating';
 
+// Css
 import './index.css';
 
 const ReviewDialog = ({ open, onSubmit, onClose }) => {

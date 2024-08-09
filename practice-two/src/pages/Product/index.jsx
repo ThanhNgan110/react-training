@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+// Css
 import './index.css';
 
+// Components
 import ProductImages from '../../components/ProductImages';
 import ProductContent from '../../components/ProductContent';
 import Tab from '../../components/Tabs/Tab';
@@ -12,40 +14,55 @@ import Loading from '../../components/Loading';
 import Toast from '../../components/Toast';
 import ReviewDialog from '../../components/ReviewDialog';
 
+// Constant
 import { PAGES } from '../../constants/route';
+import { MESSAGE } from '../../constants/message';
+import { TABS } from '../../constants';
 
+// Service
 import { getProductById } from '../../services/product-service';
 import {
   createReviews,
   getReviewsByProductId
 } from '../../services/review-service';
 
-import { getRandomInt } from '../../utils/randomUser';
+// Common
+import { getRandomInt } from '../../utils/common';
 
+// Mock
 import { users } from '../../mocks/users';
 
+// Hook
 import useToast from '../../hooks/useToast';
-
-import { MESSAGE } from '../../constants/message';
-import { TABS } from '../../constants/tab';
 
 const Product = () => {
   let { id } = useParams();
-
   const { showToast, alert } = useToast();
-
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
   const [reviews, setReview] = useState([]);
-
   const [currentTab, setCurrentTab] = useState(0);
-
   const items = [
     { title: PAGES.PRODUCT.VALUE, href: PAGES.HOME.PATH },
     { title: product ? product.name : '', href: '', active: true }
   ];
+
+  useEffect(() => {
+    fetchProductById(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // call api fetch get reviews
+    const fetchGetReviews = async () => {
+      const { data } = await getReviewsByProductId(id);
+      setReview(data.reviews);
+    };
+    fetchGetReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSetTab = async index => {
     setCurrentTab(index);
@@ -91,21 +108,6 @@ const Product = () => {
     const productId = data.productId;
     await fetchProductById(productId);
   };
-
-  useEffect(() => {
-    fetchProductById(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // call api fetch get reviews
-    const fetchGetReviews = async () => {
-      const { data } = await getReviewsByProductId(id);
-      setReview(data.reviews);
-    };
-    fetchGetReviews();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   if (isLoading) {
     return <Loading />;

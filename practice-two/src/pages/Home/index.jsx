@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
+// Components
 import SideBar from './components/SideBar';
 import Banner from './components/Banner';
 import Bar from './components/Bar';
@@ -9,8 +10,10 @@ import Toast from '../../components/Toast';
 import Pagination from '../../components/Pagination';
 import Loading from '../../components/Loading';
 
+// Css
 import './index.css';
 
+// Services
 import {
   getProducts,
   getProductById,
@@ -18,18 +21,20 @@ import {
 } from '../../services/product-service';
 import { createReviews } from '../../services/review-service';
 
-import { getRandomInt } from '../../utils/randomUser';
-
-import { users } from '../../mocks/users';
-
+// Hooks
 import useDebouncedValue from '../../hooks/useDebouncedValue';
-
 import useToast from '../../hooks/useToast';
 
+// Constants
 import { MESSAGE } from '../../constants/message';
-
 import { VARIABLES } from '../../constants/variable';
-import { sortData } from '../../constants/label';
+import { SORT_DATA } from '../../constants';
+
+// Util
+import { getRandomInt } from '../../utils/common';
+
+// Mock
+import { users } from '../../mocks/users';
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -37,7 +42,8 @@ const Home = () => {
   const [settings, setSettings] = useState({
     types: [],
     colors: [],
-    maxPrice: 0
+    maxPrice: 0,
+    banner: {}
   });
   const [message, setMessage] = useState('');
   const [selectedType, setSelectedType] = useState(null);
@@ -55,8 +61,19 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [loading, setLoading] = useState(false);
-
   const mounted = useRef(false);
+
+  useEffect(() => {
+    if (!mounted.current) {
+      // componentDidMount logic
+      fetchData();
+      mounted.current = true;
+    } else {
+      // componentDidUpdate logic
+      handlePopulateProducts();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedType, debouncedChangeInputRange, selectedColor, currentPage]);
 
   const handleSelectType = selectedType => {
     setCurrentPage(1);
@@ -91,38 +108,8 @@ const Home = () => {
     setTotalPage(result);
   };
 
-  const handlePopulateProducts = async () => {
-    const { data, error } = await getProducts({
-      selectedType,
-      selectedPrice: debouncedChangeInputRange,
-      selectedColor,
-      selectedPageNumber: currentPage
-    });
-
-    console.log('data', data);
-
-    if (!error) {
-      if (!data.products) {
-        setCount(data.count);
-        setProducts(data.products);
-        setMessage(MESSAGE.MESSAGE_NOT_FIND_PRODUCT);
-        handleTotalPage(data.count);
-      }
-      setCount(data.count);
-      setProducts(data.products);
-      handleTotalPage(data.count);
-      setMessage('');
-    }
-  };
-
-  const handlePopulateSettings = async () => {
-    const { data, error } = await getProductSettings();
-    if (!error) {
-      setSettings(data);
-    }
-  };
-
   const handleSubmitReview = async ({ rating, comment }) => {
+    setLoading(true);
     const { error: reviewError } = await createReviews({
       rating,
       comment,
@@ -148,76 +135,106 @@ const Home = () => {
       );
       setProducts(updatedProducts);
     }
-  };
 
-  const fetchData = async () => {
-    setLoading(true);
-    await Promise.all([handlePopulateSettings(), handlePopulateProducts]);
     setLoading(false);
   };
 
-  useEffect(() => {
-    if (!mounted.current) {
-      // componentDidMount logic
-      // const fetchData = async () => {
-      //   setLoading(true);
-      //   await Promise.all([handlePopulateSettings(), handlePopulateProducts]);
-      //   setLoading(false);
-      // };
-      fetchData();
-      mounted.current = true;
-    } else {
-      // componentDidUpdate logic
-      handlePopulateProducts();
+  const handlePopulateSettings = settingsData => {
+    const { data, error } = settingsData;
+    if (error) return error;
+    setSettings(data);
+  };
+
+  const handlePopulateProducts = async () => {
+    const { data, error } = await getProducts({
+      selectedType,
+      selectedPrice: debouncedChangeInputRange,
+      selectedColor,
+      selectedPageNumber: currentPage
+    });
+
+    if (error) return error;
+    if (data.products.length === 0) {
+      setProducts(data.products);
+      setCount(data.count);
+      setMessage(MESSAGE.MESSAGE_NOT_FIND_PRODUCT);
+      return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedType, debouncedChangeInputRange, selectedColor, currentPage]);
+    setCount(data.count);
+    setProducts(data.products);
+    setMessage('');
+    handleTotalPage(data.count);
+  };
+
+  const setDataProduct = productData => {
+    const { data, error } = productData;
+    if (error) return error;
+    setCount(data.count);
+    setProducts(data.products);
+    setMessage('');
+    handleTotalPage(data.count);
+  };
+
+  // call api products and settings
+  const fetchData = async () => {
+    setLoading(true);
+    const [settingsData, productsData] = await Promise.all([
+      getProductSettings(),
+      getProducts({
+        selectedType,
+        selectedPrice: debouncedChangeInputRange,
+        selectedColor,
+        selectedPageNumber: currentPage
+      })
+    ]);
+    handlePopulateSettings(settingsData);
+    setDataProduct(productsData);
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="d-flex wrapper-content">
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <SideBar
-            settings={settings}
-            onClick={handleSelectType}
-            activeSelected={selectedType}
-            handleChangePrice={handleChangePrice}
-            handleChangeColor={handleChangeColor}
-            price={selectedPrice}
-          />
-          <main>
-            <Banner />
-            <Bar
-              data={sortData}
-              count={count}
-            />
+      <SideBar
+        settings={settings}
+        onClick={handleSelectType}
+        activeSelected={selectedType}
+        handleChangePrice={handleChangePrice}
+        handleChangeColor={handleChangeColor}
+        price={selectedPrice}
+      />
+      <main>
+        <Banner data={settings.banner} />
+        <Bar
+          data={SORT_DATA}
+          count={count}
+        />
 
-            <ProductList
-              products={products}
-              onOpen={handleOpenReviewDialog}
-              message={message}
-            />
-            <Pagination
-              range={totalPage}
-              value={currentPage}
-              onChange={handlePageChange}
-            />
-            <ReviewDialog
-              open={isOpenReviewDialog}
-              onClose={handleCloseReviewDialog}
-              onSubmit={handleSubmitReview}
-            />
-            {alert.show && (
-              <Toast
-                type={alert.type}
-                msg={alert.msg}
-              />
-            )}
-          </main>
-        </>
-      )}
+        <ProductList
+          products={products}
+          onOpen={handleOpenReviewDialog}
+          message={message}
+        />
+        <Pagination
+          range={totalPage}
+          value={currentPage}
+          onChange={handlePageChange}
+        />
+        <ReviewDialog
+          open={isOpenReviewDialog}
+          onClose={handleCloseReviewDialog}
+          onSubmit={handleSubmitReview}
+        />
+        {alert.show && (
+          <Toast
+            type={alert.type}
+            msg={alert.msg}
+          />
+        )}
+      </main>
     </div>
   );
 };
