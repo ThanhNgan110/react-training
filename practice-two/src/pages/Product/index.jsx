@@ -20,7 +20,7 @@ import {
   getReviewsByProductId
 } from '../../services/review-service';
 
-import { getRandomInt } from '../../utils/randomUser';
+import { getRandomInt } from '../../utils/common';
 
 import { users } from '../../mocks/users';
 
