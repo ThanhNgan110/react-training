@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import './index.css';
 
 const Text = ({ className, variant, as: Text, ellipsis, children }) => {

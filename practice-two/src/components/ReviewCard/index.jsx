@@ -1,7 +1,9 @@
+// Components
 import Image from '../Image';
 import Text from '../Text';
 import StarRating from '../StarRating';
 
+// Css
 import './index.css';
 
 const ReviewCard = ({ reviews }) => {

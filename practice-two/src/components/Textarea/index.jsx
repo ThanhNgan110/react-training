@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-// Import css
+// Css
 import './index.css';
 
 const Textarea = ({ className, value, onChange, placeholder }) => {

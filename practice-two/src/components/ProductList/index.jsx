@@ -1,6 +1,8 @@
+// Components
 import ProductCard from '../ProductCard';
 import Text from '../Text';
 
+// Css
 import './index.css';
 
 const ProductList = ({ products, message, onOpen }) => {

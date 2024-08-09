@@ -1,3 +1,4 @@
+// Components
 import ListGroup from '../ListGroup';
 import Star from '../Icons/Star';
 import ListGroupItem from '../ListGroup/ListGroupItem';
