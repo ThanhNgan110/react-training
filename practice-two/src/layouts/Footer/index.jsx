@@ -1,9 +1,12 @@
+// Components
 import FooterNavList from '../../components/FooterNavList';
 import ListGroup from '../../components/ListGroup';
 import Text from '../../components/Text';
 
+// Constants
 import { FOOTER_LIST_INFORMATION } from '../../constants/category';
 
+// Css
 import './index.css';
 
 const Footer = () => {
@@ -42,7 +45,7 @@ const Footer = () => {
             <span className="icon icon-sm icon-card-paypal"></span>
           </ListGroup.Item>
           <ListGroup.Item>
-            <span className="icon icon-sm icon-card-shape "></span>
+            <span className="icon icon-sm icon-card-shape"></span>
           </ListGroup.Item>
           <ListGroup.Item>
             <span className="icon  icon-sm icon-card-union "></span>
