@@ -28,7 +28,7 @@ import useToast from '../../hooks/useToast';
 // Constants
 import { MESSAGE } from '../../constants/message';
 import { VARIABLES } from '../../constants/variable';
-import { sortData } from '../../constants/label';
+import { SORT_DATA } from '../../constants';
 
 // Util
 import { getRandomInt } from '../../utils/common';
@@ -62,6 +62,18 @@ const Home = () => {
   const [totalPage, setTotalPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const mounted = useRef(false);
+
+  useEffect(() => {
+    if (!mounted.current) {
+      // componentDidMount logic
+      fetchData();
+      mounted.current = true;
+    } else {
+      // componentDidUpdate logic
+      handlePopulateProducts();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedType, debouncedChangeInputRange, selectedColor, currentPage]);
 
   const handleSelectType = selectedType => {
     setCurrentPage(1);
@@ -180,18 +192,6 @@ const Home = () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    if (!mounted.current) {
-      // componentDidMount logic
-      fetchData();
-      mounted.current = true;
-    } else {
-      // componentDidUpdate logic
-      handlePopulateProducts();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedType, debouncedChangeInputRange, selectedColor, currentPage]);
-
   if (loading) {
     return <Loading />;
   }
@@ -209,7 +209,7 @@ const Home = () => {
       <main>
         <Banner data={settings.banner} />
         <Bar
-          data={sortData}
+          data={SORT_DATA}
           count={count}
         />
 
