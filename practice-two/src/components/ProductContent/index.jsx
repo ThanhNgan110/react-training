@@ -10,7 +10,7 @@ import './index.css';
 
 import { formatPrice } from '../../utils/common';
 
-const ProductContent = ({ product, onOpen }) => {
+const ProductContent = ({ product, onSubmit }) => {
   const {
     id,
     name,
@@ -31,7 +31,7 @@ const ProductContent = ({ product, onOpen }) => {
           name={name}
           averageRating={averageRating}
           reviewsCount={reviewsCount}
-          onOpen={onOpen}
+          onSubmit={onSubmit}
         />
       </div>
 
