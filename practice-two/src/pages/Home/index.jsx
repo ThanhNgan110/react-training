@@ -5,7 +5,6 @@ import SideBar from './components/SideBar';
 import Banner from './components/Banner';
 import Bar from './components/Bar';
 import ProductList from '../../components/ProductList';
-import ReviewDialog from '../../components/ReviewDialog';
 import Toast from '../../components/Toast';
 import Pagination from '../../components/Pagination';
 import Loading from '../../components/Loading';
@@ -55,8 +54,6 @@ const Home = () => {
     selectedPrice,
     VARIABLES.TIME_OUT
   );
-  const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState('');
   const { showToast, alert } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
@@ -90,15 +87,6 @@ const Home = () => {
     setSelectedColor(e.target.value);
   };
 
-  const handleCloseReviewDialog = () => {
-    setOpenReviewDialog(false);
-  };
-
-  const handleOpenReviewDialog = id => {
-    setSelectedProduct(id);
-    setOpenReviewDialog(true);
-  };
-
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
@@ -108,35 +96,35 @@ const Home = () => {
     setTotalPage(result);
   };
 
-  const handleSubmitReview = async ({ id, rating, comment }) => {
-    // setLoading(true);
-    // const { error: reviewError } = await createReviews({
-    //   rating,
-    //   comment,
-    //   userId: users[getRandomInt(users.length)],
-    //   productId: id
-    // });
+  const handleSubmitReview = async ({ productId, rating, comment }) => {
+    console.log('id', productId);
 
-    // if (reviewError) {
-    //   showToast(MESSAGE.MESSAGE_FAILED, 'danger');
-    //   return;
-    // }
+    setLoading(true);
+    const { error: reviewError } = await createReviews({
+      rating,
+      comment,
+      userId: users[getRandomInt(users.length)],
+      productId: productId
+    });
 
-    // showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
-    // setOpenReviewDialog(false);
+    if (reviewError) {
+      showToast(MESSAGE.MESSAGE_FAILED, 'danger');
+      return;
+    }
+    showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
 
-    // const { data: product, error: productErr } = await getProductById(
-    //   selectedProduct
-    // );
+    const { data: product, error: productErr } = await getProductById(
+      productId
+    );
 
-    // if (!productErr) {
-    //   const updatedProducts = products.map(item =>
-    //     item.id === selectedProduct ? product : item
-    //   );
-    //   setProducts(updatedProducts);
-    // }
+    if (!productErr) {
+      const updatedProducts = products.map(item =>
+        item.id === productId ? product : item
+      );
+      setProducts(updatedProducts);
+    }
 
-    // setLoading(false);
+    setLoading(false);
   };
 
   const handlePopulateSettings = settingsData => {
@@ -215,9 +203,7 @@ const Home = () => {
 
         <ProductList
           products={products}
-          // onOpen={handleOpenReviewDialog}
           onSubmit={handleSubmitReview}
-          // onClose={handleCloseReviewDialog}
           message={message}
         />
         <Pagination
@@ -225,11 +211,6 @@ const Home = () => {
           value={currentPage}
           onChange={handlePageChange}
         />
-        {/* <ReviewDialog
-          open={isOpenReviewDialog}
-          onClose={handleCloseReviewDialog}
-          onSubmit={handleSubmitReview}
-        /> */}
         {alert.show && (
           <Toast
             type={alert.type}

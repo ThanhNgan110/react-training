@@ -12,7 +12,6 @@ import TabContent from '../../components/Tabs/TabContent';
 import TabBar from '../../components/TabBar';
 import Loading from '../../components/Loading';
 import Toast from '../../components/Toast';
-import ReviewDialog from '../../components/ReviewDialog';
 
 // Constant
 import { PAGES } from '../../constants/route';
@@ -40,8 +39,6 @@ const Product = () => {
   const { showToast, alert } = useToast();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState('');
   const [reviews, setReview] = useState([]);
   const [currentTab, setCurrentTab] = useState(0);
   const items = [
@@ -68,15 +65,6 @@ const Product = () => {
     setCurrentTab(index);
   };
 
-  const handleCloseReviewDialog = () => {
-    setOpenReviewDialog(false);
-  };
-
-  const handleOpenReviewDialog = id => {
-    setSelectedProduct(id);
-    setOpenReviewDialog(true);
-  };
-
   const fetchProductById = async productId => {
     setIsLoading(true);
     const { data, error } = await getProductById(productId);
@@ -91,7 +79,7 @@ const Product = () => {
       rating,
       comment,
       userId: users[getRandomInt(users.length)],
-      productId: selectedProduct
+      productId: id
     });
 
     if (error) {
@@ -103,7 +91,7 @@ const Product = () => {
     setReview(prevReviews => {
       return [data, ...prevReviews];
     });
-    setOpenReviewDialog(false);
+
     // call fetch product by id
     const productId = data.productId;
     await fetchProductById(productId);
@@ -124,7 +112,7 @@ const Product = () => {
           />
           <ProductContent
             product={product}
-            onOpen={handleOpenReviewDialog}
+            onSubmit={handleSubmitReview}
           />
         </section>
         <section className="tab-review">
@@ -148,11 +136,6 @@ const Product = () => {
           </>
         </section>
       </main>
-      {/* <ReviewDialog
-        open={isOpenReviewDialog}
-        onClose={handleCloseReviewDialog}
-        onSubmit={handleSubmitReview}
-      /> */}
       {alert.show && (
         <Toast
           type={alert.type}
