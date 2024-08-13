@@ -148,11 +148,11 @@ const Product = () => {
           </>
         </section>
       </main>
-      <ReviewDialog
+      {/* <ReviewDialog
         open={isOpenReviewDialog}
         onClose={handleCloseReviewDialog}
         onSubmit={handleSubmitReview}
-      />
+      /> */}
       {alert.show && (
         <Toast
           type={alert.type}
