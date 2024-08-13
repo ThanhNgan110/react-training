@@ -11,7 +11,7 @@ import CardHeader from '../CardHeader';
 // Css
 import './index.css';
 
-const ProductCard = ({ product, onOpen }) => {
+const ProductCard = ({ product, onSubmit }) => {
   const { id, name, images, averageRating, reviewsCount, price, description } =
     product;
 
@@ -35,7 +35,7 @@ const ProductCard = ({ product, onOpen }) => {
             name={name}
             averageRating={averageRating}
             reviewsCount={reviewsCount}
-            onOpen={onOpen}
+            onSubmit={onSubmit}
           />
 
           <div className="d-flex align-items-center gap-10">

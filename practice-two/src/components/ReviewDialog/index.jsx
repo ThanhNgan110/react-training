@@ -10,7 +10,7 @@ import StarRating from '../StarRating';
 // Css
 import './index.css';
 
-const ReviewDialog = ({ open, onSubmit, onClose }) => {
+const ReviewDialog = ({ productId, open, onSubmit, onClose }) => {
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
 
@@ -24,10 +24,13 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log('productId', productId);
+
     if (typeof onSubmit === 'function') {
       onSubmit({
         rating,
-        comment
+        comment,
+        productId
       });
       setRating(5);
       setComment('');
@@ -48,7 +51,11 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
           <Button
             className="btn-close "
             iconClassName="icon-close"
-            onClick={() => onClose()}
+            onClick={e => {
+              e.preventDefault();
+              onClose();
+              console.log('123456');
+            }}
           />
         </div>
       }

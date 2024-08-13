@@ -108,35 +108,35 @@ const Home = () => {
     setTotalPage(result);
   };
 
-  const handleSubmitReview = async ({ rating, comment }) => {
-    setLoading(true);
-    const { error: reviewError } = await createReviews({
-      rating,
-      comment,
-      userId: users[getRandomInt(users.length)],
-      productId: selectedProduct
-    });
+  const handleSubmitReview = async ({ id, rating, comment }) => {
+    // setLoading(true);
+    // const { error: reviewError } = await createReviews({
+    //   rating,
+    //   comment,
+    //   userId: users[getRandomInt(users.length)],
+    //   productId: id
+    // });
 
-    if (reviewError) {
-      showToast(MESSAGE.MESSAGE_FAILED, 'danger');
-      return;
-    }
+    // if (reviewError) {
+    //   showToast(MESSAGE.MESSAGE_FAILED, 'danger');
+    //   return;
+    // }
 
-    showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
-    setOpenReviewDialog(false);
+    // showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
+    // setOpenReviewDialog(false);
 
-    const { data: product, error: productErr } = await getProductById(
-      selectedProduct
-    );
+    // const { data: product, error: productErr } = await getProductById(
+    //   selectedProduct
+    // );
 
-    if (!productErr) {
-      const updatedProducts = products.map(item =>
-        item.id === selectedProduct ? product : item
-      );
-      setProducts(updatedProducts);
-    }
+    // if (!productErr) {
+    //   const updatedProducts = products.map(item =>
+    //     item.id === selectedProduct ? product : item
+    //   );
+    //   setProducts(updatedProducts);
+    // }
 
-    setLoading(false);
+    // setLoading(false);
   };
 
   const handlePopulateSettings = settingsData => {
@@ -215,7 +215,9 @@ const Home = () => {
 
         <ProductList
           products={products}
-          onOpen={handleOpenReviewDialog}
+          // onOpen={handleOpenReviewDialog}
+          onSubmit={handleSubmitReview}
+          // onClose={handleCloseReviewDialog}
           message={message}
         />
         <Pagination
@@ -223,11 +225,11 @@ const Home = () => {
           value={currentPage}
           onChange={handlePageChange}
         />
-        <ReviewDialog
+        {/* <ReviewDialog
           open={isOpenReviewDialog}
           onClose={handleCloseReviewDialog}
           onSubmit={handleSubmitReview}
-        />
+        /> */}
         {alert.show && (
           <Toast
             type={alert.type}

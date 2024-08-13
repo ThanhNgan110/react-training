@@ -5,7 +5,7 @@ import Text from '../Text';
 // Css
 import './index.css';
 
-const ProductList = ({ products, message, onOpen }) => {
+const ProductList = ({ products, message, onSubmit}) => {
   return (
     <div className="product-list">
       {message ? (
@@ -15,7 +15,7 @@ const ProductList = ({ products, message, onOpen }) => {
           <ProductCard
             key={item.id}
             product={item}
-            onOpen={onOpen}
+            onSubmit={onSubmit}
           />
         ))
       )}
