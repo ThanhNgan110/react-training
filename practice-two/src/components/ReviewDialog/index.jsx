@@ -43,6 +43,7 @@ const ReviewDialog = ({ productId, onSubmit }) => {
       setRating(5);
       setComment('');
     }
+    handleClose();
   };
 
   return (
@@ -51,7 +52,6 @@ const ReviewDialog = ({ productId, onSubmit }) => {
         <Button
           variant="link"
           onClick={e => {
-            e.stopPropagation();
             e.preventDefault();
             handleOpen();
           }}
