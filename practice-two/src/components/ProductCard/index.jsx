@@ -19,7 +19,7 @@ const ProductCard = ({ product, onSubmit }) => {
 
   const handleClick = e => {
     e.preventDefault();
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     navigate(`/products/${id}`);
   };
 

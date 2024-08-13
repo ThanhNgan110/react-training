@@ -51,6 +51,7 @@ const ReviewDialog = ({ productId, onSubmit }) => {
         <Button
           variant="link"
           onClick={e => {
+            e.stopPropagation();
             e.preventDefault();
             handleOpen();
           }}
@@ -72,6 +73,7 @@ const ReviewDialog = ({ productId, onSubmit }) => {
                 className="btn-close "
                 iconClassName="icon-close"
                 onClick={e => {
+                  e.stopPropagation();
                   e.preventDefault();
                   handleClose();
                 }}
