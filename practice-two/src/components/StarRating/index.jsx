@@ -16,10 +16,7 @@ const StarRating = ({
       {Array.from({ length: max }, (_, index) => (
         <ListGroupItem
           key={index}
-          onClick={e => {
-            e.preventDefault;
-            onClick(index + 1);
-          }}
+          onClick={() => onClick(index + 1)}
         >
           <Star
             width={width}
