@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Common
 import { formatPrice } from '../../utils/common';
@@ -7,18 +7,26 @@ import { formatPrice } from '../../utils/common';
 import Text from '../Text';
 import Image from '../Image';
 import CardHeader from '../CardHeader';
+import Button from '../Button';
 
 // Css
 import './index.css';
 
 const ProductCard = ({ product, onSubmit }) => {
+  const navigate = useNavigate();
   const { id, name, images, averageRating, reviewsCount, price, description } =
     product;
 
+  const handleClick = e => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    navigate(`/products/${id}`);
+  };
+
   return (
-    <Link
-      key={id}
-      to={`/products/${id}`}
+    <Button
+      type="button"
+      onClick={handleClick}
     >
       <article className="d-flex divider">
         <div className="box-image">
@@ -70,7 +78,7 @@ const ProductCard = ({ product, onSubmit }) => {
           </Text>
         </div>
       </article>
-    </Link>
+    </Button>
   );
 };
 

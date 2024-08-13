@@ -1,14 +1,8 @@
-import { useState } from 'react';
 import Text from '../Text';
 import StarRating from '../StarRating';
-import Button from '../Button';
 import ReviewDialog from '../ReviewDialog';
 
 const CardHeader = ({ id, name, averageRating, reviewsCount, onSubmit }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpen = () => setIsOpen(true);
-
   return (
     <>
       <Text
@@ -30,25 +24,9 @@ const CardHeader = ({ id, name, averageRating, reviewsCount, onSubmit }) => {
           >
             {reviewsCount ?? 0} reviews
           </Text>
-          <Button
-            variant="link"
-            onClick={e => {
-              e.preventDefault();
-              handleOpen();
-            }}
-          >
-            Submit a review
-          </Button>
+          <ReviewDialog />
         </div>
       </div>
-      {isOpen && (
-        <ReviewDialog
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
-          onSubmit={onSubmit}
-          productId={id}
-        />
-      )}
     </>
   );
 };
