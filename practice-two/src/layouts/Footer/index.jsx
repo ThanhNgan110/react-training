@@ -19,7 +19,7 @@ const Footer = () => {
           items={FOOTER_LIST_INFORMATION}
         />
         <FooterNavList
-          className="footer-item"
+          classNameItem="footer-item"
           title="Service"
           items={FOOTER_LIST_INFORMATION}
         />
