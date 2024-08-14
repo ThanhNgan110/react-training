@@ -13,14 +13,13 @@
   flex-direction: column;
   border-radius: var(--border-radius-sm);
   background-color: var(--color-white);
-  padding: 59px 77px;
+  padding: 20px 30px;
   width: 600px;
   margin: 100px auto;
 }
 
 .modal-header {
-  display: flex;
-  justify-content: flex-end;
+  text-align: center;
 }
 
 .modal-body,
