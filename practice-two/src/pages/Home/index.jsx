@@ -97,8 +97,6 @@ const Home = () => {
   };
 
   const handleSubmitReview = async ({ productId, rating, comment }) => {
-    console.log('id', productId);
-
     setLoading(true);
     const { error: reviewError } = await createReviews({
       rating,
