@@ -33,6 +33,11 @@
   text-decoration: line-through;
 }
 
+/* text-align-right */
+.text-align-right {
+  text-align: right;
+}
+
 /* Font weight */
 .fw-bold {
   font-weight: var(--font-weight-bold);
