@@ -1,4 +1,4 @@
-import Breadcrumb from '../Breadcrumb'
+import Breadcrumb from '../../components/Breadcrumb';
 
 import './index.css';
 
