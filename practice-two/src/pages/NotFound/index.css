@@ -21,6 +21,7 @@
   border-radius: var(--border-radius-sm);
   padding: 15px;
 }
+
 .back-home:hover {
   background: var(--color-secondary);
   color: var(--color-loblolly);
