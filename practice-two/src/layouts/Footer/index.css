@@ -4,3 +4,7 @@
   padding: 84px 117px;
   gap: 207px;
 }
+
+.footer-item {
+  cursor: pointer;
+}
