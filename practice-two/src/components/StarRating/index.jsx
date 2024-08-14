@@ -5,6 +5,7 @@ import ListGroupItem from '../ListGroup/ListGroupItem';
 
 const StarRating = ({
   className,
+  classNameStar,
   max = 5,
   rating = 5,
   onClick,
@@ -15,6 +16,7 @@ const StarRating = ({
     <ListGroup className={className}>
       {Array.from({ length: max }, (_, index) => (
         <ListGroupItem
+          className={classNameStar}
           key={index}
           onClick={() => onClick(index + 1)}
         >
