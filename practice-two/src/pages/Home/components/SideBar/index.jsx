@@ -1,7 +1,7 @@
 // Import components
 import Trademarks from './Trademarks';
 import Prices from './Prices';
-import Colors from './Colors'; 
+import Colors from './Colors';
 import ListGroup from '../../../../components/ListGroup';
 
 // Import css

@@ -4,7 +4,7 @@ import ListGroup from '../ListGroup';
 
 import './index.css';
 
-const FooterNavList = ({classNameItem, title, items }) => {
+const FooterNavList = ({ classNameItem, title, items }) => {
   return (
     <>
       <div className="d-flex flex-column">
@@ -19,7 +19,12 @@ const FooterNavList = ({classNameItem, title, items }) => {
           vertical="false"
         >
           {items.map(index => (
-            <ListGroup.Item className={classNameItem} key={`${index}`}>{index}</ListGroup.Item>
+            <ListGroup.Item
+              className={classNameItem}
+              key={`${index}`}
+            >
+              {index}
+            </ListGroup.Item>
           ))}
         </ListGroup>
       </div>
