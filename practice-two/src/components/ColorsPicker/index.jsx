@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-// Import component
+
+// Component
 import RadioInput from '../RadioInput';
 
 const ColorsPicker = ({ className, colors, onChange }) => {
