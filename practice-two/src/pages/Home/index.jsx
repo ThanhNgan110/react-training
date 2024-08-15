@@ -16,8 +16,7 @@ import {
 import { createReviews } from '../../services/review-service';
 
 // Hooks
-import useDebouncedValue from '../../hooks/useDebouncedValue';
-import useToast from '../../hooks/useToast';
+import { useToast, useDebouncedValue } from '../../hooks';
 
 // Constants
 import { MESSAGE } from '../../constants/message';
