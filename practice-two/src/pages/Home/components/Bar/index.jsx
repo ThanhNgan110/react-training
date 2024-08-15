@@ -1,11 +1,10 @@
 // Components
-import Text from '../../../../components/Text';
-import Select from '../../../../components/Select';
+import { Text } from '../../../../components';
 
 // Css
 import './index.css';
 
-const Bar = ({ count, data, onChange }) => {
+const Bar = ({ count }) => {
   return (
     <div className="d-flex align-items-center bar">
       <Text
@@ -14,13 +13,6 @@ const Bar = ({ count, data, onChange }) => {
       >
         {count} Items
       </Text>
-      <Select
-        classNameLabel="fs-5 text-secondary"
-        label="Sort by"
-        name="sort-by"
-        data={data}
-        onChange={onChange}
-      />
     </div>
   );
 };

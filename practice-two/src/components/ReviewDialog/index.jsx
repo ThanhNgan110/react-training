@@ -10,9 +10,18 @@ import StarRating from '../StarRating';
 // Css
 import './index.css';
 
-const ReviewDialog = ({ open, onSubmit, onClose }) => {
+const ReviewDialog = ({ productId, onSubmit }) => {
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
 
   const handleChangeRating = numberRating => {
     setRating(numberRating);
@@ -24,75 +33,90 @@ const ReviewDialog = ({ open, onSubmit, onClose }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (typeof onSubmit === 'function') {
       onSubmit({
         rating,
-        comment
+        comment,
+        productId
       });
       setRating(5);
       setComment('');
     }
+    handleClose();
   };
 
   return (
-    <Modal
-      open={open}
-      modalHeader={
-        <div className="header-group">
-          <Text
-            as="p"
-            className="text-info fw-semibold fs-1"
-          >
-            Submit Your Review
-          </Text>
-          <Button
-            className="btn-close "
-            iconClassName="icon-close"
-            onClick={() => onClose()}
-          />
-        </div>
-      }
-      modalBody={
+    <>
+      {!isOpen ? (
+        <Button
+          variant="link"
+          onClick={e => {
+            e.preventDefault();
+            handleOpen();
+          }}
+        >
+          Submit a review
+        </Button>
+      ) : (
         <>
-          <form
-            className="form"
-            onSubmit={handleSubmit} // Updated onSubmit handler
-          >
-            <Text
-              as="p"
-              className="label"
-            >
-              Please write about your level of satisfaction with your product
-            </Text>
-            <StarRating
-              width={32}
-              height={32}
-              className="d-flex gap-20 justify-content-center"
-              rating={rating}
-              onClick={handleChangeRating}
-            />
-            <Text
-              as="p"
-              className="label"
-            >
-              Write your review here
-            </Text>
-            <Textarea
-              className="textarea-size"
-              placeholder="Write your review here"
-              value={comment}
-              onChange={handleChangeComment}
-            />
-            <Button
-              className="btn-review"
-              type="submit"
-            >
-              Submit
-            </Button>
-          </form>
+          <Modal
+            open={isOpen}
+            handleClose={handleClose}
+            modalHeader={
+              <Text
+                as="p"
+                className="text-info fw-semibold fs-1"
+              >
+                Submit Your Review
+              </Text>
+            }
+            modalBody={
+              <>
+                <form
+                  className="form"
+                  onSubmit={handleSubmit}
+                >
+                  <Text
+                    as="p"
+                    className="label"
+                  >
+                    Please write about your level of satisfaction with your
+                    product
+                  </Text>
+                  <StarRating
+                    width={32}
+                    height={32}
+                    className="d-flex gap-20 justify-content-center"
+                    classNameStar="star"
+                    rating={rating}
+                    onClick={handleChangeRating}
+                  />
+                  <Text
+                    as="p"
+                    className="label"
+                  >
+                    Write your review here
+                  </Text>
+                  <Textarea
+                    className="textarea-size"
+                    placeholder="Write your review here"
+                    value={comment}
+                    onChange={handleChangeComment}
+                  />
+                  <Button
+                    className="btn-review"
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
+                </form>
+              </>
+            }
+          />
         </>
-      }
-    />
+      )}
+    </>
   );
 };
 

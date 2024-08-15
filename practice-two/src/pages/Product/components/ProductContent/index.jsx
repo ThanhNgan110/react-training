@@ -1,10 +1,12 @@
 // Components
-import Text from '../Text';
-import Button from '../Button';
-import ColorsPicker from '../ColorsPicker';
-import Select from '../Select';
-import Divider from '../Divider';
-import CardHeader from '../CardHeader';
+import {
+  Text,
+  Button,
+  ColorsPicker,
+  Select,
+  Divider,
+  CardHeader
+} from '../../../../components';
 
 import './index.css';
 

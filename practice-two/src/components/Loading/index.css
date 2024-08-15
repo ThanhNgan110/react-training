@@ -1,6 +1,10 @@
+.wrapper {
+  padding: 150px 0;
+}
+
 .loader {
-  position: fixed;
-  top: 50%;
+  position: relative;
+  top: 60%;
   left: 50%;
   width: 50px;
   --b: 8px;

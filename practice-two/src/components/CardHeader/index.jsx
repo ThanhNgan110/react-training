@@ -1,17 +1,21 @@
+import { Link } from 'react-router-dom';
+
 // Components
 import Text from '../Text';
 import StarRating from '../StarRating';
-import Button from '../Button';
+import ReviewDialog from '../ReviewDialog';
 
-const CardHeader = ({ id, name, averageRating, reviewsCount, onOpen }) => {
+const CardHeader = ({ id, name, averageRating, reviewsCount, onSubmit }) => {
   return (
     <>
-      <Text
-        as="h2"
-        variant="primary"
-      >
-        {name ? name : ''}
-      </Text>
+      <Link to={`/products/${id}`}>
+        <Text
+          as="h2"
+          variant="primary"
+        >
+          {name ? name : ''}
+        </Text>
+      </Link>
       <div className="d-flex flex-column">
         <div className="d-flex align-items-center gap-10 divider">
           <StarRating
@@ -25,15 +29,10 @@ const CardHeader = ({ id, name, averageRating, reviewsCount, onOpen }) => {
           >
             {reviewsCount ?? 0} reviews
           </Text>
-          <Button
-            variant="link"
-            onClick={e => {
-              e.preventDefault();
-              onOpen(id);
-            }}
-          >
-            Submit a review
-          </Button>
+          <ReviewDialog
+            productId={id}
+            onSubmit={onSubmit}
+          />
         </div>
       </div>
     </>

@@ -1,7 +1,5 @@
 // Components
-import FooterNavList from '../../components/FooterNavList';
-import ListGroup from '../../components/ListGroup';
-import Text from '../../components/Text';
+import { FooterNavList, ListGroup, Text } from '../../components';
 
 // Constants
 import { FOOTER_LIST_INFORMATION, LIST_ICON } from '../../constants';
@@ -14,18 +12,22 @@ const Footer = () => {
     <footer className="d-flex flex-column footer">
       <div className="d-flex flex-row justify-content-between">
         <FooterNavList
+          classNameItem="footer-item"
           title="Information"
           items={FOOTER_LIST_INFORMATION}
         />
         <FooterNavList
+          classNameItem="footer-item"
           title="Service"
           items={FOOTER_LIST_INFORMATION}
         />
         <FooterNavList
+          classNameItem="footer-item"
           title="My Account"
           items={FOOTER_LIST_INFORMATION}
         />
         <FooterNavList
+          classNameItem="footer-item"
           title="Our Offers"
           items={FOOTER_LIST_INFORMATION}
         />

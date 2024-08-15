@@ -1,14 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
 // Components
-import SideBar from './components/SideBar';
-import Banner from './components/Banner';
-import Bar from './components/Bar';
-import ProductList from '../../components/ProductList';
-import ReviewDialog from '../../components/ReviewDialog';
-import Toast from '../../components/Toast';
-import Pagination from '../../components/Pagination';
-import Loading from '../../components/Loading';
+import { SideBar, Banner, Bar, ProductList } from './components';
+import { Toast, Pagination, Loading } from '../../components';
 
 // Css
 import './index.css';
@@ -22,8 +16,7 @@ import {
 import { createReviews } from '../../services/review-service';
 
 // Hooks
-import useDebouncedValue from '../../hooks/useDebouncedValue';
-import useToast from '../../hooks/useToast';
+import { useToast, useDebouncedValue } from '../../hooks';
 
 // Constants
 import { MESSAGE } from '../../constants/message';
@@ -55,8 +48,6 @@ const Home = () => {
     selectedPrice,
     VARIABLES.TIME_OUT
   );
-  const [isOpenReviewDialog, setOpenReviewDialog] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState('');
   const { showToast, alert } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
@@ -90,15 +81,6 @@ const Home = () => {
     setSelectedColor(e.target.value);
   };
 
-  const handleCloseReviewDialog = () => {
-    setOpenReviewDialog(false);
-  };
-
-  const handleOpenReviewDialog = id => {
-    setSelectedProduct(id);
-    setOpenReviewDialog(true);
-  };
-
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
@@ -108,30 +90,28 @@ const Home = () => {
     setTotalPage(result);
   };
 
-  const handleSubmitReview = async ({ rating, comment }) => {
+  const handleSubmitReview = async ({ productId, rating, comment }) => {
     setLoading(true);
     const { error: reviewError } = await createReviews({
       rating,
       comment,
       userId: users[getRandomInt(users.length)],
-      productId: selectedProduct
+      productId: productId
     });
 
     if (reviewError) {
       showToast(MESSAGE.MESSAGE_FAILED, 'danger');
       return;
     }
-
     showToast(MESSAGE.MESSAGE_SUCCESS, 'success');
-    setOpenReviewDialog(false);
 
     const { data: product, error: productErr } = await getProductById(
-      selectedProduct
+      productId
     );
 
     if (!productErr) {
       const updatedProducts = products.map(item =>
-        item.id === selectedProduct ? product : item
+        item.id === productId ? product : item
       );
       setProducts(updatedProducts);
     }
@@ -215,18 +195,13 @@ const Home = () => {
 
         <ProductList
           products={products}
-          onOpen={handleOpenReviewDialog}
+          onSubmit={handleSubmitReview}
           message={message}
         />
         <Pagination
           range={totalPage}
           value={currentPage}
           onChange={handlePageChange}
-        />
-        <ReviewDialog
-          open={isOpenReviewDialog}
-          onClose={handleCloseReviewDialog}
-          onSubmit={handleSubmitReview}
         />
         {alert.show && (
           <Toast

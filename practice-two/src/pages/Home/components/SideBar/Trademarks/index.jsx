@@ -1,6 +1,5 @@
 // Import component
-import Text from '../../../../../components/Text';
-import ListGroup from '../../../../../components/ListGroup';
+import { Text, ListGroup } from '../../../../../components';
 
 // Import css
 import './index';

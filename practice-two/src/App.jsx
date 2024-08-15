@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 // Import router
 import { Routes, Route } from 'react-router-dom';
 
@@ -9,9 +8,8 @@ import './styles/index.css';
 import Layout from './layouts';
 import Home from './pages/Home';
 import Product from './pages/Product';
+import NotFound from './pages/NotFound';
 import { PAGES } from './constants/route';
-
-import Loading from './components/Loading';
 
 const App = () => {
   return (
@@ -23,15 +21,15 @@ const App = () => {
         >
           <Route
             index
-            element={
-              <Suspense fallback={<Loading />}>
-                <Home />
-              </Suspense>
-            }
+            element={<Home />}
           />
           <Route
             path={PAGES.PRODUCT.PATH}
             element={<Product />}
+          />
+          <Route
+            path="*"
+            element={<NotFound />}
           />
         </Route>
       </Routes>

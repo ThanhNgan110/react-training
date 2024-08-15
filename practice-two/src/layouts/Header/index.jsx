@@ -1,5 +1,5 @@
 // Import components
-import NavBar from '../../components/NavBar';
+import { NavBar } from '../../components';
 
 // Import css
 import './index.css';

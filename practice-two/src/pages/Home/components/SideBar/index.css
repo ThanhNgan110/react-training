@@ -15,3 +15,7 @@
 .sidebar {
   gap: 14px;
 }
+
+.group-item {
+  cursor: pointer;
+}

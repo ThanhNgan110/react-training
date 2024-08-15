@@ -1,0 +1,16 @@
+.product-center {
+  width: 100%;
+}
+
+.space-empty {
+  margin-top: 21.9px;
+  gap: 10px;
+}
+
+.space-top {
+  margin-top: 23px;
+}
+
+.space-btn-group {
+  gap: 11px;
+}
