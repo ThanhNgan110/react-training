@@ -8,7 +8,7 @@
 ## TIMELINE
 
 - Expected: 16 days (from 2024/07/05 - 2024/07/26)
-- Total:  
+- Total:  23 days (from 2024/07/05 - 2024/08/15)
 
 ## TEAM SIZE
 
@@ -17,7 +17,7 @@
 ## TARGETS
 
 - Understand and apply correctly React hooks
-- Have understanding deeply about useState, useEffect, useRef, useContext
+- Have understanding deeply about useState, useEffect
 - Be able to manage state and check re-render when props or state stay touched
 
 ## TECHNICAL STACK
