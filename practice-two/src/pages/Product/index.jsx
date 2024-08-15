@@ -5,13 +5,11 @@ import { useParams } from 'react-router-dom';
 import './index.css';
 
 // Components
-import ProductImages from '../../components/ProductImages';
 import ProductContent from '../../components/ProductContent';
 import Tab from '../../components/Tabs/Tab';
 import TabContent from '../../components/Tabs/TabContent';
 import TabBar from '../../components/TabBar';
-import Loading from '../../components/Loading';
-import Toast from '../../components/Toast';
+import { ProductImages, Loading, Toast } from '../../components';
 
 // Constant
 import { PAGES } from '../../constants/route';

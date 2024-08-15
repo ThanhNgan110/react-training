@@ -1,13 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
 // Components
-import SideBar from './components/SideBar';
-import Banner from './components/Banner';
-import Bar from './components/Bar';
-import ProductList from '../../components/ProductList';
-import Toast from '../../components/Toast';
-import Pagination from '../../components/Pagination';
-import Loading from '../../components/Loading';
+import { SideBar, Banner, Bar, ProductList } from './components';
+import { Toast, Pagination, Loading } from '../../components';
 
 // Css
 import './index.css';

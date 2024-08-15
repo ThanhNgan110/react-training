@@ -1,7 +1,5 @@
 // Components
-import FooterNavList from '../../components/FooterNavList';
-import ListGroup from '../../components/ListGroup';
-import Text from '../../components/Text';
+import { FooterNavList, ListGroup, Text } from '../../components';
 
 // Constants
 import { FOOTER_LIST_INFORMATION, LIST_ICON } from '../../constants';

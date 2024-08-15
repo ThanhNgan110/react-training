@@ -1,6 +1,5 @@
 // Components
-import Image from '../../../../components/Image';
-import Text from '../../../../components/Text';
+import { Image, Text } from '../../../../components';
 
 // Css
 import './index.css';

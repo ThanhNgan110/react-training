@@ -1,5 +1,5 @@
 // Components
-import Text from '../../../../components/Text';
+import { Text } from '../../../../components';
 
 // Css
 import './index.css';
