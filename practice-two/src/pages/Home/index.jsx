@@ -172,45 +172,46 @@ const Home = () => {
     setLoading(false);
   };
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
-    <div className="d-flex wrapper-content">
-      <SideBar
-        settings={settings}
-        onClick={handleSelectType}
-        activeSelected={selectedType}
-        handleChangePrice={handleChangePrice}
-        handleChangeColor={handleChangeColor}
-        price={selectedPrice}
-      />
-      <main>
-        <Banner data={settings.banner} />
-        <Bar
-          data={SORT_DATA}
-          count={count}
-        />
-
-        <ProductList
-          products={products}
-          onSubmit={handleSubmitReview}
-          message={message}
-        />
-        <Pagination
-          range={totalPage}
-          value={currentPage}
-          onChange={handlePageChange}
-        />
-        {alert.show && (
-          <Toast
-            type={alert.type}
-            msg={alert.msg}
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="d-flex wrapper-content">
+          <SideBar
+            settings={settings}
+            onClick={handleSelectType}
+            activeSelected={selectedType}
+            handleChangePrice={handleChangePrice}
+            handleChangeColor={handleChangeColor}
+            price={selectedPrice}
           />
-        )}
-      </main>
-    </div>
+          <main>
+            <Banner data={settings.banner} />
+            <Bar
+              data={SORT_DATA}
+              count={count}
+            />
+            <ProductList
+              products={products}
+              onSubmit={handleSubmitReview}
+              message={message}
+            />
+            <Pagination
+              range={totalPage}
+              value={currentPage}
+              onChange={handlePageChange}
+            />
+            {alert.show && (
+              <Toast
+                type={alert.type}
+                msg={alert.msg}
+              />
+            )}
+          </main>
+        </div>
+      )}
+    </>
   );
 };
 

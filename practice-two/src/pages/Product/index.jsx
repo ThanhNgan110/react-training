@@ -95,50 +95,52 @@ const Product = () => {
     await fetchProductById(productId);
   };
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <>
-      <TabBar items={items} />
-      <main className="wrapper-product">
-        <section className="d-flex gap-40 section-product">
-          <ProductImages
-            images={product.images}
-            name={product.name}
-          />
-          <ProductContent
-            product={product}
-            onSubmit={handleSubmitReview}
-          />
-        </section>
-        <section className="tab-review">
-          <>
-            <div className="d-flex tab-item">
-              {TABS.map((item, index) => (
-                <Tab
-                  key={index}
-                  onClick={() => handleSetTab(index)}
-                  active={index === currentTab ? 'active' : ''}
-                >
-                  {item.title}
-                </Tab>
-              ))}
-            </div>
-            <TabContent
-              currentTab={currentTab}
-              reviews={reviews ?? null}
-              description={product.description}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <TabBar items={items} />
+          <main className="wrapper-product">
+            <section className="d-flex gap-40 section-product">
+              <ProductImages
+                images={product.images}
+                name={product.name}
+              />
+              <ProductContent
+                product={product}
+                onSubmit={handleSubmitReview}
+              />
+            </section>
+            <section className="tab-review">
+              <>
+                <div className="d-flex tab-item">
+                  {TABS.map((item, index) => (
+                    <Tab
+                      key={index}
+                      onClick={() => handleSetTab(index)}
+                      active={index === currentTab ? 'active' : ''}
+                    >
+                      {item.title}
+                    </Tab>
+                  ))}
+                </div>
+                <TabContent
+                  currentTab={currentTab}
+                  reviews={reviews ?? null}
+                  description={product.description}
+                />
+              </>
+            </section>
+          </main>
+          {alert.show && (
+            <Toast
+              type={alert.type}
+              msg={alert.msg}
             />
-          </>
-        </section>
-      </main>
-      {alert.show && (
-        <Toast
-          type={alert.type}
-          msg={alert.msg}
-        />
+          )}
+        </>
       )}
     </>
   );
